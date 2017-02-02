@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.dev.nahuelsg.teniscriolloscore.NuevoPartidoActivity"
+    tools:showIn="@layout/content_nuevo_partido_main">
+
+
+    <TextView
+        android:text="Jugador 1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView_jugador1"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif"
+        android:textStyle="normal|bold"
+        android:textColor="#000000" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="nombre jugador 1"
+        android:ems="10"
+        android:id="@+id/editText_jugador1"
+        android:textSize="14sp" />
+
+    <TextView
+        android:text="Jugador 2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView_jugador2"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textColor="#000000"
+        android:fontFamily="sans-serif" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="nombre jugador 2"
+        android:ems="10"
+        android:id="@+id/editText_jugador2"
+        android:textSize="14sp" />
+
+    <TextView
+        android:text="Reglas de puntaje"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView_reglas_puntaje"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textColor="#000000" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_reglas_puntaje" />
+
+    <TextView
+        android:text="Descripcion de la forma de puntaje, por ej:
+        -set único
+        -a 16 puntos o diferencia de 2"
+        android:layout_width="match_parent"
+        android:layout_height="94dp"
+        android:id="@+id/textView_descripcion_puntaje"
+        android:textColor="#000000" />
+
+    <TextView
+        android:text="Fecha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView_fecha_label"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textColor="#000000" />
+
+    <TextView
+        android:text="     01 / 02 / 2017"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView_fecha"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:text="Empezar partido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_empezar"
+        android:background="@android:color/holo_orange_light"
+        android:layout_gravity="bottom|end" />
+
+</LinearLayout>

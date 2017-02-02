@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.dev.nahuelsg.teniscriolloscore.PartidoScoreActivity">
+    <item
+        android:id="@+id/action_estadisticas"
+        android:orderInCategory="100"
+        android:title="Estadísticas del partido"
+        app:showAsAction="never" />
+</menu>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ToggleButton
+            android:text="En la red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/red_jugador1"
+            android:layout_weight="1"
+            android:textOff="En la red"
+            android:textOn="En la red"
+            android:checked="false" />
+
+        <ToggleButton
+            android:text="En la red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/red_jugador2"
+            android:layout_weight="1"
+            android:textOff="En la red"
+            android:textOn="En la red" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="Winner derecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/winner_derecha_jugador1"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_green_light" />
+
+        <Button
+            android:text="Winner derecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/winner_derecha_jugador2"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_green_light" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="Winner reves"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/winner_reves_jugador1"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_green_light" />
+
+        <Button
+            android:text="Winner reves"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/winner_reves_jugador2"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_green_light" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="Error no forzado derecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_derecha_jugador1"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_red_light" />
+
+        <Button
+            android:text="Error no forzado derecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_derecha_jugador2"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_red_light" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="Error no forzado reves"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_reves_jugador1"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_red_light" />
+
+        <Button
+            android:text="Error no forzado reves"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/error_reves_jugador2"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_red_light" />
+    </LinearLayout>
+
+</LinearLayout>
