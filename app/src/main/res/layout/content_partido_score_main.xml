@@ -10,42 +10,76 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="43dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/jugador1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Jugador 1 "/>
+            android:text="Jugador 1 "
+            android:textSize="24sp"
+            android:textStyle="normal|bold"
+            android:gravity="center_vertical" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/icn_tennis_ball"/>
+            android:layout_width="20dp"
+            app:srcCompat="@drawable/icn_tennis_ball"
+            android:id="@+id/icono_pelota_saque1"
+            android:adjustViewBounds="true"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical" />
 
         <TextView
             android:id="@+id/score_jugador1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="13"/>
+            android:text="13"
+            android:textSize="30sp"
+            android:textStyle="normal|bold"
+            android:gravity="center_vertical"
+            android:background="@android:color/holo_orange_light" />
+
+        <TextView
+            android:text="-"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textView"
+            android:layout_weight="1"
+            android:textSize="24sp"
+            android:textStyle="normal|bold"
+            android:textAlignment="center"
+            android:background="@android:color/holo_orange_light"
+            android:gravity="center_vertical" />
 
         <TextView
             android:id="@+id/score_jugador2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="16"/>
+            android:text="16"
+            android:textSize="30sp"
+            android:textStyle="normal|bold"
+            android:gravity="center_vertical"
+            android:background="@android:color/holo_orange_light" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/icn_tennis_ball"/>
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:srcCompat="@drawable/icn_tennis_ball"
+            android:id="@+id/icono_pelota_saque2"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center_vertical"
+            android:cropToPadding="false" />
 
         <TextView
             android:id="@+id/jugador2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Jugador 2 "/>
+            android:text="Jugador 2 "
+            android:textSize="24sp"
+            android:textStyle="normal|bold"
+            android:gravity="center_vertical" />
 
     </LinearLayout>
 
