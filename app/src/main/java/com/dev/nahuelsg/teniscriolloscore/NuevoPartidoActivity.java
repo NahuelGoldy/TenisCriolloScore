@@ -5,4 +5,9 @@ package com.dev.nahuelsg.teniscriolloscore;
  */
 
 public class NuevoPartidoActivity {
+
+    private String nombreJugador1;
+    private String nombreJugador2;
+    private String reglasPuntajeSelected;
+
 }

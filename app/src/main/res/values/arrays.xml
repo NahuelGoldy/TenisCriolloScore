@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="opciones_puntuacion">
+        <item>1 set, a 16 puntos</item>
+        <item>3 sets, a 16 puntos</item>
+        <item>5 sets, a 16 puntos</item>
+        <item>1 set, a 20 puntos</item>
+        <item>3 sets, a 20 puntos</item>
+        <item>5 sets, a 20 puntos</item>
+    </string-array>
+
+</resources>

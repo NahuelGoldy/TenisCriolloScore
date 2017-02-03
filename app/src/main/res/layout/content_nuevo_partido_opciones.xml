@@ -59,7 +59,8 @@
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner_reglas_puntaje" />
+        android:id="@+id/spinner_reglas_puntaje"
+        android:entries="@array/opciones_puntuacion" />
 
     <TextView
         android:text="Descripcion de la forma de puntaje, por ej:
