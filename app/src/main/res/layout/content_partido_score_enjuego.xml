@@ -15,8 +15,7 @@
             android:id="@+id/red_jugador1"
             android:layout_weight="1"
             android:textOff="En la red"
-            android:textOn="En la red"
-            android:checked="false" />
+            android:textOn="En la red" />
 
         <ToggleButton
             android:text="En la red"
@@ -39,7 +38,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/winner_derecha_jugador1"
             android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_green_light" />
+            android:backgroundTint="@android:color/holo_green_light"
+            android:textOff="Winner derecha"
+            android:textOn="Winner derecha"
+            android:checked="false" />
 
         <Button
             android:text="Winner derecha"
@@ -47,7 +49,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/winner_derecha_jugador2"
             android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_green_light" />
+            android:backgroundTint="@android:color/holo_green_light"
+            android:textOff="Winner derecha" />
     </LinearLayout>
 
     <LinearLayout
@@ -61,7 +64,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/winner_reves_jugador1"
             android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_green_light" />
+            android:backgroundTint="@android:color/holo_green_light"
+            android:textOff="Winner reves"
+            android:textOn="Winner reves" />
 
         <Button
             android:text="Winner reves"
@@ -69,7 +74,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/winner_reves_jugador2"
             android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_green_light" />
+            android:backgroundTint="@android:color/holo_green_light"
+            android:textOff="Winner reves"
+            android:textOn="Winner reves" />
     </LinearLayout>
 
     <LinearLayout
@@ -83,7 +90,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/error_derecha_jugador1"
             android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_red_light" />
+            android:backgroundTint="@android:color/holo_red_light"
+            android:textOff="Error no forzado derecha"
+            android:textOn="Error no forzado derecha" />
 
         <Button
             android:text="Error no forzado derecha"
@@ -91,7 +100,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/error_derecha_jugador2"
             android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_red_light" />
+            android:backgroundTint="@android:color/holo_red_light"
+            android:textOff="Error no forzado derecha"
+            android:textOn="Error no forzado derecha" />
     </LinearLayout>
 
     <LinearLayout
@@ -105,7 +116,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/error_reves_jugador1"
             android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_red_light" />
+            android:backgroundTint="@android:color/holo_red_light"
+            android:textOff="Error no forzado reves"
+            android:textOn="Error no forzado reves" />
 
         <Button
             android:text="Error no forzado reves"
@@ -113,7 +126,31 @@
             android:layout_height="wrap_content"
             android:id="@+id/error_reves_jugador2"
             android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_red_light" />
+            android:backgroundTint="@android:color/holo_red_light"
+            android:textOff="Error no forzado reves"
+            android:textOn="Error no forzado reves" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="Punto ganado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_ptoganado_jugador1"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_light" />
+
+        <Button
+            android:text="Punto ganado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_ptoganado_jugador2"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/holo_blue_light" />
     </LinearLayout>
 
 </LinearLayout>

@@ -101,7 +101,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/label_aces"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textStyle="normal|bold" />
 
             <TextView
                 android:text="2"
@@ -132,7 +133,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/label_doblefaltas"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textStyle="normal|bold" />
 
             <TextView
                 android:text="0"
@@ -163,7 +165,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/label_efec1er"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textStyle="normal|bold" />
 
             <TextView
                 android:text="77%"
@@ -194,7 +197,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/label_ptos1er"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textStyle="normal|bold" />
 
             <TextView
                 android:text="69%"
@@ -225,7 +229,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/label_ptos2do"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textStyle="normal|bold" />
 
             <TextView
                 android:text="52%"
@@ -256,7 +261,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/label_ptosdevol"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textStyle="normal|bold" />
 
             <TextView
                 android:text="46%"
@@ -281,5 +287,230 @@
         android:background="@android:color/holo_blue_light"
         android:textColor="#FFFFFF"
         android:paddingLeft="5dp" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:text="4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/winners_jugador1"
+                android:paddingRight="50dp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="Tiros ganadores"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_winners"
+                android:textAlignment="center"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:text="7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/winners_jugador2"
+                android:paddingLeft="50dp"
+                android:textAlignment="center" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:text="4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/winners_derecha_jugador1"
+                android:paddingRight="50dp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="Tiros ganadores de derecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_winners_derecha"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/winners_derecha_jugador2"
+                android:paddingLeft="50dp"
+                android:textAlignment="center" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:text="0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/winners_reves_jugador1"
+                android:paddingRight="50dp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="Tiros ganadores de reves"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_winners_reves"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/winners_reves_jugador2"
+                android:paddingLeft="50dp"
+                android:textAlignment="center" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:text="9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/errores_noforz_jugador1"
+                android:paddingRight="50dp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="Errores no forzados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_errores"
+                android:textAlignment="center"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:text="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/errores_noforz_jugador2"
+                android:paddingLeft="50dp"
+                android:textAlignment="center" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:text="4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/errores_noforz_derecha_jugador1"
+                android:paddingRight="50dp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="Errores no forzados de derecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_errores_derecha"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/errores_noforz_derecha_jugador2"
+                android:paddingLeft="50dp"
+                android:textAlignment="center" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:text="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/errores_noforz_reves_jugador1"
+                android:paddingRight="50dp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="Errores no forzados de reves"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_errores_reves"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/errores_noforz_reves_jugador2"
+                android:paddingLeft="50dp"
+                android:textAlignment="center" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:text="0/2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/enlared_jugador1"
+                android:paddingRight="50dp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="En la red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_enlared"
+                android:textAlignment="center"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:text="3/5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/enlared_jugador2"
+                android:paddingLeft="50dp"
+                android:textAlignment="center" />
+
+        </TableRow>
+    </TableLayout>
 
 </LinearLayout>

@@ -96,7 +96,6 @@
             android:layout_weight="1"
             android:textOff="Al saque"
             android:textOn="Al saque"
-            style="#android/buttonToggleStyle"
             android:checked="false" />
 
         <ToggleButton
