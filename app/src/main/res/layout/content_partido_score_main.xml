@@ -28,7 +28,8 @@
             android:id="@+id/icono_pelota_saque1"
             android:adjustViewBounds="true"
             android:layout_height="20dp"
-            android:layout_gravity="center_vertical" />
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/score_jugador1"
@@ -81,6 +82,191 @@
             android:textStyle="normal|bold"
             android:gravity="center_vertical" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button9"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:text="set 1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_set1"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false" />
+
+            <Button
+                android:text="set 2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_set2"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false" />
+
+            <Button
+                android:text="set 3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_set3"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false" />
+
+            <Button
+                android:text="set 4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_set4"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false" />
+
+            <Button
+                android:text="set 5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_set5"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:text="JUG1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_jugador1_sets"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false" />
+
+            <Button
+                android:text="16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set1_jug1"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:text="15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set2_jug1"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:text="11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set3_jug1"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:text="13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set4_jug1"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set5_jug1"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:text="JUG2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:id="@+id/label_jugador2_sets"
+                android:focusable="false" />
+
+            <Button
+                android:text="12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set1_jug2"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:text="17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set2_jug2"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:text="16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set3_jug2"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:text="16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set4_jug2"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set5_jug2"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
