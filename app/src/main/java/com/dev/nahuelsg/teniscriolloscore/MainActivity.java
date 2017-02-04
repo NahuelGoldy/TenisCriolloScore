@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         Button nuevoPartido, otraCosa;
         nuevoPartido = (Button) findViewById(R.id.button_nuevo_partido);
         otraCosa = (Button) findViewById(R.id.button_otracosa);
-        nuevoPartido.setOnClickListener(btnBusarListener);
+        nuevoPartido.setOnClickListener(btnNuevoPartidoListener);
 
     }
 
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private View.OnClickListener btnBusarListener = new View.OnClickListener() {
+    private View.OnClickListener btnNuevoPartidoListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent i = new Intent(MainActivity.this,NuevoPartidoActivity.class);

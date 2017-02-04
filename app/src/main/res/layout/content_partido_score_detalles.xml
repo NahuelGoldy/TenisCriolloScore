@@ -17,7 +17,7 @@
             <Button
                 android:text="Ace"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/button_ace"
                 android:layout_weight="1.25"
                 android:textSize="20sp"
@@ -40,9 +40,10 @@
 
             <Button
                 android:text="Devolucion ganadora"
-                android:layout_width="193dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/button_devol_ganadora"
+                android:layout_weight="1"
                 android:textSize="20sp"
                 android:backgroundTint="@android:color/holo_green_light" />
 
@@ -51,6 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/button_devol_error"
+                android:layout_weight="1"
                 android:textSize="20sp"
                 android:backgroundTint="@android:color/holo_red_light" />
         </LinearLayout>

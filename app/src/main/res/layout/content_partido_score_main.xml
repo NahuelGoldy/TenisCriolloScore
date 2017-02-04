@@ -269,34 +269,10 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ToggleButton
-            android:text="Al saque"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/toggleButton_saque_jugador1"
-            android:layout_weight="1"
-            android:textOff="Al saque"
-            android:textOn="Al saque"
-            android:checked="false" />
-
-        <ToggleButton
-            android:text="Al saque"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/toggleButton_saque_jugador2"
-            android:layout_weight="1"
-            android:textOff="Al saque"
-            android:textOn="Al saque" />
-    </LinearLayout>
-
     <TabHost
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/tabhost">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -314,7 +290,7 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:id="@+id/.1er.saque"
+                    android:id="@+id/prim_saque"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
@@ -324,7 +300,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/.2do.saque"
+                    android:id="@+id/seg_saque"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
@@ -340,8 +316,14 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <include layout="@layout/content_partido_score_enjuego"
-                        android:visibility="visible" />
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <include layout="@layout/content_partido_score_enjuego"
+                            android:visibility="visible" />
+
+                    </ScrollView>
 
                 </LinearLayout>
             </FrameLayout>

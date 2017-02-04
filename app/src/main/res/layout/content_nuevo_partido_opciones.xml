@@ -63,13 +63,26 @@
         android:entries="@array/opciones_puntuacion" />
 
     <TextView
-        android:text="Descripcion de la forma de puntaje, por ej:
-        -set único
-        -a 16 puntos o diferencia de 2"
+        android:text="Descripcion de la forma de puntaje, por ej:\n-set único \n-a 16 puntos o diferencia de 2"
         android:layout_width="match_parent"
         android:layout_height="94dp"
         android:id="@+id/textView_descripcion_puntaje"
         android:textColor="#000000" />
+
+    <TextView
+        android:text="Empieza sacando"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView_empieza_sacando_label"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textColor="#000000" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_empieza_sacando"
+        android:entries="@array/empieza_saque" />
 
     <TextView
         android:text="Fecha"
