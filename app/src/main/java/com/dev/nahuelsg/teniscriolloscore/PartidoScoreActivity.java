@@ -1,10 +1,12 @@
 package com.dev.nahuelsg.teniscriolloscore;
 
+import android.support.v7.app.AppCompatActivity;
+
 /**
  * Created by Nahuel SG on 01/02/2017.
  */
 
-public class PartidoScoreActivity {
+public class PartidoScoreActivity extends AppCompatActivity {
     private String jugador1, jugador2;
     private int maxSets, maxPuntos, puntActualJugador1, puntActualJugador2, totalPuntosJugador1, totalPuntosJugador2;
     private int set1Jug1, set2Jug1, set3Jug1, set4Jug1, set5Jug1;

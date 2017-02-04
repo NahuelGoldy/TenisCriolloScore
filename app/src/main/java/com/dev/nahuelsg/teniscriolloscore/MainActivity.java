@@ -1,6 +1,8 @@
 package com.dev.nahuelsg.teniscriolloscore;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +10,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        Button nuevoPartido, otraCosa;
+        nuevoPartido = (Button) findViewById(R.id.button_nuevo_partido);
+        otraCosa = (Button) findViewById(R.id.button_otracosa);
+        nuevoPartido.setOnClickListener(btnBusarListener);
+
     }
 
     @Override
@@ -44,8 +55,40 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_estadisticas) {
+            /** TODO intent a activity_estadisticas */
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private View.OnClickListener btnBusarListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent i = new Intent(MainActivity.this,NuevoPartidoActivity.class);
+            startActivity(i);
+        }
+    };
+
+    @Override
+    public void onBackPressed() {
+        //Checking for fragment count on backstack
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else if (!doubleBackToExitPressedOnce) {
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this,"Presione ATRAS otra vez para salir", Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 3000);
+        } else {
+            super.onBackPressed();
+            return;
+        }
+    }
+
 }

@@ -1,10 +1,12 @@
 package com.dev.nahuelsg.teniscriolloscore;
 
+import android.support.v7.app.AppCompatActivity;
+
 /**
  * Created by Nahuel SG on 02/02/2017.
  */
 
-public class EstadisticasActivity {
+public class EstadisticasActivity extends AppCompatActivity {
     private String jugador1, jugador2;
     private int puntActualJugador1, puntActualJugador2, totalPuntosJugador1, totalPuntosJugador2;
     private int puntosSacandoJugador1, puntosSacandoJugador2;
