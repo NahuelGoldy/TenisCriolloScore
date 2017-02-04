@@ -1,5 +1,6 @@
 package com.dev.nahuelsg.teniscriolloscore;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -141,7 +142,8 @@ public class PartidoScoreActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_estadisticas) {
             /** TODO intent a Activity Estadisticas */
-            return true;
+            Intent i = new Intent(PartidoScoreActivity.this,EstadisticasActivity.class);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);
