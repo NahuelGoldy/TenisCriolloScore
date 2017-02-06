@@ -26,7 +26,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
     public int maxSets, maxPuntos, puntActualJugador1=0, puntActualJugador2=0, totalPuntosJugador1=0, totalPuntosJugador2=0;
     public int set1Jug1=0, set2Jug1=0, set3Jug1=0, set4Jug1=0, set5Jug1=0;
     public int set1Jug2=0, set2Jug2=0, set3Jug2=0, set4Jug2=0, set5Jug2=0;
-    public boolean sacaJugador1=false, sacaJugador2=false, partidoTerminado=false;
+    public boolean sacaJugador1=false, sacaJugador2=false, flagFalta=false, partidoTerminado=false;
     public int puntosSacandoJugador1=0, puntosSacandoJugador2=0;
     public int primerSaqueMetidoJugador1=0, primerSaqueMetidoJugador2=0;
     public int acesJugador1=0, acesJugador2=0;
@@ -99,16 +99,11 @@ public class PartidoScoreActivity extends AppCompatActivity {
         tabhost.addTab(spec);
 
         //Tab 2
-        spec = tabhost.newTabSpec("2do saque");
-        spec.setContent(R.id.seg_saque);
-        spec.setIndicator("2do saque");
-        tabhost.addTab(spec);
-
-        //Tab 3
         spec = tabhost.newTabSpec("en juego");
         spec.setContent(R.id.en_juego);
         spec.setIndicator("en juego");
         tabhost.addTab(spec);
+
 /*
         //Tab1 y Tab2
         btnAce = (Button) findViewById(R.id.button_ace);
@@ -157,7 +152,6 @@ public class PartidoScoreActivity extends AppCompatActivity {
         btnSet5Jug1.setText("-"); btnSet5Jug2.setText("-");
 
         tabhost.getTabWidget().getChildTabViewAt(1).setEnabled(false);
-        tabhost.getTabWidget().getChildTabViewAt(2).setEnabled(false);
 
     }
 
@@ -168,7 +162,13 @@ public class PartidoScoreActivity extends AppCompatActivity {
         btnAce.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                accionBotonAcePrimerSaque();
+                if(!flagFalta){
+                    accionBotonAcePrimerSaque();
+                }
+                else{
+                    accionBotonAceSegundoSaque();
+                    btnAce.setText("    Ace    "); btnFalta.setText("Falta");
+                }
             }
         });
 
@@ -176,7 +176,15 @@ public class PartidoScoreActivity extends AppCompatActivity {
         btnFalta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(!flagFalta){
+                    accionBotonFaltaPrimerSaque();
+                    btnAce.setText("          Ace           ");
+                    btnFalta.setText("Doble falta");
+                }
+                else{
+                    accionBotonFaltaSegundoSaque();
+                    btnAce.setText("    Ace    "); btnFalta.setText("Falta");
+                }
             }
         });
 
@@ -184,7 +192,13 @@ public class PartidoScoreActivity extends AppCompatActivity {
         btnErrorDevolucion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(!flagFalta){
+                    accionBotonErrorDevolPrimerSaque();
+                }
+                else{
+                    accionBotonErrorDevolSegundoSaque();
+                    btnAce.setText("    Ace    "); btnFalta.setText("Falta");
+                }
             }
         });
 
@@ -192,7 +206,13 @@ public class PartidoScoreActivity extends AppCompatActivity {
         btnWinnerDevolucion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(!flagFalta){
+                    accionBotonWinnerDevolPrimerSaque();
+                }
+                else{
+                    accionBotonWinnerDevolSegundoSaque();
+                    btnAce.setText("    Ace    "); btnFalta.setText("Falta");
+                }
             }
         });
 
@@ -200,7 +220,13 @@ public class PartidoScoreActivity extends AppCompatActivity {
         btnEnJuego.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(!flagFalta){
+                    accionBotonEnJuegoPrimerSaque();
+                }
+                else{
+                    accionBotonEnJuegoSegundoSaque();
+                    btnAce.setText("    Ace    "); btnFalta.setText("Falta");
+                }
             }
         });
     }
@@ -240,54 +266,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             acesJugador1++;
             primerSaqueMetidoJugador1++;
             tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
-            if(puntActualJugador1 == maxPuntos){
-                setsJug1++;
-                switch (setsJug1+setsJug2){
-                    case 1: {
-                        set1Jug1=puntActualJugador1;
-                        set1Jug2=puntActualJugador2;
-                        btnSet1Jug1.setText(String.valueOf(puntActualJugador1));
-                        btnSet1Jug2.setText(String.valueOf(puntActualJugador2));
-                        break;
-                    }
-                    case 2: {
-                        set2Jug1=puntActualJugador1;
-                        set2Jug2=puntActualJugador2;
-                        btnSet2Jug1.setText(String.valueOf(puntActualJugador1));
-                        btnSet2Jug2.setText(String.valueOf(puntActualJugador2));
-                        break;
-                    }
-                    case 3: {
-                        set3Jug1=puntActualJugador1;
-                        set3Jug2=puntActualJugador2;
-                        btnSet3Jug1.setText(String.valueOf(puntActualJugador1));
-                        btnSet3Jug2.setText(String.valueOf(puntActualJugador2));
-                        break;
-                    }
-                    case 4: {
-                        set4Jug1=puntActualJugador1;
-                        set4Jug2=puntActualJugador2;
-                        btnSet4Jug1.setText(String.valueOf(puntActualJugador1));
-                        btnSet4Jug2.setText(String.valueOf(puntActualJugador2));
-                        break;
-                    }
-                    case 5: {
-                        set5Jug1=puntActualJugador1;
-                        set5Jug2=puntActualJugador2;
-                        btnSet5Jug1.setText(String.valueOf(puntActualJugador1));
-                        btnSet5Jug2.setText(String.valueOf(puntActualJugador2));
-                        break;
-                    }
-                }
-                puntActualJugador1=0;
-                puntActualJugador2=0;
-                tvScoreJugador1.setText("0");
-                tvScoreJugador2.setText("0");
-                if(setsJug1 >= (maxSets/2)) {
-                    partidoTerminado=true;
-                    /** TODO terminar partido */
-                }
-            }
+            chequearEsFinSetJugador1();
             if((puntActualJugador1+puntActualJugador2)%4==0){
                 sacaJugador1=false; sacaJugador2=true;
                 iconoPelotaJug1.setVisibility(View.INVISIBLE);
@@ -302,54 +281,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             acesJugador2++;
             primerSaqueMetidoJugador2++;
             tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
-            if(puntActualJugador2 == maxPuntos){
-                setsJug2++;
-                switch (setsJug1+setsJug2){
-                    case 1: {
-                        set1Jug1=puntActualJugador1;
-                        set1Jug2=puntActualJugador2;
-                        btnSet1Jug1.setText(String.valueOf(puntActualJugador1));
-                        btnSet1Jug2.setText(String.valueOf(puntActualJugador2));
-                        break;
-                    }
-                    case 2: {
-                        set2Jug1=puntActualJugador1;
-                        set2Jug2=puntActualJugador2;
-                        btnSet2Jug1.setText(String.valueOf(puntActualJugador1));
-                        btnSet2Jug2.setText(String.valueOf(puntActualJugador2));
-                        break;
-                    }
-                    case 3: {
-                        set3Jug1=puntActualJugador1;
-                        set3Jug2=puntActualJugador2;
-                        btnSet3Jug1.setText(String.valueOf(puntActualJugador1));
-                        btnSet3Jug2.setText(String.valueOf(puntActualJugador2));
-                        break;
-                    }
-                    case 4: {
-                        set4Jug1=puntActualJugador1;
-                        set4Jug2=puntActualJugador2;
-                        btnSet4Jug1.setText(String.valueOf(puntActualJugador1));
-                        btnSet4Jug2.setText(String.valueOf(puntActualJugador2));
-                        break;
-                    }
-                    case 5: {
-                        set5Jug1=puntActualJugador1;
-                        set5Jug2=puntActualJugador2;
-                        btnSet5Jug1.setText(String.valueOf(puntActualJugador1));
-                        btnSet5Jug2.setText(String.valueOf(puntActualJugador2));
-                        break;
-                    }
-                }
-                puntActualJugador1=0;
-                puntActualJugador2=0;
-                tvScoreJugador1.setText("0");
-                tvScoreJugador2.setText("0");
-                if(setsJug1 >= (maxSets/2)) {
-                    partidoTerminado=true;
-                    /** TODO terminar partido */
-                }
-            }
+            chequearEsFinSetJugador2();
             if((puntActualJugador1+puntActualJugador2)%4==0){
                 sacaJugador1=true; sacaJugador2=false;
                 iconoPelotaJug1.setVisibility(View.VISIBLE);
@@ -358,22 +290,202 @@ public class PartidoScoreActivity extends AppCompatActivity {
         }
     }
 
-    public void accionBotonFaltaPrimerSaque(){}
+    public void accionBotonFaltaPrimerSaque(){
+        flagFalta = true;
+        if(sacaJugador1){
+            puntosSacandoJugador1++;
+        }
+        else{
+            puntosSacandoJugador2++;
+        }
+        ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("2do saque");
+
+    }
 
     public void accionBotonWinnerDevolPrimerSaque(){}
 
     public void accionBotonErrorDevolPrimerSaque(){}
 
-    public void accionBotonEnJuegoPrimerSaque(){}
+    public void accionBotonEnJuegoPrimerSaque(){
+        /** TODO acciones de juego... */
 
-    public void accionBotonAceSegundoSaque(){}
+        //CAMBIAR TAB
+        tabhost.getTabWidget().getChildTabViewAt(1).setEnabled(true);
+        tabhost.getTabWidget().getChildTabViewAt(0).setClickable(false);
+        tabhost.getTabWidget().getChildTabViewAt(0).setFocusable(false);
+        tabhost.setCurrentTab(1);
+    }
 
-    public void accionBotonFaltaSegundoSaque(){}
+    public void accionBotonAceSegundoSaque(){
+        flagFalta=false;
+        if(sacaJugador1){
+            puntActualJugador1++;
+            puntosGanadosSegundoSaqueJugador1++;
+            totalPuntosJugador1++;
+            acesJugador1++;
+            tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
+            chequearEsFinSetJugador1();
+            if((puntActualJugador1+puntActualJugador2)%4==0){
+                sacaJugador1=false; sacaJugador2=true;
+                iconoPelotaJug1.setVisibility(View.INVISIBLE);
+                iconoPelotaJug2.setVisibility(View.VISIBLE);
+            }
+        }
+        else{
+            puntActualJugador2++;
+            puntosGanadosSegundoSaqueJugador2++;
+            totalPuntosJugador2++;
+            acesJugador2++;
+            tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
+            chequearEsFinSetJugador2();
+            if((puntActualJugador1+puntActualJugador2)%4==0){
+                sacaJugador1=true; sacaJugador2=false;
+                iconoPelotaJug1.setVisibility(View.VISIBLE);
+                iconoPelotaJug2.setVisibility(View.INVISIBLE);
+            }
+        }
+    }
 
-    public void accionBotonWinnerDevolSegundoSaque(){}
+    public void accionBotonFaltaSegundoSaque(){
+        flagFalta=false;
+        if(sacaJugador1){
+            dobleFaltasJugador1++;
+            puntActualJugador2++;
+            totalPuntosJugador2++;
+            puntosGanadosDevolucionJugador2++;
+            tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
+            chequearEsFinSetJugador1();
+            if((puntActualJugador1+puntActualJugador2)%4==0){
+                sacaJugador1=false; sacaJugador2=true;
+                iconoPelotaJug1.setVisibility(View.INVISIBLE);
+                iconoPelotaJug2.setVisibility(View.VISIBLE);
+            }
+        }
+        else{
+            dobleFaltasJugador2++;
+            puntActualJugador1++;
+            totalPuntosJugador1++;
+            puntosGanadosDevolucionJugador1++;
+            tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
+            chequearEsFinSetJugador2();
+            if((puntActualJugador1+puntActualJugador2)%4==0){
+                sacaJugador1=true; sacaJugador2=false;
+                iconoPelotaJug1.setVisibility(View.VISIBLE);
+                iconoPelotaJug2.setVisibility(View.INVISIBLE);
+            }
+        }
+        ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("1er saque");
+    }
 
-    public void accionBotonErrorDevolSegundoSaque(){}
+    public void accionBotonWinnerDevolSegundoSaque(){
+        flagFalta=false;}
 
-    public void accionBotonEnJuegoSegundoSaque(){}
+    public void accionBotonErrorDevolSegundoSaque(){
+        flagFalta=false;}
+
+    public void accionBotonEnJuegoSegundoSaque(){
+        flagFalta=false;}
+
+    public void chequearEsFinSetJugador1(){
+        if(puntActualJugador1 == maxPuntos){
+            setsJug1++;
+            switch (setsJug1+setsJug2){
+                case 1: {
+                    set1Jug1=puntActualJugador1;
+                    set1Jug2=puntActualJugador2;
+                    btnSet1Jug1.setText(String.valueOf(puntActualJugador1));
+                    btnSet1Jug2.setText(String.valueOf(puntActualJugador2));
+                    break;
+                }
+                case 2: {
+                    set2Jug1=puntActualJugador1;
+                    set2Jug2=puntActualJugador2;
+                    btnSet2Jug1.setText(String.valueOf(puntActualJugador1));
+                    btnSet2Jug2.setText(String.valueOf(puntActualJugador2));
+                    break;
+                }
+                case 3: {
+                    set3Jug1=puntActualJugador1;
+                    set3Jug2=puntActualJugador2;
+                    btnSet3Jug1.setText(String.valueOf(puntActualJugador1));
+                    btnSet3Jug2.setText(String.valueOf(puntActualJugador2));
+                    break;
+                }
+                case 4: {
+                    set4Jug1=puntActualJugador1;
+                    set4Jug2=puntActualJugador2;
+                    btnSet4Jug1.setText(String.valueOf(puntActualJugador1));
+                    btnSet4Jug2.setText(String.valueOf(puntActualJugador2));
+                    break;
+                }
+                case 5: {
+                    set5Jug1=puntActualJugador1;
+                    set5Jug2=puntActualJugador2;
+                    btnSet5Jug1.setText(String.valueOf(puntActualJugador1));
+                    btnSet5Jug2.setText(String.valueOf(puntActualJugador2));
+                    break;
+                }
+            }
+            puntActualJugador1=0;
+            puntActualJugador2=0;
+            tvScoreJugador1.setText("0");
+            tvScoreJugador2.setText("0");
+            if(setsJug1 >= (maxSets/2)) {
+                partidoTerminado=true;
+                /** TODO terminar partido */
+            }
+        }
+    }
+
+    public void chequearEsFinSetJugador2(){
+        if(puntActualJugador2 == maxPuntos){
+            setsJug2++;
+            switch (setsJug1+setsJug2){
+                case 1: {
+                    set1Jug1=puntActualJugador1;
+                    set1Jug2=puntActualJugador2;
+                    btnSet1Jug1.setText(String.valueOf(puntActualJugador1));
+                    btnSet1Jug2.setText(String.valueOf(puntActualJugador2));
+                    break;
+                }
+                case 2: {
+                    set2Jug1=puntActualJugador1;
+                    set2Jug2=puntActualJugador2;
+                    btnSet2Jug1.setText(String.valueOf(puntActualJugador1));
+                    btnSet2Jug2.setText(String.valueOf(puntActualJugador2));
+                    break;
+                }
+                case 3: {
+                    set3Jug1=puntActualJugador1;
+                    set3Jug2=puntActualJugador2;
+                    btnSet3Jug1.setText(String.valueOf(puntActualJugador1));
+                    btnSet3Jug2.setText(String.valueOf(puntActualJugador2));
+                    break;
+                }
+                case 4: {
+                    set4Jug1=puntActualJugador1;
+                    set4Jug2=puntActualJugador2;
+                    btnSet4Jug1.setText(String.valueOf(puntActualJugador1));
+                    btnSet4Jug2.setText(String.valueOf(puntActualJugador2));
+                    break;
+                }
+                case 5: {
+                    set5Jug1=puntActualJugador1;
+                    set5Jug2=puntActualJugador2;
+                    btnSet5Jug1.setText(String.valueOf(puntActualJugador1));
+                    btnSet5Jug2.setText(String.valueOf(puntActualJugador2));
+                    break;
+                }
+            }
+            puntActualJugador1=0;
+            puntActualJugador2=0;
+            tvScoreJugador1.setText("0");
+            tvScoreJugador2.setText("0");
+            if(setsJug1 >= (maxSets/2)) {
+                partidoTerminado=true;
+                /** TODO terminar partido */
+            }
+        }
+    }
 
 }

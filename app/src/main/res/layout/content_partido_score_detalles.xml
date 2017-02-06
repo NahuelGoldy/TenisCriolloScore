@@ -15,7 +15,7 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:text="Ace"
+                android:text="    Ace    "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/button_ace"
@@ -60,7 +60,7 @@
         <Button
             android:text="Bola en juego"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:id="@+id/button_bola_en_juego"
             android:textSize="20sp"
             android:layout_weight="0.25"

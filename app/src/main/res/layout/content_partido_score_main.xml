@@ -312,17 +312,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/seg_saque"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <include layout="@layout/content_partido_score_detalles"
-                        android:visibility="visible" />
-
-                </LinearLayout>
-
-                <LinearLayout
                     android:id="@+id/en_juego"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

@@ -12,7 +12,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by Nahuel SG on 01/02/2017.
@@ -52,6 +54,10 @@ public class NuevoPartidoActivity extends AppCompatActivity  {
 
         botonEmpezarPartido = (Button) findViewById(R.id.button_empezar);
         botonEmpezarPartido.setOnClickListener(btnEmpezarPartidoListener);
+
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        fecha.setText(df.format(c.getTime()));
 
     }
 
