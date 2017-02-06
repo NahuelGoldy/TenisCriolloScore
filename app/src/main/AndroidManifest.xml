@@ -20,7 +20,6 @@
         <activity android:name=".NuevoPartidoActivity" />
         <activity android:name=".PartidoScoreActivity" />
         <activity android:name=".EstadisticasActivity" />
-
     </application>
 
 </manifest>

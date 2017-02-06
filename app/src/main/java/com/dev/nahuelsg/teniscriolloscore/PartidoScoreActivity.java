@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 /**
@@ -19,38 +21,41 @@ import android.widget.ToggleButton;
  */
 
 public class PartidoScoreActivity extends AppCompatActivity {
-    private String jugador1, jugador2;
-    private int maxSets, maxPuntos, puntActualJugador1, puntActualJugador2, totalPuntosJugador1, totalPuntosJugador2;
-    private int set1Jug1, set2Jug1, set3Jug1, set4Jug1, set5Jug1;
-    private int set1Jug2, set2Jug2, set3Jug2, set4Jug2, set5Jug2;
-    private boolean sacaJugador1, sacaJugador2;
-    private int puntosSacandoJugador1, puntosSacandoJugador2;
-    private int primerSaqueMetidoJugador1, primerSaqueMetidoJugador2;
-    private int acesJugador1, acesJugador2;
-    private int dobleFaltasJugador1, dobleFaltasJugador2;
-    private int puntosGanadosPrimerSaqueJugador1, puntosGanadosPrimerSaqueJugador2;
-    private int puntosGanadosSegundoSaqueJugador1, puntosGanadosSegundoSaqueJugador2;
-    private int puntosGanadosDevolucionJugador1, puntosGanadosDevolucionJugador2;
-    private int devolucionGanadoraJugador1, devolucionGanadoraJugador2;
-    private int errorDevolucionJugador1, errorDevolucionJugador2;
-    private int subidasRedJugador1, subidasRedJugador2;
-    private int ptosGanadosRedJugador1, ptosGanadosRedJugador2;
-    private int winnersDerechaJugador1, winnersDerechaJugador2;
-    private int winnersRevesJugador1,winnersRevesJugador2;
-    private int errorNoForzadoDerechaJugador1, errorNoForzadoDerechaJugador2;
-    private int errorNoForzadoRevesJugador1, errorNoForzadoRevesJugador2;
+    public String jugador1, jugador2;
+    public int setsJug1=0, setsJug2=0;
+    public int maxSets, maxPuntos, puntActualJugador1=0, puntActualJugador2=0, totalPuntosJugador1=0, totalPuntosJugador2=0;
+    public int set1Jug1=0, set2Jug1=0, set3Jug1=0, set4Jug1=0, set5Jug1=0;
+    public int set1Jug2=0, set2Jug2=0, set3Jug2=0, set4Jug2=0, set5Jug2=0;
+    public boolean sacaJugador1=false, sacaJugador2=false, partidoTerminado=false;
+    public int puntosSacandoJugador1=0, puntosSacandoJugador2=0;
+    public int primerSaqueMetidoJugador1=0, primerSaqueMetidoJugador2=0;
+    public int acesJugador1=0, acesJugador2=0;
+    public int dobleFaltasJugador1=0, dobleFaltasJugador2=0;
+    public int puntosGanadosPrimerSaqueJugador1=0, puntosGanadosPrimerSaqueJugador2=0;
+    public int puntosGanadosSegundoSaqueJugador1=0, puntosGanadosSegundoSaqueJugador2=0;
+    public int puntosGanadosDevolucionJugador1=0, puntosGanadosDevolucionJugador2=0;
+    public int devolucionGanadoraJugador1=0, devolucionGanadoraJugador2=0;
+    public int errorDevolucionJugador1=0, errorDevolucionJugador2=0;
+    public int subidasRedJugador1=0, subidasRedJugador2=0;
+    public int ptosGanadosRedJugador1=0, ptosGanadosRedJugador2=0;
+    public int winnersDerechaJugador1=0, winnersDerechaJugador2=0;
+    public int winnersRevesJugador1=0,winnersRevesJugador2=0;
+    public int errorNoForzadoDerechaJugador1=0, errorNoForzadoDerechaJugador2=0;
+    public int errorNoForzadoRevesJugador1=0, errorNoForzadoRevesJugador2=0;
 
-    private TextView tvJugador1, tvJugador2, tvScoreJugador1, tvScoreJugador2, tvGuionScore;
-    private ImageView iconoPelotaJug1, iconoPelotaJug2;
-    private Button btnEsquina, btnLabelSet1, btnLabelSet2, btnLabelSet3, btnLabelSet4, btnLabelSet5;
-    private Button btnJug1, btnSet1Jug1, btnSet2Jug1, btnSet3Jug1, btnSet4Jug1, btnSet5Jug1;
-    private Button btnJug2, btnSet1Jug2, btnSet2Jug2, btnSet3Jug2, btnSet4Jug2, btnSet5Jug2;
-    private TabHost tabhost;
-    private Button btnAce, btnFalta, btnWinnerDevolucion, btnErrorDevolucion, btnBolaEnJuego;
-    private ToggleButton enLaRedJug1, enLaRedJug2;
-    private Button winnerDerechaJug1, winnerDerechaJug2, winnerRevesJug1, winnerRevesJug2;
-    private Button errorDerechaJug1,errorDerechaJug2, errorRevesJug1, errorRevesJug2;
-    private Button puntoGenericoJug1, puntoGenericoJug2;
+    public TextView tvJugador1, tvJugador2, tvScoreJugador1, tvScoreJugador2, tvGuionScore;
+    public ImageView iconoPelotaJug1, iconoPelotaJug2;
+    public Button btnEsquina, btnLabelSet1, btnLabelSet2, btnLabelSet3, btnLabelSet4, btnLabelSet5;
+    public Button btnJug1, btnSet1Jug1, btnSet2Jug1, btnSet3Jug1, btnSet4Jug1, btnSet5Jug1;
+    public Button btnJug2, btnSet1Jug2, btnSet2Jug2, btnSet3Jug2, btnSet4Jug2, btnSet5Jug2;
+    public TabHost tabhost;
+    public Button btnAce, btnFalta, btnWinnerDevolucion, btnErrorDevolucion, btnEnJuego;
+    public ToggleButton enLaRedJug1, enLaRedJug2;
+    public Button winnerDerechaJug1, winnerDerechaJug2, winnerRevesJug1, winnerRevesJug2;
+    public Button errorDerechaJug1,errorDerechaJug2, errorRevesJug1, errorRevesJug2;
+    public Button puntoGenericoJug1, puntoGenericoJug2;
+
+    public Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +131,78 @@ public class PartidoScoreActivity extends AppCompatActivity {
         puntoGenericoJug1 = (Button) findViewById(R.id.button_ptoganado_jugador1);
         puntoGenericoJug2 = (Button) findViewById(R.id.button_ptoganado_jugador2);
 */
+        intent = getIntent();
+        maxSets = Integer.parseInt(intent.getStringExtra("MaxSets"));
+        maxPuntos = Integer.parseInt(intent.getStringExtra("MaxPuntos"));
+        jugador1 = intent.getStringExtra("Jugador1");
+        jugador2 = intent.getStringExtra("Jugador2");
+        if(intent.getStringExtra("AlSaque").equals("Jugador 1")) {
+            sacaJugador1 = true;
+            iconoPelotaJug2.setVisibility(View.INVISIBLE);
+        }
+        else {
+            sacaJugador2 = true;
+            iconoPelotaJug1.setVisibility(View.INVISIBLE);
+        }
+
+        tvJugador1.setText(jugador1);
+        tvJugador2.setText(jugador2);
+        tvScoreJugador1.setText("0"); tvScoreJugador2.setText("0");
+        if(jugador1.length()>3) btnJug1.setText(jugador1.substring(0,4)); else btnJug1.setText(jugador1);
+        if(jugador2.length()>3) btnJug2.setText(jugador2.substring(0,4)); else btnJug2.setText(jugador2);
+        btnSet1Jug1.setText("-"); btnSet1Jug2.setText("-");
+        btnSet2Jug1.setText("-"); btnSet2Jug2.setText("-");
+        btnSet3Jug1.setText("-"); btnSet3Jug2.setText("-");
+        btnSet4Jug1.setText("-"); btnSet4Jug2.setText("-");
+        btnSet5Jug1.setText("-"); btnSet5Jug2.setText("-");
+
+        tabhost.getTabWidget().getChildTabViewAt(1).setEnabled(false);
+        tabhost.getTabWidget().getChildTabViewAt(2).setEnabled(false);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        btnAce = (Button) findViewById(R.id.button_ace);
+        btnAce.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                accionBotonAcePrimerSaque();
+            }
+        });
+
+        btnFalta = (Button) findViewById(R.id.button_falta);
+        btnFalta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnErrorDevolucion = (Button) findViewById(R.id.button_devol_error);
+        btnErrorDevolucion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnWinnerDevolucion = (Button) findViewById(R.id.button_devol_ganadora);
+        btnWinnerDevolucion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnEnJuego = (Button) findViewById(R.id.button_bola_en_juego);
+        btnEnJuego.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
@@ -137,15 +214,166 @@ public class PartidoScoreActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
+
         if (id == R.id.action_estadisticas) {
-            /** TODO intent a Activity Estadisticas */
-            Intent i = new Intent(PartidoScoreActivity.this,EstadisticasActivity.class);
-            startActivity(i);
+            if(tabhost.getCurrentTab()==0){
+                Intent i = new Intent(PartidoScoreActivity.this,EstadisticasActivity.class);
+                /** TODO poner todos los extras al intent a Activity Estadisticas */
+                startActivity(i);
+            }
+            else{
+                Toast.makeText(PartidoScoreActivity.this, "No puede ver las estadisticas durante un punto",
+                        Toast.LENGTH_LONG).show();
+            }
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void accionBotonAcePrimerSaque(){
+        if(sacaJugador1){
+            puntActualJugador1++;
+            puntosGanadosPrimerSaqueJugador1++;
+            totalPuntosJugador1++;
+            puntosSacandoJugador1++;
+            acesJugador1++;
+            primerSaqueMetidoJugador1++;
+            tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
+            if(puntActualJugador1 == maxPuntos){
+                setsJug1++;
+                switch (setsJug1+setsJug2){
+                    case 1: {
+                        set1Jug1=puntActualJugador1;
+                        set1Jug2=puntActualJugador2;
+                        btnSet1Jug1.setText(String.valueOf(puntActualJugador1));
+                        btnSet1Jug2.setText(String.valueOf(puntActualJugador2));
+                        break;
+                    }
+                    case 2: {
+                        set2Jug1=puntActualJugador1;
+                        set2Jug2=puntActualJugador2;
+                        btnSet2Jug1.setText(String.valueOf(puntActualJugador1));
+                        btnSet2Jug2.setText(String.valueOf(puntActualJugador2));
+                        break;
+                    }
+                    case 3: {
+                        set3Jug1=puntActualJugador1;
+                        set3Jug2=puntActualJugador2;
+                        btnSet3Jug1.setText(String.valueOf(puntActualJugador1));
+                        btnSet3Jug2.setText(String.valueOf(puntActualJugador2));
+                        break;
+                    }
+                    case 4: {
+                        set4Jug1=puntActualJugador1;
+                        set4Jug2=puntActualJugador2;
+                        btnSet4Jug1.setText(String.valueOf(puntActualJugador1));
+                        btnSet4Jug2.setText(String.valueOf(puntActualJugador2));
+                        break;
+                    }
+                    case 5: {
+                        set5Jug1=puntActualJugador1;
+                        set5Jug2=puntActualJugador2;
+                        btnSet5Jug1.setText(String.valueOf(puntActualJugador1));
+                        btnSet5Jug2.setText(String.valueOf(puntActualJugador2));
+                        break;
+                    }
+                }
+                puntActualJugador1=0;
+                puntActualJugador2=0;
+                tvScoreJugador1.setText("0");
+                tvScoreJugador2.setText("0");
+                if(setsJug1 >= (maxSets/2)) {
+                    partidoTerminado=true;
+                    /** TODO terminar partido */
+                }
+            }
+            if((puntActualJugador1+puntActualJugador2)%4==0){
+                sacaJugador1=false; sacaJugador2=true;
+                iconoPelotaJug1.setVisibility(View.INVISIBLE);
+                iconoPelotaJug2.setVisibility(View.VISIBLE);
+            }
+        }
+        else{
+            puntActualJugador2++;
+            puntosGanadosPrimerSaqueJugador2++;
+            totalPuntosJugador2++;
+            puntosSacandoJugador2++;
+            acesJugador2++;
+            primerSaqueMetidoJugador2++;
+            tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
+            if(puntActualJugador2 == maxPuntos){
+                setsJug2++;
+                switch (setsJug1+setsJug2){
+                    case 1: {
+                        set1Jug1=puntActualJugador1;
+                        set1Jug2=puntActualJugador2;
+                        btnSet1Jug1.setText(String.valueOf(puntActualJugador1));
+                        btnSet1Jug2.setText(String.valueOf(puntActualJugador2));
+                        break;
+                    }
+                    case 2: {
+                        set2Jug1=puntActualJugador1;
+                        set2Jug2=puntActualJugador2;
+                        btnSet2Jug1.setText(String.valueOf(puntActualJugador1));
+                        btnSet2Jug2.setText(String.valueOf(puntActualJugador2));
+                        break;
+                    }
+                    case 3: {
+                        set3Jug1=puntActualJugador1;
+                        set3Jug2=puntActualJugador2;
+                        btnSet3Jug1.setText(String.valueOf(puntActualJugador1));
+                        btnSet3Jug2.setText(String.valueOf(puntActualJugador2));
+                        break;
+                    }
+                    case 4: {
+                        set4Jug1=puntActualJugador1;
+                        set4Jug2=puntActualJugador2;
+                        btnSet4Jug1.setText(String.valueOf(puntActualJugador1));
+                        btnSet4Jug2.setText(String.valueOf(puntActualJugador2));
+                        break;
+                    }
+                    case 5: {
+                        set5Jug1=puntActualJugador1;
+                        set5Jug2=puntActualJugador2;
+                        btnSet5Jug1.setText(String.valueOf(puntActualJugador1));
+                        btnSet5Jug2.setText(String.valueOf(puntActualJugador2));
+                        break;
+                    }
+                }
+                puntActualJugador1=0;
+                puntActualJugador2=0;
+                tvScoreJugador1.setText("0");
+                tvScoreJugador2.setText("0");
+                if(setsJug1 >= (maxSets/2)) {
+                    partidoTerminado=true;
+                    /** TODO terminar partido */
+                }
+            }
+            if((puntActualJugador1+puntActualJugador2)%4==0){
+                sacaJugador1=true; sacaJugador2=false;
+                iconoPelotaJug1.setVisibility(View.VISIBLE);
+                iconoPelotaJug2.setVisibility(View.INVISIBLE);
+            }
+        }
+    }
+
+    public void accionBotonFaltaPrimerSaque(){}
+
+    public void accionBotonWinnerDevolPrimerSaque(){}
+
+    public void accionBotonErrorDevolPrimerSaque(){}
+
+    public void accionBotonEnJuegoPrimerSaque(){}
+
+    public void accionBotonAceSegundoSaque(){}
+
+    public void accionBotonFaltaSegundoSaque(){}
+
+    public void accionBotonWinnerDevolSegundoSaque(){}
+
+    public void accionBotonErrorDevolSegundoSaque(){}
+
+    public void accionBotonEnJuegoSegundoSaque(){}
+
 }

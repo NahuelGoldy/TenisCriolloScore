@@ -23,10 +23,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="nombre jugador 1"
         android:ems="10"
         android:id="@+id/editText_jugador1"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:hint="nombre jugador 1" />
 
     <TextView
         android:text="Jugador 2"
@@ -42,10 +42,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="nombre jugador 2"
         android:ems="10"
         android:id="@+id/editText_jugador2"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:hint="nombre jugador 2" />
 
     <TextView
         android:text="Reglas de puntaje"
@@ -65,9 +65,9 @@
     <TextView
         android:text="Descripcion de la forma de puntaje, por ej:\n-set único \n-a 16 puntos o diferencia de 2"
         android:layout_width="match_parent"
-        android:layout_height="94dp"
         android:id="@+id/textView_descripcion_puntaje"
-        android:textColor="#000000" />
+        android:textColor="@android:color/darker_gray"
+        android:layout_height="140dp" />
 
     <TextView
         android:text="Empieza sacando"
