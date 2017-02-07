@@ -15,20 +15,20 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:text="    Ace    "
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:text="Ace"
+                android:layout_width="match_parent"
                 android:id="@+id/button_ace"
-                android:layout_weight="1.25"
+                android:layout_weight="1"
                 android:textSize="20sp"
-                android:backgroundTint="@android:color/holo_green_light" />
+                android:backgroundTint="@android:color/holo_green_light"
+                android:layout_height="100dp" />
 
             <Button
                 android:text="Falta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
                 android:id="@+id/button_falta"
-                android:layout_weight="1.25"
+                android:layout_weight="1"
                 android:textSize="20sp"
                 android:backgroundTint="@android:color/holo_red_light" />
         </LinearLayout>
@@ -39,32 +39,24 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:text="Devolucion ganadora"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button_devol_ganadora"
+                android:text="Saque Ganador"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/button_saque_ganador"
                 android:layout_weight="1"
-                android:textSize="20sp"
-                android:backgroundTint="@android:color/holo_green_light" />
+                android:backgroundTint="@android:color/holo_green_light"
+                android:textSize="20sp" />
 
             <Button
-                android:text="Error de devolucion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/button_devol_error"
-                android:layout_weight="1"
+                android:text="Bola en juego"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/button_bola_en_juego"
                 android:textSize="20sp"
-                android:backgroundTint="@android:color/holo_red_light" />
-        </LinearLayout>
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/holo_blue_light" />
 
-        <Button
-            android:text="Bola en juego"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/button_bola_en_juego"
-            android:textSize="20sp"
-            android:layout_weight="0.25"
-            android:backgroundTint="@android:color/holo_blue_light" />
+        </LinearLayout>
 
     </LinearLayout>
 
