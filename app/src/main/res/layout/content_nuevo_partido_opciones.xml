@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView_jugador1"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:fontFamily="sans-serif"
         android:textStyle="normal|bold"
         android:textColor="#000000" />
@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView_jugador2"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:textStyle="normal|bold"
         android:textColor="#000000"
         android:fontFamily="sans-serif" />
@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView_reglas_puntaje"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="normal|bold"
         android:textColor="#000000" />
 
@@ -67,14 +67,16 @@
         android:layout_width="match_parent"
         android:id="@+id/textView_descripcion_puntaje"
         android:textColor="@android:color/darker_gray"
-        android:layout_height="140dp" />
+        android:layout_height="140dp"
+        android:textStyle="normal|bold"
+        android:textSize="16sp" />
 
     <TextView
         android:text="Empieza sacando"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView_empieza_sacando_label"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="normal|bold"
         android:textColor="#000000" />
 
@@ -89,7 +91,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView_fecha_label"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="normal|bold"
         android:textColor="#000000" />
 
