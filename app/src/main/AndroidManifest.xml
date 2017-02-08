@@ -18,7 +18,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".NuevoPartidoActivity" />
-        <activity android:name=".PartidoScoreActivity" />
+        <activity
+            android:name=".PartidoScoreActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            />
         <activity android:name=".EstadisticasActivity" />
     </application>
 

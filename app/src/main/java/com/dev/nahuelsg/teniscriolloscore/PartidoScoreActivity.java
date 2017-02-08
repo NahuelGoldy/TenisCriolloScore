@@ -100,13 +100,6 @@ public class PartidoScoreActivity extends AppCompatActivity {
         tabhost.addTab(spec);
 
 /*
-        //Tab1 y Tab2
-        btnAce = (Button) findViewById(R.id.button_ace);
-        btnFalta = (Button) findViewById(R.id.button_falta);
-        btnWinnerDevolucion = (Button) findViewById(R.id.button_devol_ganadora);
-        btnErrorDevolucion = (Button) findViewById(R.id.button_devol_error);
-        btnBolaEnJuego = (Button) findViewById(R.id.button_bola_en_juego);
-
         //Tab3
         enLaRedJug1 = (ToggleButton) findViewById(R.id.red_jugador1);
         enLaRedJug2 = (ToggleButton) findViewById(R.id.red_jugador2);
@@ -201,15 +194,352 @@ public class PartidoScoreActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!flagFalta){
-                    System.out.println("--------Entro por el primer saque--------");
                     accionBotonEnJuegoPrimerSaque();
                 }
                 else{
-                    System.out.println("--------Entro por el segundo saque--------");
                     accionBotonEnJuegoSegundoSaque();
                     btnFalta.setText("Falta");
                 }
-                //cambiarTab(0,1);
+            }
+        });
+
+        winnerDerechaJug1 = (Button) findViewById(R.id.winner_derecha_jugador1);
+        winnerDerechaJug1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToggleButton tgJug1 = (ToggleButton) findViewById(R.id.red_jugador1);
+                ToggleButton tgJug2 = (ToggleButton) findViewById(R.id.red_jugador2);
+                boolean enRedJug1=tgJug1.isChecked(); boolean enRedJug2=tgJug2.isChecked();
+                tgJug1.setChecked(false); tgJug2.setChecked(false);
+                if(!flagFalta){ //jugando con el primer saque
+                    if(sacaJugador1){
+                        puntosGanadosPrimerSaqueJugador1++;
+                        accionBotonWinnerDerechaJug1(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosDevolucionJugador1++;
+                        accionBotonWinnerDerechaJug1(enRedJug1, enRedJug2);
+                    }
+                }
+                else{
+                    if(sacaJugador1){
+                        puntosGanadosSegundoSaqueJugador1++;
+                        accionBotonWinnerDerechaJug1(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosDevolucionJugador1++;
+                        accionBotonWinnerDerechaJug1(enRedJug1, enRedJug2);
+                    }
+                    ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("1er saque");
+                    flagFalta=false;
+                }
+                cambiarTab(0,1);
+            }
+        });
+
+        winnerDerechaJug2 = (Button) findViewById(R.id.winner_derecha_jugador2);
+        winnerDerechaJug2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToggleButton tgJug1 = (ToggleButton) findViewById(R.id.red_jugador1);
+                ToggleButton tgJug2 = (ToggleButton) findViewById(R.id.red_jugador2);
+                boolean enRedJug1=tgJug1.isChecked(); boolean enRedJug2=tgJug2.isChecked();
+                tgJug1.setChecked(false); tgJug2.setChecked(false);
+                if(!flagFalta){ //jugando con el primer saque
+                    if(sacaJugador1){
+                        puntosGanadosDevolucionJugador2++;
+                        accionBotonWinnerDerechaJug2(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosPrimerSaqueJugador2++;
+                        accionBotonWinnerDerechaJug2(enRedJug1, enRedJug2);
+                    }
+                }
+                else{
+                    if(sacaJugador1){
+                        puntosGanadosDevolucionJugador2++;
+                        accionBotonWinnerDerechaJug2(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosSegundoSaqueJugador2++;
+                        accionBotonWinnerDerechaJug2(enRedJug1, enRedJug2);
+                    }
+                    ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("1er saque");
+                    flagFalta=false;
+                }
+                cambiarTab(0,1);
+            }
+        });
+
+        winnerRevesJug1 = (Button) findViewById(R.id.winner_reves_jugador1);
+        winnerRevesJug1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToggleButton tgJug1 = (ToggleButton) findViewById(R.id.red_jugador1);
+                ToggleButton tgJug2 = (ToggleButton) findViewById(R.id.red_jugador2);
+                boolean enRedJug1=tgJug1.isChecked(); boolean enRedJug2=tgJug2.isChecked();
+                tgJug1.setChecked(false); tgJug2.setChecked(false);
+                if(!flagFalta){ //jugando con el primer saque
+                    if(sacaJugador1){
+                        puntosGanadosPrimerSaqueJugador1++;
+                        accionBotonWinnerRevesJug1(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosDevolucionJugador1++;
+                        accionBotonWinnerRevesJug1(enRedJug1, enRedJug2);
+                    }
+                }
+                else{
+                    if(sacaJugador1){
+                        puntosGanadosSegundoSaqueJugador1++;
+                        accionBotonWinnerRevesJug1(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosDevolucionJugador1++;
+                        accionBotonWinnerRevesJug1(enRedJug1, enRedJug2);
+                    }
+                    ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("1er saque");
+                    flagFalta=false;
+                }
+                cambiarTab(0,1);
+            }
+        });
+
+        winnerRevesJug2 = (Button) findViewById(R.id.winner_reves_jugador2);
+        winnerRevesJug2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToggleButton tgJug1 = (ToggleButton) findViewById(R.id.red_jugador1);
+                ToggleButton tgJug2 = (ToggleButton) findViewById(R.id.red_jugador2);
+                boolean enRedJug1=tgJug1.isChecked(); boolean enRedJug2=tgJug2.isChecked();
+                tgJug1.setChecked(false); tgJug2.setChecked(false);
+                if(!flagFalta){ //jugando con el primer saque
+                    if(sacaJugador1){
+                        puntosGanadosDevolucionJugador2++;
+                        accionBotonWinnerRevesJug2(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosPrimerSaqueJugador2++;
+                        accionBotonWinnerRevesJug2(enRedJug1, enRedJug2);
+                    }
+                }
+                else{
+                    if(sacaJugador1){
+                        puntosGanadosDevolucionJugador2++;
+                        accionBotonWinnerRevesJug2(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosSegundoSaqueJugador2++;
+                        accionBotonWinnerRevesJug2(enRedJug1, enRedJug2);
+                    }
+                    ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("1er saque");
+                    flagFalta=false;
+                }
+                cambiarTab(0,1);
+            }
+        });
+
+        errorDerechaJug1 = (Button) findViewById(R.id.error_derecha_jugador1);
+        errorDerechaJug1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToggleButton tgJug1 = (ToggleButton) findViewById(R.id.red_jugador1);
+                ToggleButton tgJug2 = (ToggleButton) findViewById(R.id.red_jugador2);
+                boolean enRedJug1=tgJug1.isChecked(); boolean enRedJug2=tgJug2.isChecked();
+                tgJug1.setChecked(false); tgJug2.setChecked(false);
+                if(!flagFalta){ //jugando con el primer saque
+                    if(sacaJugador1){
+                        puntosGanadosDevolucionJugador2++;
+                        accionBotonErrorDerechaJug1(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosPrimerSaqueJugador2++;
+                        accionBotonErrorDerechaJug1(enRedJug1, enRedJug2);
+                    }
+                }
+                else{
+                    if(sacaJugador1){
+                        puntosGanadosDevolucionJugador2++;
+                        accionBotonErrorDerechaJug1(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosSegundoSaqueJugador2++;
+                        accionBotonErrorDerechaJug1(enRedJug1, enRedJug2);
+                    }
+                    ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("1er saque");
+                    flagFalta=false;
+                }
+                cambiarTab(0,1);
+            }
+        });
+
+        errorDerechaJug2 = (Button) findViewById(R.id.error_derecha_jugador2);
+        errorDerechaJug2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToggleButton tgJug1 = (ToggleButton) findViewById(R.id.red_jugador1);
+                ToggleButton tgJug2 = (ToggleButton) findViewById(R.id.red_jugador2);
+                boolean enRedJug1=tgJug1.isChecked(); boolean enRedJug2=tgJug2.isChecked();
+                tgJug1.setChecked(false); tgJug2.setChecked(false);
+                if(!flagFalta){ //jugando con el primer saque
+                    if(sacaJugador1){
+                        puntosGanadosPrimerSaqueJugador1++;
+                        accionBotonErrorDerechaJug2(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosDevolucionJugador1++;
+                        accionBotonErrorDerechaJug2(enRedJug1, enRedJug2);
+                    }
+                }
+                else{
+                    if(sacaJugador1){
+                        puntosGanadosSegundoSaqueJugador1++;
+                        accionBotonErrorDerechaJug2(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosDevolucionJugador1++;
+                        accionBotonErrorDerechaJug2(enRedJug1, enRedJug2);
+                    }
+                    ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("1er saque");
+                    flagFalta=false;
+                }
+                cambiarTab(0,1);
+            }
+        });
+
+        errorRevesJug1 = (Button) findViewById(R.id.error_reves_jugador1);
+        errorRevesJug1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToggleButton tgJug1 = (ToggleButton) findViewById(R.id.red_jugador1);
+                ToggleButton tgJug2 = (ToggleButton) findViewById(R.id.red_jugador2);
+                boolean enRedJug1=tgJug1.isChecked(); boolean enRedJug2=tgJug2.isChecked();
+                tgJug1.setChecked(false); tgJug2.setChecked(false);
+                if(!flagFalta){ //jugando con el primer saque
+                    if(sacaJugador1){
+                        puntosGanadosDevolucionJugador2++;
+                        accionBotonErrorRevesJug1(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosPrimerSaqueJugador2++;
+                        accionBotonErrorRevesJug1(enRedJug1, enRedJug2);
+                    }
+                }
+                else{
+                    if(sacaJugador1){
+                        puntosGanadosDevolucionJugador2++;
+                        accionBotonErrorRevesJug1(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosSegundoSaqueJugador2++;
+                        accionBotonErrorRevesJug1(enRedJug1, enRedJug2);
+                    }
+                    ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("1er saque");
+                    flagFalta=false;
+                }
+                cambiarTab(0,1);
+            }
+        });
+
+        errorRevesJug2 = (Button) findViewById(R.id.error_reves_jugador2);
+        errorRevesJug2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToggleButton tgJug1 = (ToggleButton) findViewById(R.id.red_jugador1);
+                ToggleButton tgJug2 = (ToggleButton) findViewById(R.id.red_jugador2);
+                boolean enRedJug1=tgJug1.isChecked(); boolean enRedJug2=tgJug2.isChecked();
+                tgJug1.setChecked(false); tgJug2.setChecked(false);
+                if(!flagFalta){ //jugando con el primer saque
+                    if(sacaJugador1){
+                        puntosGanadosPrimerSaqueJugador1++;
+                        accionBotonErrorRevesJug2(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosDevolucionJugador1++;
+                        accionBotonErrorRevesJug2(enRedJug1, enRedJug2);
+                    }
+                }
+                else{
+                    if(sacaJugador1){
+                        puntosGanadosSegundoSaqueJugador1++;
+                        accionBotonErrorRevesJug2(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosDevolucionJugador1++;
+                        accionBotonErrorRevesJug2(enRedJug1, enRedJug2);
+                    }
+                    ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("1er saque");
+                    flagFalta=false;
+                }
+                cambiarTab(0,1);
+            }
+        });
+
+        puntoGenericoJug1 = (Button) findViewById(R.id.button_ptoganado_jugador1);
+        puntoGenericoJug1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToggleButton tgJug1 = (ToggleButton) findViewById(R.id.red_jugador1);
+                ToggleButton tgJug2 = (ToggleButton) findViewById(R.id.red_jugador2);
+                boolean enRedJug1=tgJug1.isChecked(); boolean enRedJug2=tgJug2.isChecked();
+                tgJug1.setChecked(false); tgJug2.setChecked(false);
+                if(!flagFalta){ //jugando con el primer saque
+                    if(sacaJugador1){
+                        puntosGanadosPrimerSaqueJugador1++;
+                        accionBotonPuntoGanadoJug1(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosDevolucionJugador1++;
+                        accionBotonPuntoGanadoJug1(enRedJug1, enRedJug2);
+                    }
+                }
+                else{
+                    if(sacaJugador1){
+                        puntosGanadosSegundoSaqueJugador1++;
+                        accionBotonPuntoGanadoJug1(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosDevolucionJugador1++;
+                        accionBotonPuntoGanadoJug1(enRedJug1, enRedJug2);
+                    }
+                    ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("1er saque");
+                    flagFalta=false;
+                }
+                cambiarTab(0,1);
+            }
+        });
+
+        puntoGenericoJug2 = (Button) findViewById(R.id.button_ptoganado_jugador2);
+        puntoGenericoJug2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToggleButton tgJug1 = (ToggleButton) findViewById(R.id.red_jugador1);
+                ToggleButton tgJug2 = (ToggleButton) findViewById(R.id.red_jugador2);
+                boolean enRedJug1=tgJug1.isChecked(); boolean enRedJug2=tgJug2.isChecked();
+                tgJug1.setChecked(false); tgJug2.setChecked(false);
+                if(!flagFalta){ //jugando con el primer saque
+                    if(sacaJugador1){
+                        puntosGanadosDevolucionJugador2++;
+                        accionBotonPuntoGanadoJug2(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosPrimerSaqueJugador2++;
+                        accionBotonPuntoGanadoJug2(enRedJug1, enRedJug2);
+                    }
+                }
+                else{
+                    if(sacaJugador1){
+                        puntosGanadosDevolucionJugador2++;
+                        accionBotonPuntoGanadoJug2(enRedJug1, enRedJug2);
+                    }
+                    else{
+                        puntosGanadosSegundoSaqueJugador2++;
+                        accionBotonPuntoGanadoJug2(enRedJug1, enRedJug2);
+                    }
+                    ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("1er saque");
+                    flagFalta=false;
+                }
+                cambiarTab(0,1);
             }
         });
     }
@@ -318,8 +648,14 @@ public class PartidoScoreActivity extends AppCompatActivity {
     }
 
     public void accionBotonEnJuegoPrimerSaque(){
-        /** TODO acciones de juego... */
-
+        if(sacaJugador1){
+            puntosSacandoJugador1++;
+            primerSaqueMetidoJugador1++;
+        }
+        else{
+            puntosSacandoJugador2++;
+            primerSaqueMetidoJugador2++;
+        }
         cambiarTab(1,0);
     }
 
@@ -415,12 +751,275 @@ public class PartidoScoreActivity extends AppCompatActivity {
     }
 
     public void accionBotonEnJuegoSegundoSaque(){
-        /** TODO acciones de juego... */
-
         cambiarTab(1,0);
-        flagFalta=false;
+    }
 
-        //((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("1er saque");
+    public void accionBotonWinnerDerechaJug1(boolean enRedJug1, boolean enRedJug2) {
+        puntActualJugador1++;
+        totalPuntosJugador1++;
+        winnersDerechaJugador1++;
+        if(enRedJug1){
+            subidasRedJugador1++;
+            ptosGanadosRedJugador1++;
+        }
+        if(enRedJug2){
+            subidasRedJugador2++;
+        }
+        tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
+        chequearEsFinSetJugador1();
+        if((puntActualJugador1+puntActualJugador2)%4==0){
+            if(sacaJugador1){
+                sacaJugador1=false; sacaJugador2=true;
+                iconoPelotaJug1.setVisibility(View.INVISIBLE);
+                iconoPelotaJug2.setVisibility(View.VISIBLE);
+            }
+            else{
+                sacaJugador1=true; sacaJugador2=false;
+                iconoPelotaJug2.setVisibility(View.INVISIBLE);
+                iconoPelotaJug1.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    public void accionBotonWinnerDerechaJug2(boolean enRedJug1, boolean enRedJug2) {
+        puntActualJugador2++;
+        totalPuntosJugador2++;
+        winnersDerechaJugador2++;
+        if(enRedJug2){
+            subidasRedJugador2++;
+            ptosGanadosRedJugador2++;
+        }
+        if(enRedJug1){
+            subidasRedJugador1++;
+        }
+        tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
+        chequearEsFinSetJugador2();
+        if((puntActualJugador1+puntActualJugador2)%4==0){
+            if(sacaJugador1){
+                sacaJugador1=false; sacaJugador2=true;
+                iconoPelotaJug1.setVisibility(View.INVISIBLE);
+                iconoPelotaJug2.setVisibility(View.VISIBLE);
+            }
+            else{
+                sacaJugador1=true; sacaJugador2=false;
+                iconoPelotaJug2.setVisibility(View.INVISIBLE);
+                iconoPelotaJug1.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    public void accionBotonWinnerRevesJug1(boolean enRedJug1, boolean enRedJug2) {
+        puntActualJugador1++;
+        totalPuntosJugador1++;
+        winnersRevesJugador1++;
+        if(enRedJug2){
+            subidasRedJugador2++;
+        }
+        if(enRedJug1){
+            subidasRedJugador1++;
+            ptosGanadosRedJugador1++;
+        }
+        tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
+        chequearEsFinSetJugador1();
+        if((puntActualJugador1+puntActualJugador2)%4==0){
+            if(sacaJugador1){
+                sacaJugador1=false; sacaJugador2=true;
+                iconoPelotaJug1.setVisibility(View.INVISIBLE);
+                iconoPelotaJug2.setVisibility(View.VISIBLE);
+            }
+            else{
+                sacaJugador1=true; sacaJugador2=false;
+                iconoPelotaJug2.setVisibility(View.INVISIBLE);
+                iconoPelotaJug1.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    public void accionBotonWinnerRevesJug2(boolean enRedJug1, boolean enRedJug2) {
+        puntActualJugador2++;
+        totalPuntosJugador2++;
+        winnersRevesJugador2++;
+        if(enRedJug2){
+            subidasRedJugador2++;
+            ptosGanadosRedJugador2++;
+        }
+        if(enRedJug1){
+            subidasRedJugador1++;
+        }
+        tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
+        chequearEsFinSetJugador2();
+        if((puntActualJugador1+puntActualJugador2)%4==0){
+            if(sacaJugador1){
+                sacaJugador1=false; sacaJugador2=true;
+                iconoPelotaJug1.setVisibility(View.INVISIBLE);
+                iconoPelotaJug2.setVisibility(View.VISIBLE);
+            }
+            else{
+                sacaJugador1=true; sacaJugador2=false;
+                iconoPelotaJug2.setVisibility(View.INVISIBLE);
+                iconoPelotaJug1.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    public void accionBotonErrorDerechaJug1(boolean enRedJug1, boolean enRedJug2) {
+        puntActualJugador2++;
+        totalPuntosJugador2++;
+        errorNoForzadoDerechaJugador1++;
+        if(enRedJug2){
+            subidasRedJugador2++;
+            ptosGanadosRedJugador2++;
+        }
+        if(enRedJug1){
+            subidasRedJugador1++;
+        }
+        tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
+        chequearEsFinSetJugador2();
+        if((puntActualJugador1+puntActualJugador2)%4==0){
+            if(sacaJugador1){
+                sacaJugador1=false; sacaJugador2=true;
+                iconoPelotaJug1.setVisibility(View.INVISIBLE);
+                iconoPelotaJug2.setVisibility(View.VISIBLE);
+            }
+            else{
+                sacaJugador1=true; sacaJugador2=false;
+                iconoPelotaJug2.setVisibility(View.INVISIBLE);
+                iconoPelotaJug1.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    public void accionBotonErrorDerechaJug2(boolean enRedJug1, boolean enRedJug2) {
+        puntActualJugador1++;
+        totalPuntosJugador1++;
+        errorNoForzadoDerechaJugador2++;
+        if(enRedJug2){
+            subidasRedJugador2++;
+        }
+        if(enRedJug1){
+            subidasRedJugador1++;
+            ptosGanadosRedJugador1++;
+        }
+        tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
+        chequearEsFinSetJugador1();
+        if((puntActualJugador1+puntActualJugador2)%4==0){
+            if(sacaJugador1){
+                sacaJugador1=false; sacaJugador2=true;
+                iconoPelotaJug1.setVisibility(View.INVISIBLE);
+                iconoPelotaJug2.setVisibility(View.VISIBLE);
+            }
+            else{
+                sacaJugador1=true; sacaJugador2=false;
+                iconoPelotaJug2.setVisibility(View.INVISIBLE);
+                iconoPelotaJug1.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    public void accionBotonErrorRevesJug1(boolean enRedJug1, boolean enRedJug2) {
+        puntActualJugador2++;
+        totalPuntosJugador2++;
+        errorNoForzadoRevesJugador1++;
+        if(enRedJug2){
+            subidasRedJugador2++;
+            ptosGanadosRedJugador2++;
+        }
+        if(enRedJug1){
+            subidasRedJugador1++;
+        }
+        tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
+        chequearEsFinSetJugador2();
+        if((puntActualJugador1+puntActualJugador2)%4==0){
+            if(sacaJugador1){
+                sacaJugador1=false; sacaJugador2=true;
+                iconoPelotaJug1.setVisibility(View.INVISIBLE);
+                iconoPelotaJug2.setVisibility(View.VISIBLE);
+            }
+            else{
+                sacaJugador1=true; sacaJugador2=false;
+                iconoPelotaJug2.setVisibility(View.INVISIBLE);
+                iconoPelotaJug1.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    public void accionBotonErrorRevesJug2(boolean enRedJug1, boolean enRedJug2) {
+        puntActualJugador1++;
+        totalPuntosJugador1++;
+        errorNoForzadoRevesJugador2++;
+        if(enRedJug2){
+            subidasRedJugador2++;
+        }
+        if(enRedJug1){
+            subidasRedJugador1++;
+            ptosGanadosRedJugador1++;
+        }
+        tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
+        chequearEsFinSetJugador1();
+        if((puntActualJugador1+puntActualJugador2)%4==0){
+            if(sacaJugador1){
+                sacaJugador1=false; sacaJugador2=true;
+                iconoPelotaJug1.setVisibility(View.INVISIBLE);
+                iconoPelotaJug2.setVisibility(View.VISIBLE);
+            }
+            else{
+                sacaJugador1=true; sacaJugador2=false;
+                iconoPelotaJug2.setVisibility(View.INVISIBLE);
+                iconoPelotaJug1.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    public void accionBotonPuntoGanadoJug1(boolean enRedJug1, boolean enRedJug2) {
+        puntActualJugador1++;
+        totalPuntosJugador1++;
+        if(enRedJug2){
+            subidasRedJugador2++;
+        }
+        if(enRedJug1){
+            subidasRedJugador1++;
+            ptosGanadosRedJugador1++;
+        }
+        tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
+        chequearEsFinSetJugador1();
+        if((puntActualJugador1+puntActualJugador2)%4==0){
+            if(sacaJugador1){
+                sacaJugador1=false; sacaJugador2=true;
+                iconoPelotaJug1.setVisibility(View.INVISIBLE);
+                iconoPelotaJug2.setVisibility(View.VISIBLE);
+            }
+            else{
+                sacaJugador1=true; sacaJugador2=false;
+                iconoPelotaJug2.setVisibility(View.INVISIBLE);
+                iconoPelotaJug1.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    public void accionBotonPuntoGanadoJug2(boolean enRedJug1, boolean enRedJug2) {
+        puntActualJugador2++;
+        totalPuntosJugador2++;
+        if(enRedJug2){
+            subidasRedJugador2++;
+            ptosGanadosRedJugador2++;
+        }
+        if(enRedJug1){
+            subidasRedJugador1++;
+        }
+        tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
+        chequearEsFinSetJugador2();
+        if((puntActualJugador1+puntActualJugador2)%4==0){
+            if(sacaJugador1){
+                sacaJugador1=false; sacaJugador2=true;
+                iconoPelotaJug1.setVisibility(View.INVISIBLE);
+                iconoPelotaJug2.setVisibility(View.VISIBLE);
+            }
+            else{
+                sacaJugador1=true; sacaJugador2=false;
+                iconoPelotaJug2.setVisibility(View.INVISIBLE);
+                iconoPelotaJug1.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     public void chequearEsFinSetJugador1(){
@@ -469,7 +1068,9 @@ public class PartidoScoreActivity extends AppCompatActivity {
             tvScoreJugador2.setText("0");
             if(setsJug1 >= (maxSets/2)) {
                 partidoTerminado=true;
-                /** TODO terminar partido */
+                /** TODO terminar partido - intent a Estadisticas? */
+                Toast.makeText(PartidoScoreActivity.this, "PARTIDO TERMINADO! Ganador: "+jugador1,
+                        Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -520,7 +1121,9 @@ public class PartidoScoreActivity extends AppCompatActivity {
             tvScoreJugador2.setText("0");
             if(setsJug1 >= (maxSets/2)) {
                 partidoTerminado=true;
-                /** TODO terminar partido */
+                /** TODO terminar partido - intent a Estadisticas? */
+                Toast.makeText(PartidoScoreActivity.this, "PARTIDO TERMINADO! Ganador: "+jugador2,
+                        Toast.LENGTH_LONG).show();
             }
         }
     }

@@ -63,7 +63,7 @@ public class EstadisticasActivity extends AppCompatActivity {
         //Nombre jugador 2
         labelJug2 = (TextView) findViewById(R.id.label_jugador2);
         jugador2 = intent.getStringExtra("Jug2");
-        labelJug2.setText(jugador1);
+        labelJug2.setText(jugador2);
         //Score jugador 1
         scoreJug1 = (TextView) findViewById(R.id.score_jug1);
         puntActualJugador1 = intent.getIntExtra("PuntJug1", 0);
