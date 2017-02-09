@@ -64,6 +64,198 @@
             android:textAlignment="center" />
     </LinearLayout>
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_align_estadisticas"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:text="set 1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_set1_estadisticas"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false"
+                android:textSize="10sp" />
+
+            <Button
+                android:text="set 2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_set2_estadisticas"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false"
+                android:textSize="10sp" />
+
+            <Button
+                android:text="set 3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_set3_estadisticas"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false"
+                android:textSize="10sp" />
+
+            <Button
+                android:text="set 4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_set4_estadisticas"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false"
+                android:textSize="10sp" />
+
+            <Button
+                android:text="set 5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_set5_estadisticas"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:text="JUG1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_jugador1_sets_estadisticas"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false"
+                android:textSize="12sp" />
+
+            <Button
+                android:text="16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set1_jug1_estadisticas"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:text="15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set2_jug1_estadisticas"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:text="11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set3_jug1_estadisticas"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:text="13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set4_jug1_estadisticas"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set5_jug1_estadisticas"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:text="JUG2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:id="@+id/label_jugador2_sets_estadisticas"
+                android:focusable="false"
+                android:textSize="12sp" />
+
+            <Button
+                android:text="12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set1_jug2_estadisticas"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:text="17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set2_jug2_estadisticas"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:text="16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set3_jug2_estadisticas"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:text="16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set4_jug2_estadisticas"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:text="-"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set5_jug2_estadisticas"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:background="@android:color/transparent" />
+        </LinearLayout>
+    </LinearLayout>
+
     <TextView
         android:text="ESTADÍSTICAS DEL PARTIDO - SERVICIO"
         android:layout_width="match_parent"

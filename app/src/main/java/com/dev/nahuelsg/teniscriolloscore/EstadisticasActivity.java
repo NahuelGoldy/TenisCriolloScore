@@ -2,11 +2,13 @@ package com.dev.nahuelsg.teniscriolloscore;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by Nahuel SG on 02/02/2017.
@@ -30,6 +32,11 @@ public class EstadisticasActivity extends AppCompatActivity {
     private int winnersRevesJugador1,winnersRevesJugador2;
     private int errorNoForzadoDerechaJugador1, errorNoForzadoDerechaJugador2;
     private int errorNoForzadoRevesJugador1, errorNoForzadoRevesJugador2;
+    private boolean terminado=false;
+
+    private Button btnAlign, btnSet1, btnSet2, btnSet3, btnSet4, btnSet5;
+    private Button btnLabelJug1, btnSet1Jug1, btnSet2Jug1, btnSet3Jug1, btnSet4Jug1, btnSet5Jug1;
+    private Button btnLabelJug2, btnSet1Jug2, btnSet2Jug2, btnSet3Jug2, btnSet4Jug2, btnSet5Jug2;
 
     private TextView labelJug1, labelJug2, scoreJug1, scoreJug2, labelGuionScore;
     private TextView labelEstadisticasServicio, labelEstadisticasGolpes;
@@ -75,6 +82,37 @@ public class EstadisticasActivity extends AppCompatActivity {
         labelGuionScore = (TextView) findViewById(R.id.textView5);
         totalPuntosJugador1 = intent.getIntExtra("TotalPtosJug1", 0);
         totalPuntosJugador2 = intent.getIntExtra("TotalPtosJug2", 0);
+
+        btnAlign = (Button) findViewById(R.id.button_align_estadisticas);
+        btnSet1 = (Button) findViewById(R.id.label_set1_estadisticas);
+        btnSet2 = (Button) findViewById(R.id.label_set2_estadisticas);
+        btnSet3 = (Button) findViewById(R.id.label_set3_estadisticas);
+        btnSet4 = (Button) findViewById(R.id.label_set4_estadisticas);
+        btnSet5 = (Button) findViewById(R.id.label_set5_estadisticas);
+        btnLabelJug1 = (Button) findViewById(R.id.label_jugador1_sets_estadisticas);
+        if(jugador1.length()>3) btnLabelJug1.setText(jugador1.substring(0,4)); else btnLabelJug1.setText(jugador1);
+        btnLabelJug2 = (Button) findViewById(R.id.label_jugador2_sets_estadisticas);
+        if(jugador2.length()>3) btnLabelJug2.setText(jugador2.substring(0,4)); else btnLabelJug2.setText(jugador2);
+        btnSet1Jug1 = (Button) findViewById(R.id.set1_jug1_estadisticas);
+        btnSet1Jug1.setText(String.valueOf(intent.getIntExtra("Set1Jug1", 0)));
+        btnSet1Jug2 = (Button) findViewById(R.id.set1_jug2_estadisticas);
+        btnSet1Jug2.setText(String.valueOf(intent.getIntExtra("Set1Jug2", 0)));
+        btnSet2Jug1 = (Button) findViewById(R.id.set2_jug1_estadisticas);
+        btnSet2Jug1.setText(String.valueOf(intent.getIntExtra("Set2Jug1", 0)));
+        btnSet2Jug2 = (Button) findViewById(R.id.set2_jug2_estadisticas);
+        btnSet2Jug2.setText(String.valueOf(intent.getIntExtra("Set2Jug2", 0)));
+        btnSet3Jug1 = (Button) findViewById(R.id.set3_jug1_estadisticas);
+        btnSet3Jug1.setText(String.valueOf(intent.getIntExtra("Set3Jug1", 0)));
+        btnSet3Jug2 = (Button) findViewById(R.id.set3_jug2_estadisticas);
+        btnSet3Jug2.setText(String.valueOf(intent.getIntExtra("Set3Jug2", 0)));
+        btnSet4Jug1 = (Button) findViewById(R.id.set4_jug1_estadisticas);
+        btnSet4Jug1.setText(String.valueOf(intent.getIntExtra("Set4Jug1", 0)));
+        btnSet4Jug2 = (Button) findViewById(R.id.set4_jug2_estadisticas);
+        btnSet4Jug2.setText(String.valueOf(intent.getIntExtra("Set4Jug2", 0)));
+        btnSet5Jug1 = (Button) findViewById(R.id.set5_jug1_estadisticas);
+        btnSet5Jug1.setText(String.valueOf(intent.getIntExtra("Set5Jug1", 0)));
+        btnSet5Jug2 = (Button) findViewById(R.id.set5_jug2_estadisticas);
+        btnSet5Jug2.setText(String.valueOf(intent.getIntExtra("Set5Jug2", 0)));
 
         labelEstadisticasServicio = (TextView) findViewById(R.id.textView_titulo1);
 
@@ -226,5 +264,18 @@ public class EstadisticasActivity extends AppCompatActivity {
         ptosGanadosRedJugador2 = intent.getIntExtra("GanadosEnLaRedJug2", 0);
         enLaRedJug2.setText(String.valueOf(ptosGanadosRedJugador2)+" / "+String.valueOf(subidasRedJugador2));
 
+        terminado = intent.getBooleanExtra("Terminado", false);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (terminado) {
+            Intent in = new Intent(EstadisticasActivity.this,MainActivity.class);
+            in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(in);
+        }
+        else {
+            super.onBackPressed();
+        }
     }
 }

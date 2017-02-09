@@ -91,42 +91,42 @@ public class NuevoPartidoActivity extends AppCompatActivity  {
                 case 0: {
                     maxSets = "1";
                     maxPuntosPorSet = "16";
-                    textoDescripcion = "\n - Set único \n - A 16 puntos \n - A partir del 15-15, se definirá por diferencia de dos (2) puntos \n - El turno de saque cambia cada de jugador cada cuatro (4) puntos";
+                    textoDescripcion = "\n - Set único \n - A 16 puntos \n - A partir del 15-15, se definirá por diferencia de dos (2) puntos \n - El turno de saque cambia de jugador cada cuatro (4) puntos";
                     labelDescripcion.setText(textoDescripcion);
                     break;
                 }
                 case 1: {
                     maxSets = "3";
                     maxPuntosPorSet = "16";
-                    textoDescripcion = "\n - Mejor de tres (3) sets \n - A 16 puntos \n - A partir del 15-15, se definirá por diferencia de dos (2) puntos \n - El turno de saque cambia cada de jugador cada cuatro (4) puntos";
+                    textoDescripcion = "\n - Mejor de tres (3) sets \n - A 16 puntos \n - A partir del 15-15, se definirá por diferencia de dos (2) puntos \n - El turno de saque cambia de jugador cada cuatro (4) puntos";
                     labelDescripcion.setText(textoDescripcion);
                     break;
                 }
                 case 2: {
                     maxSets = "5";
                     maxPuntosPorSet = "16";
-                    textoDescripcion = "\n - Mejor de cinco (5) sets \n - A 16 puntos \n - A partir del 15-15, se definirá por diferencia de dos (2) puntos \n - El turno de saque cambia cada de jugador cada cuatro (4) puntos";
+                    textoDescripcion = "\n - Mejor de cinco (5) sets \n - A 16 puntos \n - A partir del 15-15, se definirá por diferencia de dos (2) puntos \n - El turno de saque cambia de jugador cada cuatro (4) puntos";
                     labelDescripcion.setText(textoDescripcion);
                     break;
                 }
                 case 3: {
                     maxSets = "1";
                     maxPuntosPorSet = "20";
-                    textoDescripcion = "\n - Set único \n - A 20 puntos \n - A partir del 19-19, se definirá por diferencia de dos (2) puntos \n - El turno de saque cambia cada de jugador cada cuatro (4) puntos";
+                    textoDescripcion = "\n - Set único \n - A 20 puntos \n - A partir del 19-19, se definirá por diferencia de dos (2) puntos \n - El turno de saque cambia de jugador cada cuatro (4) puntos";
                     labelDescripcion.setText(textoDescripcion);
                     break;
                 }
                 case 4: {
                     maxSets = "3";
                     maxPuntosPorSet = "20";
-                    textoDescripcion = "\n - Mejor de tres (3) sets \n - A 20 puntos \n - A partir del 19-19, se definirá por diferencia de dos (2) puntos \n - El turno de saque cambia cada de jugador cada cuatro (4) puntos";
+                    textoDescripcion = "\n - Mejor de tres (3) sets \n - A 20 puntos \n - A partir del 19-19, se definirá por diferencia de dos (2) puntos \n - El turno de saque cambia de jugador cada cuatro (4) puntos";
                     labelDescripcion.setText(textoDescripcion);
                     break;
                 }
                 case 5: {
                     maxSets = "5";
                     maxPuntosPorSet = "20";
-                    textoDescripcion = "\n - Mejor de cinco (5) sets \n - A 20 puntos \n - A partir del 19-19, se definirá por diferencia de dos (2) puntos \n - El turno de saque cambia cada de jugador cada cuatro (4) puntos";
+                    textoDescripcion = "\n - Mejor de cinco (5) sets \n - A 20 puntos \n - A partir del 19-19, se definirá por diferencia de dos (2) puntos \n - El turno de saque cambia de jugador cada cuatro (4) puntos";
                     labelDescripcion.setText(textoDescripcion);
                     break;
                 }
@@ -136,7 +136,7 @@ public class NuevoPartidoActivity extends AppCompatActivity  {
         public void onNothingSelected(AdapterView<?> adapterView) {
             maxSets = "1";
             maxPuntosPorSet = "16";
-            textoDescripcion = "\n-Set único \n-A 16 puntos \n-A partir del 15-15, se definirá por diferencia de dos (2) puntos \n-El turno de saque cambia cada de jugador cada cuatro (4) puntos";
+            textoDescripcion = "\n - Set único \n - A 16 puntos \n - A partir del 15-15, se definirá por diferencia de dos (2) puntos \n - El turno de saque cambia de jugador cada cuatro (4) puntos";
             labelDescripcion.setText(textoDescripcion);
         }
     };

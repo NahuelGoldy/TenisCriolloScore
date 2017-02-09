@@ -99,21 +99,6 @@ public class PartidoScoreActivity extends AppCompatActivity {
         spec.setIndicator("en juego");
         tabhost.addTab(spec);
 
-/*
-        //Tab3
-        enLaRedJug1 = (ToggleButton) findViewById(R.id.red_jugador1);
-        enLaRedJug2 = (ToggleButton) findViewById(R.id.red_jugador2);
-        winnerDerechaJug1 = (Button) findViewById(R.id.winner_derecha_jugador1);
-        winnerDerechaJug2 = (Button) findViewById(R.id.winner_derecha_jugador2);
-        winnerRevesJug1 = (Button) findViewById(R.id.winner_reves_jugador1);
-        winnerRevesJug2 = (Button) findViewById(R.id.winner_reves_jugador2);
-        errorDerechaJug1 = (Button) findViewById(R.id.error_derecha_jugador1);
-        errorDerechaJug2 = (Button) findViewById(R.id.error_derecha_jugador2);
-        errorRevesJug1 = (Button) findViewById(R.id.error_reves_jugador1);
-        errorRevesJug2 = (Button) findViewById(R.id.error_reves_jugador2);
-        puntoGenericoJug1 = (Button) findViewById(R.id.button_ptoganado_jugador1);
-        puntoGenericoJug2 = (Button) findViewById(R.id.button_ptoganado_jugador2);
-*/
         intent = getIntent();
         maxSets = Integer.parseInt(intent.getStringExtra("MaxSets"));
         maxPuntos = Integer.parseInt(intent.getStringExtra("MaxPuntos"));
@@ -140,7 +125,6 @@ public class PartidoScoreActivity extends AppCompatActivity {
         btnSet5Jug1.setText("-"); btnSet5Jug2.setText("-");
 
         tabhost.getTabWidget().getChildTabViewAt(1).setEnabled(false);
-
     }
 
     @Override
@@ -1023,7 +1007,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
     }
 
     public void chequearEsFinSetJugador1(){
-        if(puntActualJugador1 == maxPuntos){
+        if(puntActualJugador1 >= maxPuntos && puntActualJugador1-puntActualJugador2>=2){
             setsJug1++;
             switch (setsJug1+setsJug2){
                 case 1: {
@@ -1066,17 +1050,20 @@ public class PartidoScoreActivity extends AppCompatActivity {
             puntActualJugador2=0;
             tvScoreJugador1.setText("0");
             tvScoreJugador2.setText("0");
-            if(setsJug1 >= (maxSets/2)) {
+            if(setsJug1 > (maxSets/2)) {
                 partidoTerminado=true;
-                /** TODO terminar partido - intent a Estadisticas? */
                 Toast.makeText(PartidoScoreActivity.this, "PARTIDO TERMINADO! Ganador: "+jugador1,
                         Toast.LENGTH_LONG).show();
+                Intent i = new Intent(PartidoScoreActivity.this,EstadisticasActivity.class);
+                i = putExtrasParaEstadisticas(i);
+                //TODO startactivityforresult?
+                startActivity(i);
             }
         }
     }
 
     public void chequearEsFinSetJugador2(){
-        if(puntActualJugador2 == maxPuntos){
+        if(puntActualJugador2 >= maxPuntos && puntActualJugador2-puntActualJugador1>=2){
             setsJug2++;
             switch (setsJug1+setsJug2){
                 case 1: {
@@ -1119,11 +1106,14 @@ public class PartidoScoreActivity extends AppCompatActivity {
             puntActualJugador2=0;
             tvScoreJugador1.setText("0");
             tvScoreJugador2.setText("0");
-            if(setsJug1 >= (maxSets/2)) {
+            if(setsJug1 > (maxSets/2)) {
                 partidoTerminado=true;
-                /** TODO terminar partido - intent a Estadisticas? */
                 Toast.makeText(PartidoScoreActivity.this, "PARTIDO TERMINADO! Ganador: "+jugador2,
                         Toast.LENGTH_LONG).show();
+                Intent i = new Intent(PartidoScoreActivity.this,EstadisticasActivity.class);
+                i = putExtrasParaEstadisticas(i);
+                //TODO startactivityforresult?
+                startActivity(i);
             }
         }
     }
@@ -1139,6 +1129,11 @@ public class PartidoScoreActivity extends AppCompatActivity {
         i.putExtra("Jug1", jugador1); i.putExtra("Jug2", jugador2);
         i.putExtra("TotalPtosJug1", totalPuntosJugador1); i.putExtra("TotalPtosJug2", totalPuntosJugador2);
         i.putExtra("PuntJug1", puntActualJugador1); i.putExtra("PuntJug2", puntActualJugador2);
+        i.putExtra("Set1Jug1", set1Jug1); i.putExtra("Set1Jug2", set1Jug2);
+        i.putExtra("Set2Jug1", set2Jug1); i.putExtra("Set2Jug2", set2Jug2);
+        i.putExtra("Set3Jug1", set3Jug1); i.putExtra("Set3Jug2", set3Jug2);
+        i.putExtra("Set4Jug1", set4Jug1); i.putExtra("Set4Jug2", set4Jug2);
+        i.putExtra("Set5Jug1", set5Jug1); i.putExtra("Set5Jug2", set5Jug2);
         i.putExtra("AcesJug1", acesJugador1); i.putExtra("AcesJug2", acesJugador2);
         i.putExtra("DobleFaltasJug1", dobleFaltasJugador1); i.putExtra("DobleFaltasJug2", dobleFaltasJugador2);
         i.putExtra("SaquesJug1", puntosSacandoJugador1); i.putExtra("SaquesJug2", puntosSacandoJugador2);
@@ -1152,6 +1147,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
         i.putExtra("ErroresRevesJug1", errorNoForzadoRevesJugador1); i.putExtra("ErroresRevesJug2", errorNoForzadoRevesJugador2);
         i.putExtra("EnLaRedJug1", subidasRedJugador1); i.putExtra("EnLaRedJug2", subidasRedJugador2);
         i.putExtra("GanadosEnLaRedJug1", ptosGanadosRedJugador1); i.putExtra("GanadosEnLaRedJug2", ptosGanadosRedJugador2);
+        i.putExtra("Terminado", partidoTerminado);
         return i;
     }
 
