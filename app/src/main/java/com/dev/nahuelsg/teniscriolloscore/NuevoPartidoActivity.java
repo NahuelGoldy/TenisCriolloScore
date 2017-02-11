@@ -56,7 +56,7 @@ public class NuevoPartidoActivity extends AppCompatActivity  {
         botonEmpezarPartido.setOnClickListener(btnEmpezarPartidoListener);
 
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMMM-yyyy");
         fecha.setText(df.format(c.getTime()));
 
     }

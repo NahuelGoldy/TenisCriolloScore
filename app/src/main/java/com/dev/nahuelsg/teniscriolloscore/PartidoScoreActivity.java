@@ -1056,6 +1056,8 @@ public class PartidoScoreActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
                 Intent i = new Intent(PartidoScoreActivity.this,EstadisticasActivity.class);
                 i = putExtrasParaEstadisticas(i);
+                i.putExtra("Ganador", "jugador1");
+                i.putExtra("CantSets", setsJug1+setsJug2);
                 //TODO startactivityforresult?
                 startActivity(i);
             }
@@ -1106,12 +1108,14 @@ public class PartidoScoreActivity extends AppCompatActivity {
             puntActualJugador2=0;
             tvScoreJugador1.setText("0");
             tvScoreJugador2.setText("0");
-            if(setsJug1 > (maxSets/2)) {
+            if(setsJug2 > (maxSets/2)) {
                 partidoTerminado=true;
                 Toast.makeText(PartidoScoreActivity.this, "PARTIDO TERMINADO! Ganador: "+jugador2,
                         Toast.LENGTH_LONG).show();
                 Intent i = new Intent(PartidoScoreActivity.this,EstadisticasActivity.class);
                 i = putExtrasParaEstadisticas(i);
+                i.putExtra("Ganador", "jugador2");
+                i.putExtra("CantSets", setsJug1+setsJug2);
                 //TODO startactivityforresult?
                 startActivity(i);
             }

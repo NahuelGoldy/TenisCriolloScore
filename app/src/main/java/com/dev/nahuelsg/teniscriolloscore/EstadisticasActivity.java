@@ -3,12 +3,22 @@ package com.dev.nahuelsg.teniscriolloscore;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
+import android.support.test.espresso.core.deps.guava.reflect.TypeToken;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
+
+import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by Nahuel SG on 02/02/2017.
@@ -265,6 +275,28 @@ public class EstadisticasActivity extends AppCompatActivity {
         enLaRedJug2.setText(String.valueOf(ptosGanadosRedJugador2)+" / "+String.valueOf(subidasRedJugador2));
 
         terminado = intent.getBooleanExtra("Terminado", false);
+
+        //Si el partido terminó, persistirlo en el json de Resultados (SharedPreferences)
+        if(terminado){
+            Gson gson = new Gson();
+            List<Resultado> resultadosViejosList;
+            Resultado resultado = this.crearResultado(intent.getStringExtra("Ganador"), intent.getIntExtra("CantSets", 1));
+
+            //leer desde SharedPreferences -> el string guardado es un json
+            String listaPartidosViejosJson = PreferenceManager.getDefaultSharedPreferences(this).getString("listaPartidosTerminados", "");
+            if(listaPartidosViejosJson.equals("")){
+                resultadosViejosList = new ArrayList<Resultado>();
+            }
+            else{
+                //obtener la lista de Resultados desde el Json
+                Type type = new TypeToken<List<Resultado>>() {}.getType();
+                resultadosViejosList = gson.fromJson(listaPartidosViejosJson, type);
+            }
+            resultadosViejosList.add(resultado);
+            listaPartidosViejosJson = gson.toJson(resultadosViejosList);
+            //volver a persistir en SharedPreferences la lista actualizada
+            PreferenceManager.getDefaultSharedPreferences(this).edit().putString("listaPartidosTerminados", listaPartidosViejosJson).apply();
+        }
     }
 
     @Override
@@ -277,5 +309,73 @@ public class EstadisticasActivity extends AppCompatActivity {
         else {
             super.onBackPressed();
         }
+    }
+
+    private Resultado crearResultado(String ganador, int cantSets){
+        String ganadorPerdedor="", marcador="", fecha="";
+        switch(cantSets){
+            case 1: {
+                if(ganador.equals("jugador1")){
+                    ganadorPerdedor = jugador1 + " a " + jugador2;
+                    marcador = btnSet1Jug1.getText() + "-" + btnSet1Jug2.getText();
+                }
+                else{
+                    ganadorPerdedor = jugador2 + " a " + jugador1;
+                    marcador = btnSet1Jug2.getText() + "-" + btnSet1Jug1.getText();
+                }
+                break;
+            }
+            case 2: {
+                if(ganador.equals("jugador1")){
+                    ganadorPerdedor = jugador1 + " a " + jugador2;
+                    marcador = btnSet1Jug1.getText() + "-" + btnSet1Jug2.getText() + " " + btnSet2Jug1.getText() + "-" + btnSet2Jug2.getText();
+                }
+                else{
+                    ganadorPerdedor = jugador2 + " a " + jugador1;
+                    marcador = btnSet1Jug2.getText() + "-" + btnSet1Jug1.getText() + " " + btnSet2Jug2.getText() + "-" + btnSet2Jug1.getText();
+                }
+                break;
+            }
+            case 3: {
+                if(ganador.equals("jugador1")){
+                    ganadorPerdedor = jugador1 + " a " + jugador2;
+                    marcador = btnSet1Jug1.getText() + "-" + btnSet1Jug2.getText() + " " + btnSet2Jug1.getText() + "-" + btnSet2Jug2.getText() + " " + btnSet3Jug1.getText() + "-" + btnSet3Jug2.getText();
+                }
+                else{
+                    ganadorPerdedor = jugador2 + " a " + jugador1;
+                    marcador = btnSet1Jug2.getText() + "-" + btnSet1Jug1.getText() + " " + btnSet2Jug2.getText() + "-" + btnSet2Jug1.getText() + " " + btnSet3Jug2.getText() + "-" + btnSet3Jug1.getText();
+                }
+                break;
+            }
+            case 4: {
+                if(ganador.equals("jugador1")){
+                    ganadorPerdedor = jugador1 + " a " + jugador2;
+                    marcador = btnSet1Jug1.getText() + "-" + btnSet1Jug2.getText() + " " + btnSet2Jug1.getText() + "-" + btnSet2Jug2.getText() + " " + btnSet3Jug1.getText() + "-" + btnSet3Jug2.getText() + " " + btnSet4Jug1.getText() + "-" + btnSet4Jug2.getText();
+                }
+                else{
+                    ganadorPerdedor = jugador2 + " a " + jugador1;
+                    marcador = btnSet1Jug2.getText() + "-" + btnSet1Jug1.getText() + " " + btnSet2Jug2.getText() + "-" + btnSet2Jug1.getText() + " " + btnSet3Jug2.getText() + "-" + btnSet3Jug1.getText() + " " + btnSet4Jug2.getText() + "-" + btnSet4Jug1.getText();
+                }
+                break;
+            }
+            case 5: {
+                if(ganador.equals("jugador1")){
+                    ganadorPerdedor = jugador1 + " a " + jugador2;
+                    marcador = btnSet1Jug1.getText() + "-" + btnSet1Jug2.getText() + " " + btnSet2Jug1.getText() + "-" + btnSet2Jug2.getText() + " " + btnSet3Jug1.getText() + "-" + btnSet3Jug2.getText() + " " + btnSet4Jug1.getText() + "-" + btnSet4Jug2.getText() + " " + btnSet5Jug1.getText() + "-" + btnSet5Jug2.getText();
+                }
+                else{
+                    ganadorPerdedor = jugador2 + " a " + jugador1;
+                    marcador = btnSet1Jug2.getText() + "-" + btnSet1Jug1.getText() + " " + btnSet2Jug2.getText() + "-" + btnSet2Jug1.getText() + " " + btnSet3Jug2.getText() + "-" + btnSet3Jug1.getText() + " " + btnSet4Jug2.getText() + "-" + btnSet4Jug1.getText() + " " + btnSet5Jug2.getText() + "-" + btnSet5Jug1.getText();
+                }
+                break;
+            }
+        }
+
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMMM-yyyy");
+        fecha = df.format(c.getTime());
+
+        Resultado resultado = new Resultado(ganadorPerdedor, marcador, fecha);
+        return resultado;
     }
 }

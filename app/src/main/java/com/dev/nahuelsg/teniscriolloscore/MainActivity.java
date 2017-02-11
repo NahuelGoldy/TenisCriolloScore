@@ -3,18 +3,33 @@ package com.dev.nahuelsg.teniscriolloscore;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.test.espresso.core.deps.guava.reflect.TypeToken;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     boolean doubleBackToExitPressedOnce = false;
+    private Gson gson;
+    private ArrayList<Resultado> listaResultadosViejos;
+    private ListView listView;
+    private ResultadoAdapter resAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +52,26 @@ public class MainActivity extends AppCompatActivity {
         otraCosa = (Button) findViewById(R.id.button_otracosa);
         nuevoPartido.setOnClickListener(btnNuevoPartidoListener);
 
+        //borrar esto!! lo uso para resetear cuando hago testing
+        //PreferenceManager.getDefaultSharedPreferences(this).edit().putString("listaPartidosTerminados", "").apply();
+
+        gson = new Gson();
+        String jsonResultadosPartidosViejos = PreferenceManager.getDefaultSharedPreferences(this).getString("listaPartidosTerminados", "");
+        listaResultadosViejos = new ArrayList<Resultado>();
+        Type type = new TypeToken<List<Resultado>>() {}.getType();
+        listaResultadosViejos = gson.fromJson(jsonResultadosPartidosViejos, type);
+
+        if(listaResultadosViejos!=null && listaResultadosViejos.size()>0){
+            //ordeno la lista por fecha
+            Collections.sort(listaResultadosViejos, new Comparator<Resultado>() {
+                public int compare(Resultado resultado1, Resultado resultado2) {
+                    return resultado2.getFecha().compareTo(resultado1.getFecha());
+                }
+            });
+            listView = (ListView) findViewById(R.id.listView_resultados_anteriores);
+            resAdapter = new ResultadoAdapter(this, listaResultadosViejos);
+            listView.setAdapter(resAdapter);
+        }
     }
 
     @Override
