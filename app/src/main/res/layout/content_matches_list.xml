@@ -9,13 +9,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="1">
+        android:layout_height="75dp"
+        android:weightSum="1"
+        android:layout_marginTop="5dp">
 
         <Button
             android:text="nuevo partido"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/button_nuevo_partido"
             android:layout_weight="0.49"
             android:backgroundTint="#FF0027FF"
@@ -25,15 +26,29 @@
         <Button
             android:text="otra cosa"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/button_otracosa"
             android:layout_weight="0.49" />
 
     </LinearLayout>
 
-    <ListView
+    <TextView
+        android:text="ULTIMOS PARTIDOS REGISTRADOS"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewTituloUltimosPartidos"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:background="#FF0027FF"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center_horizontal"
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="normal|bold" />
+
+    <ListView
         android:id="@+id/listView_resultados_anteriores"
-        android:layout_height="520dp" />
+        android:layout_width="match_parent"
+        android:layout_height="590dp" />
 
 </LinearLayout>

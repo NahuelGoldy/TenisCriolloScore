@@ -8,6 +8,8 @@
     tools:context="com.dev.nahuelsg.teniscriolloscore.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <include layout="@layout/content_matches_list" />
+    <include layout="@layout/content_matches_list"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" />
 
 </android.support.v4.widget.NestedScrollView>

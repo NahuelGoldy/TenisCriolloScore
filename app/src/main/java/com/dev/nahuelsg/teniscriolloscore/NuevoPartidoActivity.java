@@ -79,6 +79,7 @@ public class NuevoPartidoActivity extends AppCompatActivity  {
                 i.putExtra("AlSaque", empiezaSaque);
                 i.putExtra("MaxSets", maxSets);
                 i.putExtra("MaxPuntos", maxPuntosPorSet);
+                i.putExtra("TiempoInicio", System.currentTimeMillis());
                 startActivity(i);
             }
         }

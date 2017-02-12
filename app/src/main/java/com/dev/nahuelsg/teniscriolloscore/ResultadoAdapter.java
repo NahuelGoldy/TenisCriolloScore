@@ -18,7 +18,7 @@ public class ResultadoAdapter extends BaseAdapter {
     private List<Resultado> listaResultado;
     private LayoutInflater inflater;
     private View row;
-    private TextView jugadores, marcador, fecha;
+    private TextView jugadores, marcador, fecha, tiempoDeJuego;
     private Context mCont;
 
     public ResultadoAdapter(Context context, List<Resultado> listaResult)
@@ -60,11 +60,13 @@ public class ResultadoAdapter extends BaseAdapter {
         jugadores = (TextView) row.findViewById(R.id.textViewJugadores);
         marcador = (TextView) row.findViewById(R.id.textViewMarcador);
         fecha = (TextView) row.findViewById(R.id.textViewFechaPartido);
+        tiempoDeJuego = (TextView) row.findViewById(R.id.textViewTiempoDeJuegoPartido);
     }
 
     private void llenarAdapter(final int position) {
         jugadores.setText(((Resultado)this.getItem(position)).getGanadorYPerdedor());
         marcador.setText(((Resultado)this.getItem(position)).getScore());
         fecha.setText(((Resultado)this.getItem(position)).getFecha());
+        tiempoDeJuego.setText(((Resultado)this.getItem(position)).getTiempoDeJuego());
     }
 }

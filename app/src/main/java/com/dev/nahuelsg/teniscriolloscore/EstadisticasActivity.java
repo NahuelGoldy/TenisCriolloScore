@@ -26,6 +26,7 @@ import java.util.List;
 
 public class EstadisticasActivity extends AppCompatActivity {
     private float aux=0;
+    private long tiempoInicio, tiempoFinal;
     private Intent intent;
     private String jugador1, jugador2;
     private int puntActualJugador1, puntActualJugador2, totalPuntosJugador1, totalPuntosJugador2;
@@ -278,9 +279,10 @@ public class EstadisticasActivity extends AppCompatActivity {
 
         //Si el partido terminó, persistirlo en el json de Resultados (SharedPreferences)
         if(terminado){
+            String duracionPartido = generarDuracionPartido();
             Gson gson = new Gson();
             List<Resultado> resultadosViejosList;
-            Resultado resultado = this.crearResultado(intent.getStringExtra("Ganador"), intent.getIntExtra("CantSets", 1));
+            Resultado resultado = this.crearResultado(intent.getStringExtra("Ganador"), intent.getIntExtra("CantSets", 1), duracionPartido);
 
             //leer desde SharedPreferences -> el string guardado es un json
             String listaPartidosViejosJson = PreferenceManager.getDefaultSharedPreferences(this).getString("listaPartidosTerminados", "");
@@ -291,6 +293,8 @@ public class EstadisticasActivity extends AppCompatActivity {
                 //obtener la lista de Resultados desde el Json
                 Type type = new TypeToken<List<Resultado>>() {}.getType();
                 resultadosViejosList = gson.fromJson(listaPartidosViejosJson, type);
+                //como solo quiero mostrar los ultimos 5 partidos, voy eliminando el ultimo
+                if(resultadosViejosList.size()>4) resultadosViejosList.remove(4);
             }
             resultadosViejosList.add(resultado);
             listaPartidosViejosJson = gson.toJson(resultadosViejosList);
@@ -311,7 +315,7 @@ public class EstadisticasActivity extends AppCompatActivity {
         }
     }
 
-    private Resultado crearResultado(String ganador, int cantSets){
+    private Resultado crearResultado(String ganador, int cantSets, String duracion){
         String ganadorPerdedor="", marcador="", fecha="";
         switch(cantSets){
             case 1: {
@@ -375,7 +379,22 @@ public class EstadisticasActivity extends AppCompatActivity {
         SimpleDateFormat df = new SimpleDateFormat("dd-MMMM-yyyy");
         fecha = df.format(c.getTime());
 
-        Resultado resultado = new Resultado(ganadorPerdedor, marcador, fecha);
+        Resultado resultado = new Resultado(ganadorPerdedor, marcador, fecha, duracion);
         return resultado;
+    }
+
+    private String generarDuracionPartido() {
+        String duracion;
+
+        tiempoInicio = intent.getLongExtra("TiempoInicio", System.currentTimeMillis());
+        tiempoFinal = intent.getLongExtra("TiempoFinal", System.currentTimeMillis());
+        long diffMs = tiempoFinal - tiempoInicio;
+        long diffSec = diffMs / 1000;
+        long min = diffSec / 60;
+        long sec = diffSec % 60;
+        long hs = min / 60;
+        duracion = String.valueOf(hs)+"hs:"+String.valueOf(min)+"min:"+String.valueOf(sec)+"seg";
+
+        return duracion;
     }
 }

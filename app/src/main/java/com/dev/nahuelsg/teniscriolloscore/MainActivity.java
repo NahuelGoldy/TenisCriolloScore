@@ -1,5 +1,6 @@
 package com.dev.nahuelsg.teniscriolloscore;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -38,15 +39,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         Button nuevoPartido, otraCosa;
         nuevoPartido = (Button) findViewById(R.id.button_nuevo_partido);
         otraCosa = (Button) findViewById(R.id.button_otracosa);
@@ -55,23 +47,9 @@ public class MainActivity extends AppCompatActivity {
         //borrar esto!! lo uso para resetear cuando hago testing
         //PreferenceManager.getDefaultSharedPreferences(this).edit().putString("listaPartidosTerminados", "").apply();
 
-        gson = new Gson();
-        String jsonResultadosPartidosViejos = PreferenceManager.getDefaultSharedPreferences(this).getString("listaPartidosTerminados", "");
-        listaResultadosViejos = new ArrayList<Resultado>();
-        Type type = new TypeToken<List<Resultado>>() {}.getType();
-        listaResultadosViejos = gson.fromJson(jsonResultadosPartidosViejos, type);
+        poblarListaResultados(this);
+        listView.setFocusable(false); //"parche" para la incompatibilidad visual entre listview con nestedscrollview
 
-        if(listaResultadosViejos!=null && listaResultadosViejos.size()>0){
-            //ordeno la lista por fecha
-            Collections.sort(listaResultadosViejos, new Comparator<Resultado>() {
-                public int compare(Resultado resultado1, Resultado resultado2) {
-                    return resultado2.getFecha().compareTo(resultado1.getFecha());
-                }
-            });
-            listView = (ListView) findViewById(R.id.listView_resultados_anteriores);
-            resAdapter = new ResultadoAdapter(this, listaResultadosViejos);
-            listView.setAdapter(resAdapter);
-        }
     }
 
     @Override
@@ -129,6 +107,30 @@ public class MainActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
             return;
+        }
+    }
+
+    private void poblarListaResultados(Context context){
+        gson = new Gson();
+        String jsonResultadosPartidosViejos = PreferenceManager.getDefaultSharedPreferences(context).getString("listaPartidosTerminados", "");
+        listaResultadosViejos = new ArrayList<>();
+        Type type = new TypeToken<List<Resultado>>() {}.getType();
+        listaResultadosViejos = gson.fromJson(jsonResultadosPartidosViejos, type);
+
+        if(listaResultadosViejos!=null && listaResultadosViejos.size()>0){
+            //si la lista es muy larga, sólo muestro los 5 partidos más recientes
+            while(listaResultadosViejos.size()>5){
+                listaResultadosViejos.remove(listaResultadosViejos.size()-1);
+            }
+            //ordeno la lista por fecha
+            Collections.sort(listaResultadosViejos, new Comparator<Resultado>() {
+                public int compare(Resultado resultado1, Resultado resultado2) {
+                    return resultado2.getFecha().compareTo(resultado1.getFecha());
+                }
+            });
+            listView = (ListView) findViewById(R.id.listView_resultados_anteriores);
+            resAdapter = new ResultadoAdapter(this, listaResultadosViejos);
+            listView.setAdapter(resAdapter);
         }
     }
 

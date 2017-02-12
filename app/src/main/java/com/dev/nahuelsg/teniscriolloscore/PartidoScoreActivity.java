@@ -2,6 +2,7 @@ package com.dev.nahuelsg.teniscriolloscore;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +19,8 @@ import android.widget.ToggleButton;
  */
 
 public class PartidoScoreActivity extends AppCompatActivity {
+    boolean doubleBackToExitPressedOnce = false;
+    public long tiempoInicioPartido;
     public String jugador1, jugador2;
     public int setsJug1=0, setsJug2=0;
     public int maxSets, maxPuntos, puntActualJugador1=0, puntActualJugador2=0, totalPuntosJugador1=0, totalPuntosJugador2=0;
@@ -100,6 +103,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
         tabhost.addTab(spec);
 
         intent = getIntent();
+        tiempoInicioPartido = intent.getLongExtra("TiempoInicio",System.currentTimeMillis());
         maxSets = Integer.parseInt(intent.getStringExtra("MaxSets"));
         maxPuntos = Integer.parseInt(intent.getStringExtra("MaxPuntos"));
         jugador1 = intent.getStringExtra("Jugador1");
@@ -1152,7 +1156,32 @@ public class PartidoScoreActivity extends AppCompatActivity {
         i.putExtra("EnLaRedJug1", subidasRedJugador1); i.putExtra("EnLaRedJug2", subidasRedJugador2);
         i.putExtra("GanadosEnLaRedJug1", ptosGanadosRedJugador1); i.putExtra("GanadosEnLaRedJug2", ptosGanadosRedJugador2);
         i.putExtra("Terminado", partidoTerminado);
+        i.putExtra("TiempoInicio", tiempoInicioPartido);
+        i.putExtra("TiempoFinal", System.currentTimeMillis());
         return i;
+    }
+
+    @Override
+    public void onBackPressed() {
+        //TODO en el futuro hacer esta validacion con un Dialog ("En verdad desea salir del partido?")
+        //Checking for fragment count on backstack
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else if (!doubleBackToExitPressedOnce) {
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this,"Presione ATRAS otra vez para abandonar el partido", Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 3000);
+        } else {
+            super.onBackPressed();
+            return;
+        }
     }
 
 }
