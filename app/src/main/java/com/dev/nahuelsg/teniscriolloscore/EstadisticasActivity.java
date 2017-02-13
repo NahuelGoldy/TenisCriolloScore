@@ -293,8 +293,6 @@ public class EstadisticasActivity extends AppCompatActivity {
                 //obtener la lista de Resultados desde el Json
                 Type type = new TypeToken<List<Resultado>>() {}.getType();
                 resultadosViejosList = gson.fromJson(listaPartidosViejosJson, type);
-                //como solo quiero mostrar los ultimos 5 partidos, voy eliminando el ultimo
-                if(resultadosViejosList.size()>4) resultadosViejosList.remove(4);
             }
             resultadosViejosList.add(resultado);
             listaPartidosViejosJson = gson.toJson(resultadosViejosList);
@@ -316,7 +314,7 @@ public class EstadisticasActivity extends AppCompatActivity {
     }
 
     private Resultado crearResultado(String ganador, int cantSets, String duracion){
-        String ganadorPerdedor="", marcador="", fecha="";
+        String ganadorPerdedor="", marcador="", fecha="", hora="";
         switch(cantSets){
             case 1: {
                 if(ganador.equals("jugador1")){
@@ -378,8 +376,10 @@ public class EstadisticasActivity extends AppCompatActivity {
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd-MMMM-yyyy");
         fecha = df.format(c.getTime());
+        df = new SimpleDateFormat("HH:mm");
+        hora = df.format(c.getTime());
 
-        Resultado resultado = new Resultado(ganadorPerdedor, marcador, fecha, duracion);
+        Resultado resultado = new Resultado(ganadorPerdedor, marcador, (fecha + " a las "+ hora), duracion);
         return resultado;
     }
 

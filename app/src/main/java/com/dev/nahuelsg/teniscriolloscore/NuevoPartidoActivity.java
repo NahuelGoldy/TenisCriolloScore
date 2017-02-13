@@ -71,7 +71,8 @@ public class NuevoPartidoActivity extends AppCompatActivity  {
                         Toast.LENGTH_LONG).show();
             }
             else{
-
+                if(nombreJugador1.length()>9) nombreJugador1 = nombreJugador1.substring(0,8);
+                if(nombreJugador2.length()>9) nombreJugador2 = nombreJugador2.substring(0,8);
                 empiezaSaque = (listaEmpiezaSacando).getSelectedItem().toString();
                 Intent i = new Intent(NuevoPartidoActivity.this,PartidoScoreActivity.class);
                 i.putExtra("Jugador1", nombreJugador1);

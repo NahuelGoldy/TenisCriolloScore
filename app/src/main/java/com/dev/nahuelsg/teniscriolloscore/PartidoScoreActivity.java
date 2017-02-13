@@ -569,7 +569,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             primerSaqueMetidoJugador1++;
             tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
             chequearEsFinSetJugador1();
-            if((puntActualJugador1+puntActualJugador2)%4==0){
+            if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
                 sacaJugador1=false; sacaJugador2=true;
                 iconoPelotaJug1.setVisibility(View.INVISIBLE);
                 iconoPelotaJug2.setVisibility(View.VISIBLE);
@@ -584,7 +584,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             primerSaqueMetidoJugador2++;
             tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
             chequearEsFinSetJugador2();
-            if((puntActualJugador1+puntActualJugador2)%4==0){
+            if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
                 sacaJugador1=true; sacaJugador2=false;
                 iconoPelotaJug1.setVisibility(View.VISIBLE);
                 iconoPelotaJug2.setVisibility(View.INVISIBLE);
@@ -613,7 +613,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             primerSaqueMetidoJugador1++;
             tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
             chequearEsFinSetJugador1();
-            if((puntActualJugador1+puntActualJugador2)%4==0){
+            if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
                 sacaJugador1=false; sacaJugador2=true;
                 iconoPelotaJug1.setVisibility(View.INVISIBLE);
                 iconoPelotaJug2.setVisibility(View.VISIBLE);
@@ -627,7 +627,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             primerSaqueMetidoJugador2++;
             tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
             chequearEsFinSetJugador2();
-            if((puntActualJugador1+puntActualJugador2)%4==0){
+            if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
                 sacaJugador1=true; sacaJugador2=false;
                 iconoPelotaJug1.setVisibility(View.VISIBLE);
                 iconoPelotaJug2.setVisibility(View.INVISIBLE);
@@ -656,7 +656,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             acesJugador1++;
             tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
             chequearEsFinSetJugador1();
-            if((puntActualJugador1+puntActualJugador2)%4==0){
+            if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
                 sacaJugador1=false; sacaJugador2=true;
                 iconoPelotaJug1.setVisibility(View.INVISIBLE);
                 iconoPelotaJug2.setVisibility(View.VISIBLE);
@@ -669,7 +669,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             acesJugador2++;
             tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
             chequearEsFinSetJugador2();
-            if((puntActualJugador1+puntActualJugador2)%4==0){
+            if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
                 sacaJugador1=true; sacaJugador2=false;
                 iconoPelotaJug1.setVisibility(View.VISIBLE);
                 iconoPelotaJug2.setVisibility(View.INVISIBLE);
@@ -687,7 +687,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             puntosGanadosDevolucionJugador2++;
             tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
             chequearEsFinSetJugador2();
-            if((puntActualJugador1+puntActualJugador2)%4==0){
+            if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
                 sacaJugador1=false; sacaJugador2=true;
                 iconoPelotaJug1.setVisibility(View.INVISIBLE);
                 iconoPelotaJug2.setVisibility(View.VISIBLE);
@@ -700,7 +700,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             puntosGanadosDevolucionJugador1++;
             tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
             chequearEsFinSetJugador1();
-            if((puntActualJugador1+puntActualJugador2)%4==0){
+            if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
                 sacaJugador1=true; sacaJugador2=false;
                 iconoPelotaJug1.setVisibility(View.VISIBLE);
                 iconoPelotaJug2.setVisibility(View.INVISIBLE);
@@ -717,7 +717,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             totalPuntosJugador1++;
             tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
             chequearEsFinSetJugador1();
-            if((puntActualJugador1+puntActualJugador2)%4==0){
+            if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
                 sacaJugador1=false; sacaJugador2=true;
                 iconoPelotaJug1.setVisibility(View.INVISIBLE);
                 iconoPelotaJug2.setVisibility(View.VISIBLE);
@@ -729,7 +729,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             totalPuntosJugador2++;
             tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
             chequearEsFinSetJugador2();
-            if((puntActualJugador1+puntActualJugador2)%4==0){
+            if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
                 sacaJugador1=true; sacaJugador2=false;
                 iconoPelotaJug1.setVisibility(View.VISIBLE);
                 iconoPelotaJug2.setVisibility(View.INVISIBLE);
@@ -755,7 +755,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
         }
         tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
         chequearEsFinSetJugador1();
-        if((puntActualJugador1+puntActualJugador2)%4==0){
+        if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
             if(sacaJugador1){
                 sacaJugador1=false; sacaJugador2=true;
                 iconoPelotaJug1.setVisibility(View.INVISIBLE);
@@ -782,7 +782,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
         }
         tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
         chequearEsFinSetJugador2();
-        if((puntActualJugador1+puntActualJugador2)%4==0){
+        if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
             if(sacaJugador1){
                 sacaJugador1=false; sacaJugador2=true;
                 iconoPelotaJug1.setVisibility(View.INVISIBLE);
@@ -809,7 +809,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
         }
         tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
         chequearEsFinSetJugador1();
-        if((puntActualJugador1+puntActualJugador2)%4==0){
+        if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
             if(sacaJugador1){
                 sacaJugador1=false; sacaJugador2=true;
                 iconoPelotaJug1.setVisibility(View.INVISIBLE);
@@ -836,7 +836,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
         }
         tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
         chequearEsFinSetJugador2();
-        if((puntActualJugador1+puntActualJugador2)%4==0){
+        if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
             if(sacaJugador1){
                 sacaJugador1=false; sacaJugador2=true;
                 iconoPelotaJug1.setVisibility(View.INVISIBLE);
@@ -863,7 +863,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
         }
         tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
         chequearEsFinSetJugador2();
-        if((puntActualJugador1+puntActualJugador2)%4==0){
+        if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
             if(sacaJugador1){
                 sacaJugador1=false; sacaJugador2=true;
                 iconoPelotaJug1.setVisibility(View.INVISIBLE);
@@ -890,7 +890,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
         }
         tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
         chequearEsFinSetJugador1();
-        if((puntActualJugador1+puntActualJugador2)%4==0){
+        if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
             if(sacaJugador1){
                 sacaJugador1=false; sacaJugador2=true;
                 iconoPelotaJug1.setVisibility(View.INVISIBLE);
@@ -917,7 +917,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
         }
         tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
         chequearEsFinSetJugador2();
-        if((puntActualJugador1+puntActualJugador2)%4==0){
+        if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
             if(sacaJugador1){
                 sacaJugador1=false; sacaJugador2=true;
                 iconoPelotaJug1.setVisibility(View.INVISIBLE);
@@ -944,7 +944,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
         }
         tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
         chequearEsFinSetJugador1();
-        if((puntActualJugador1+puntActualJugador2)%4==0){
+        if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
             if(sacaJugador1){
                 sacaJugador1=false; sacaJugador2=true;
                 iconoPelotaJug1.setVisibility(View.INVISIBLE);
@@ -970,7 +970,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
         }
         tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
         chequearEsFinSetJugador1();
-        if((puntActualJugador1+puntActualJugador2)%4==0){
+        if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
             if(sacaJugador1){
                 sacaJugador1=false; sacaJugador2=true;
                 iconoPelotaJug1.setVisibility(View.INVISIBLE);
@@ -996,7 +996,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
         }
         tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
         chequearEsFinSetJugador2();
-        if((puntActualJugador1+puntActualJugador2)%4==0){
+        if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
             if(sacaJugador1){
                 sacaJugador1=false; sacaJugador2=true;
                 iconoPelotaJug1.setVisibility(View.INVISIBLE);
@@ -1054,6 +1054,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             puntActualJugador2=0;
             tvScoreJugador1.setText("0");
             tvScoreJugador2.setText("0");
+            chequearQuienSaca();
             if(setsJug1 > (maxSets/2)) {
                 partidoTerminado=true;
                 Toast.makeText(PartidoScoreActivity.this, "PARTIDO TERMINADO! Ganador: "+jugador1,
@@ -1112,6 +1113,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             puntActualJugador2=0;
             tvScoreJugador1.setText("0");
             tvScoreJugador2.setText("0");
+            chequearQuienSaca();
             if(setsJug2 > (maxSets/2)) {
                 partidoTerminado=true;
                 Toast.makeText(PartidoScoreActivity.this, "PARTIDO TERMINADO! Ganador: "+jugador2,
@@ -1181,6 +1183,42 @@ public class PartidoScoreActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
             return;
+        }
+    }
+
+    private void chequearQuienSaca(){
+        int n = (setsJug1+setsJug2) % 2;
+        switch (n){
+            case 0:{
+                if(intent.getStringExtra("AlSaque").equals("Jugador 1")) {
+                    sacaJugador1 = true;
+                    sacaJugador2 = false;
+                    iconoPelotaJug1.setVisibility(View.VISIBLE);
+                    iconoPelotaJug2.setVisibility(View.INVISIBLE);
+                }
+                else {
+                    sacaJugador2 = true;
+                    sacaJugador1 = false;
+                    iconoPelotaJug1.setVisibility(View.INVISIBLE);
+                    iconoPelotaJug2.setVisibility(View.VISIBLE);
+                }
+                break;
+            }
+            case 1: {
+                if(intent.getStringExtra("AlSaque").equals("Jugador 1")) {
+                    sacaJugador1 = false;
+                    sacaJugador2 = true;
+                    iconoPelotaJug1.setVisibility(View.INVISIBLE);
+                    iconoPelotaJug2.setVisibility(View.VISIBLE);
+                }
+                else {
+                    sacaJugador2 = false;
+                    sacaJugador1 = true;
+                    iconoPelotaJug1.setVisibility(View.VISIBLE);
+                    iconoPelotaJug2.setVisibility(View.INVISIBLE);
+                }
+                break;
+            }
         }
     }
 

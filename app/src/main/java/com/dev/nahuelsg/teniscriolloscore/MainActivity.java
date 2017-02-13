@@ -39,16 +39,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button nuevoPartido, otraCosa;
+        Button nuevoPartido, limpiarLista;
         nuevoPartido = (Button) findViewById(R.id.button_nuevo_partido);
-        otraCosa = (Button) findViewById(R.id.button_otracosa);
         nuevoPartido.setOnClickListener(btnNuevoPartidoListener);
-
-        //borrar esto!! lo uso para resetear cuando hago testing
-        //PreferenceManager.getDefaultSharedPreferences(this).edit().putString("listaPartidosTerminados", "").apply();
+        limpiarLista = (Button) findViewById(R.id.button_otracosa);
+        limpiarLista.setOnClickListener(btnLimpiarListaListener);
 
         poblarListaResultados(this);
-        listView.setFocusable(false); //"parche" para la incompatibilidad visual entre listview con nestedscrollview
+        if(listView != null) listView.setFocusable(false); //"parche" para la incompatibilidad visual entre listview con nestedscrollview
 
     }
 
@@ -88,6 +86,17 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private View.OnClickListener btnLimpiarListaListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit().putString("listaPartidosTerminados", "").apply();
+            listView = (ListView) findViewById(R.id.listView_resultados_anteriores);
+            resAdapter = new ResultadoAdapter(MainActivity.this, new ArrayList<Resultado>());
+            resAdapter.notifyDataSetChanged();
+            listView.setAdapter(resAdapter);
+        }
+    };
+
     @Override
     public void onBackPressed() {
         //Checking for fragment count on backstack
@@ -118,16 +127,17 @@ public class MainActivity extends AppCompatActivity {
         listaResultadosViejos = gson.fromJson(jsonResultadosPartidosViejos, type);
 
         if(listaResultadosViejos!=null && listaResultadosViejos.size()>0){
-            //si la lista es muy larga, sólo muestro los 5 partidos más recientes
-            while(listaResultadosViejos.size()>5){
-                listaResultadosViejos.remove(listaResultadosViejos.size()-1);
-            }
             //ordeno la lista por fecha
             Collections.sort(listaResultadosViejos, new Comparator<Resultado>() {
                 public int compare(Resultado resultado1, Resultado resultado2) {
                     return resultado2.getFecha().compareTo(resultado1.getFecha());
                 }
             });
+            //si la lista es muy larga, sólo muestro los 9 partidos más recientes
+            while(listaResultadosViejos.size()>9){
+                listaResultadosViejos.remove(listaResultadosViejos.size()-1);
+            }
+
             listView = (ListView) findViewById(R.id.listView_resultados_anteriores);
             resAdapter = new ResultadoAdapter(this, listaResultadosViejos);
             listView.setAdapter(resAdapter);

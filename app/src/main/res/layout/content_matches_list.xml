@@ -24,7 +24,7 @@
             android:textStyle="normal|bold" />
 
         <Button
-            android:text="otra cosa"
+            android:text="limpiar lista"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/button_otracosa"
@@ -49,6 +49,6 @@
     <ListView
         android:id="@+id/listView_resultados_anteriores"
         android:layout_width="match_parent"
-        android:layout_height="590dp" />
+        android:layout_height="1060dp" />
 
 </LinearLayout>
