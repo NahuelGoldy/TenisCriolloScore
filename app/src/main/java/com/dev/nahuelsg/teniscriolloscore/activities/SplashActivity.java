@@ -1,8 +1,10 @@
-package com.dev.nahuelsg.teniscriolloscore;
+package com.dev.nahuelsg.teniscriolloscore.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.dev.nahuelsg.teniscriolloscore.activities.MainActivity;
 
 /**
  * Created by Nahuel SG on 08/02/2017.

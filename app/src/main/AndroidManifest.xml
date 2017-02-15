@@ -9,28 +9,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Splash">
         <activity
-            android:name=".SplashActivity" >
+            android:name=".activities.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".NuevoPartidoActivity"
+            android:name=".activities.NuevoPartidoActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".PartidoScoreActivity"
+            android:name=".activities.PartidoScoreActivity"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme"
             />
         <activity
-            android:name=".EstadisticasActivity"
+            android:name=".activities.EstadisticasActivity"
             android:theme="@style/AppTheme" />
     </application>
 

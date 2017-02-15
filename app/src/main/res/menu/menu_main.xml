@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.dev.nahuelsg.teniscriolloscore.PartidoScoreActivity">
+    tools:context="com.dev.nahuelsg.teniscriolloscore.activities.PartidoScoreActivity">
     <item
         android:id="@+id/action_estadisticas"
         android:orderInCategory="100"

@@ -1,4 +1,4 @@
-package com.dev.nahuelsg.teniscriolloscore;
+package com.dev.nahuelsg.teniscriolloscore.modelo;
 
 /**
  * Created by Nahuel SG on 10/02/2017.

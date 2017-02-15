@@ -1,4 +1,4 @@
-package com.dev.nahuelsg.teniscriolloscore;
+package com.dev.nahuelsg.teniscriolloscore.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,44 +14,50 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.dev.nahuelsg.teniscriolloscore.R;
+import com.dev.nahuelsg.teniscriolloscore.modelo.Accion;
+
+import java.util.Stack;
+
 /**
  * Created by Nahuel SG on 01/02/2017.
  */
 
 public class PartidoScoreActivity extends AppCompatActivity {
-    boolean doubleBackToExitPressedOnce = false;
-    public long tiempoInicioPartido;
-    public String jugador1, jugador2;
-    public int setsJug1=0, setsJug2=0;
-    public int maxSets, maxPuntos, puntActualJugador1=0, puntActualJugador2=0, totalPuntosJugador1=0, totalPuntosJugador2=0;
-    public int set1Jug1=0, set2Jug1=0, set3Jug1=0, set4Jug1=0, set5Jug1=0;
-    public int set1Jug2=0, set2Jug2=0, set3Jug2=0, set4Jug2=0, set5Jug2=0;
-    public boolean sacaJugador1=false, sacaJugador2=false, flagFalta=false, partidoTerminado=false;
-    public int puntosSacandoJugador1=0, puntosSacandoJugador2=0;
-    public int primerSaqueMetidoJugador1=0, primerSaqueMetidoJugador2=0;
-    public int acesJugador1=0, acesJugador2=0;
-    public int dobleFaltasJugador1=0, dobleFaltasJugador2=0;
-    public int puntosGanadosPrimerSaqueJugador1=0, puntosGanadosPrimerSaqueJugador2=0;
-    public int puntosGanadosSegundoSaqueJugador1=0, puntosGanadosSegundoSaqueJugador2=0;
-    public int puntosGanadosDevolucionJugador1=0, puntosGanadosDevolucionJugador2=0;
-    public int subidasRedJugador1=0, subidasRedJugador2=0;
-    public int ptosGanadosRedJugador1=0, ptosGanadosRedJugador2=0;
-    public int winnersDerechaJugador1=0, winnersDerechaJugador2=0;
-    public int winnersRevesJugador1=0,winnersRevesJugador2=0;
-    public int errorNoForzadoDerechaJugador1=0, errorNoForzadoDerechaJugador2=0;
-    public int errorNoForzadoRevesJugador1=0, errorNoForzadoRevesJugador2=0;
+    private Stack<Accion> pilaAcciones;
+    private boolean doubleBackToExitPressedOnce = false;
+    private long tiempoInicioPartido;
+    private String jugador1, jugador2;
+    private int setsJug1=0, setsJug2=0;
+    private int maxSets, maxPuntos, puntActualJugador1=0, puntActualJugador2=0, totalPuntosJugador1=0, totalPuntosJugador2=0;
+    private int set1Jug1=0, set2Jug1=0, set3Jug1=0, set4Jug1=0, set5Jug1=0;
+    private int set1Jug2=0, set2Jug2=0, set3Jug2=0, set4Jug2=0, set5Jug2=0;
+    private boolean sacaJugador1=false, sacaJugador2=false, flagFalta=false, partidoTerminado=false;
+    private int puntosSacandoJugador1=0, puntosSacandoJugador2=0;
+    private int primerSaqueMetidoJugador1=0, primerSaqueMetidoJugador2=0;
+    private int acesJugador1=0, acesJugador2=0;
+    private int dobleFaltasJugador1=0, dobleFaltasJugador2=0;
+    private int puntosGanadosPrimerSaqueJugador1=0, puntosGanadosPrimerSaqueJugador2=0;
+    private int puntosGanadosSegundoSaqueJugador1=0, puntosGanadosSegundoSaqueJugador2=0;
+    private int puntosGanadosDevolucionJugador1=0, puntosGanadosDevolucionJugador2=0;
+    private int subidasRedJugador1=0, subidasRedJugador2=0;
+    private int ptosGanadosRedJugador1=0, ptosGanadosRedJugador2=0;
+    private int winnersDerechaJugador1=0, winnersDerechaJugador2=0;
+    private int winnersRevesJugador1=0,winnersRevesJugador2=0;
+    private int errorNoForzadoDerechaJugador1=0, errorNoForzadoDerechaJugador2=0;
+    private int errorNoForzadoRevesJugador1=0, errorNoForzadoRevesJugador2=0;
 
-    public TextView tvJugador1, tvJugador2, tvScoreJugador1, tvScoreJugador2, tvGuionScore;
-    public ImageView iconoPelotaJug1, iconoPelotaJug2;
-    public Button btnEsquina, btnLabelSet1, btnLabelSet2, btnLabelSet3, btnLabelSet4, btnLabelSet5;
-    public Button btnJug1, btnSet1Jug1, btnSet2Jug1, btnSet3Jug1, btnSet4Jug1, btnSet5Jug1;
-    public Button btnJug2, btnSet1Jug2, btnSet2Jug2, btnSet3Jug2, btnSet4Jug2, btnSet5Jug2;
-    public TabHost tabhost;
-    public Button btnAce, btnFalta, btnSaqueGanador, btnEnJuego;
-    public ToggleButton enLaRedJug1, enLaRedJug2;
-    public Button winnerDerechaJug1, winnerDerechaJug2, winnerRevesJug1, winnerRevesJug2;
-    public Button errorDerechaJug1,errorDerechaJug2, errorRevesJug1, errorRevesJug2;
-    public Button puntoGenericoJug1, puntoGenericoJug2;
+    private TextView tvJugador1, tvJugador2, tvScoreJugador1, tvScoreJugador2, tvGuionScore;
+    private ImageView iconoPelotaJug1, iconoPelotaJug2;
+    private Button btnEsquina, btnLabelSet1, btnLabelSet2, btnLabelSet3, btnLabelSet4, btnLabelSet5;
+    private Button btnJug1, btnSet1Jug1, btnSet2Jug1, btnSet3Jug1, btnSet4Jug1, btnSet5Jug1;
+    private Button btnJug2, btnSet1Jug2, btnSet2Jug2, btnSet3Jug2, btnSet4Jug2, btnSet5Jug2;
+    private TabHost tabhost;
+    private Button btnAce, btnFalta, btnSaqueGanador, btnEnJuego;
+    private ToggleButton enLaRedJug1, enLaRedJug2;
+    private Button winnerDerechaJug1, winnerDerechaJug2, winnerRevesJug1, winnerRevesJug2;
+    private Button errorDerechaJug1,errorDerechaJug2, errorRevesJug1, errorRevesJug2;
+    private Button puntoGenericoJug1, puntoGenericoJug2;
 
     public Intent intent;
 
@@ -117,8 +123,10 @@ public class PartidoScoreActivity extends AppCompatActivity {
             iconoPelotaJug1.setVisibility(View.INVISIBLE);
         }
 
-        tvJugador1.setText(jugador1);
-        tvJugador2.setText(jugador2);
+        if(jugador1.length()<9) tvJugador1.setText(jugador1);
+        else tvJugador1.setText(jugador1.substring(0,9));
+        if(jugador2.length()<9) tvJugador2.setText(jugador2);
+        else tvJugador2.setText(jugador2.substring(0,9));
         tvScoreJugador1.setText("0"); tvScoreJugador2.setText("0");
         if(jugador1.length()>3) btnJug1.setText(jugador1.substring(0,4)); else btnJug1.setText(jugador1);
         if(jugador2.length()>3) btnJug2.setText(jugador2.substring(0,4)); else btnJug2.setText(jugador2);
@@ -129,6 +137,8 @@ public class PartidoScoreActivity extends AppCompatActivity {
         btnSet5Jug1.setText("-"); btnSet5Jug2.setText("-");
 
         tabhost.getTabWidget().getChildTabViewAt(1).setEnabled(false);
+
+        pilaAcciones = new Stack<>();
     }
 
     @Override
@@ -561,6 +571,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
 
     public void accionBotonAcePrimerSaque(){
         if(sacaJugador1){
+            pilaAcciones.push(new Accion("ace", 1, 1));
             puntActualJugador1++;
             puntosGanadosPrimerSaqueJugador1++;
             totalPuntosJugador1++;
@@ -576,6 +587,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             }
         }
         else{
+            pilaAcciones.push(new Accion("ace", 1, 2));
             puntActualJugador2++;
             puntosGanadosPrimerSaqueJugador2++;
             totalPuntosJugador2++;
@@ -595,9 +607,11 @@ public class PartidoScoreActivity extends AppCompatActivity {
     public void accionBotonFaltaPrimerSaque(){
         flagFalta = true;
         if(sacaJugador1){
+            pilaAcciones.push(new Accion("falta", 1, 1));
             puntosSacandoJugador1++;
         }
         else{
+            pilaAcciones.push(new Accion("falta", 1, 2));
             puntosSacandoJugador2++;
         }
         ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("2do saque");
@@ -606,6 +620,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
 
     public void accionBotonSaqueGanadorPrimerSaque(){
         if(sacaJugador1){
+            pilaAcciones.push(new Accion("saque_ganador", 1, 1));
             puntActualJugador1++;
             puntosGanadosPrimerSaqueJugador1++;
             totalPuntosJugador1++;
@@ -620,6 +635,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             }
         }
         else{
+            pilaAcciones.push(new Accion("saque_ganador", 1, 2));
             puntActualJugador2++;
             puntosGanadosPrimerSaqueJugador2++;
             totalPuntosJugador2++;
@@ -637,10 +653,12 @@ public class PartidoScoreActivity extends AppCompatActivity {
 
     public void accionBotonEnJuegoPrimerSaque(){
         if(sacaJugador1){
+            pilaAcciones.push(new Accion("en_juego", 1, 1));
             puntosSacandoJugador1++;
             primerSaqueMetidoJugador1++;
         }
         else{
+            pilaAcciones.push(new Accion("en_juego", 1, 2));
             puntosSacandoJugador2++;
             primerSaqueMetidoJugador2++;
         }
@@ -650,6 +668,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
     public void accionBotonAceSegundoSaque(){
         flagFalta=false;
         if(sacaJugador1){
+            pilaAcciones.push(new Accion("ace", 2, 1));
             puntActualJugador1++;
             puntosGanadosSegundoSaqueJugador1++;
             totalPuntosJugador1++;
@@ -663,6 +682,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             }
         }
         else{
+            pilaAcciones.push(new Accion("ace", 2, 2));
             puntActualJugador2++;
             puntosGanadosSegundoSaqueJugador2++;
             totalPuntosJugador2++;
@@ -681,6 +701,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
     public void accionBotonFaltaSegundoSaque(){
         flagFalta=false;
         if(sacaJugador1){
+            pilaAcciones.push(new Accion("doble_falta", 2, 1));
             dobleFaltasJugador1++;
             puntActualJugador2++;
             totalPuntosJugador2++;
@@ -694,6 +715,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             }
         }
         else{
+            pilaAcciones.push(new Accion("doble_falta", 2, 2));
             dobleFaltasJugador2++;
             puntActualJugador1++;
             totalPuntosJugador1++;
@@ -712,6 +734,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
     public void accionBotonSaqueGanadorSegundoSaque(){
         flagFalta=false;
         if(sacaJugador1){
+            pilaAcciones.push(new Accion("saque_ganador", 2, 1));
             puntActualJugador1++;
             puntosGanadosSegundoSaqueJugador1++;
             totalPuntosJugador1++;
@@ -724,6 +747,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
             }
         }
         else{
+            pilaAcciones.push(new Accion("saque_ganador", 2, 2));
             puntActualJugador2++;
             puntosGanadosSegundoSaqueJugador2++;
             totalPuntosJugador2++;
@@ -739,16 +763,29 @@ public class PartidoScoreActivity extends AppCompatActivity {
     }
 
     public void accionBotonEnJuegoSegundoSaque(){
+        if(sacaJugador1){
+            pilaAcciones.push(new Accion("en_juego", 2, 1));
+        }
+        else{
+            pilaAcciones.push(new Accion("en_juego", 2, 2));
+        }
         cambiarTab(1,0);
     }
 
     public void accionBotonWinnerDerechaJug1(boolean enRedJug1, boolean enRedJug2) {
+        int saq;
+        if(!flagFalta) saq=1;
+        else saq=2;
         puntActualJugador1++;
         totalPuntosJugador1++;
         winnersDerechaJugador1++;
         if(enRedJug1){
+            pilaAcciones.push(new Accion("winner_derecha_red", saq, 1));
             subidasRedJugador1++;
             ptosGanadosRedJugador1++;
+        }
+        else{
+            pilaAcciones.push(new Accion("winner_derecha_fondo", saq, 1));
         }
         if(enRedJug2){
             subidasRedJugador2++;
@@ -767,15 +804,23 @@ public class PartidoScoreActivity extends AppCompatActivity {
                 iconoPelotaJug1.setVisibility(View.VISIBLE);
             }
         }
+        flagFalta=false;
     }
 
     public void accionBotonWinnerDerechaJug2(boolean enRedJug1, boolean enRedJug2) {
+        int saq;
+        if(!flagFalta) saq=1;
+        else saq=2;
         puntActualJugador2++;
         totalPuntosJugador2++;
         winnersDerechaJugador2++;
         if(enRedJug2){
+            pilaAcciones.push(new Accion("winner_derecha_red", saq, 2));
             subidasRedJugador2++;
             ptosGanadosRedJugador2++;
+        }
+        else{
+            pilaAcciones.push(new Accion("winner_derecha_fondo", saq, 2));
         }
         if(enRedJug1){
             subidasRedJugador1++;
@@ -794,9 +839,13 @@ public class PartidoScoreActivity extends AppCompatActivity {
                 iconoPelotaJug1.setVisibility(View.VISIBLE);
             }
         }
+        flagFalta=false;
     }
 
     public void accionBotonWinnerRevesJug1(boolean enRedJug1, boolean enRedJug2) {
+        int saq;
+        if(!flagFalta) saq=1;
+        else saq=2;
         puntActualJugador1++;
         totalPuntosJugador1++;
         winnersRevesJugador1++;
@@ -806,7 +855,9 @@ public class PartidoScoreActivity extends AppCompatActivity {
         if(enRedJug1){
             subidasRedJugador1++;
             ptosGanadosRedJugador1++;
+            pilaAcciones.push(new Accion("winner_reves_red", saq, 1));
         }
+        else pilaAcciones.push(new Accion("winner_reves_fondo", saq, 1));
         tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
         chequearEsFinSetJugador1();
         if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
@@ -821,16 +872,22 @@ public class PartidoScoreActivity extends AppCompatActivity {
                 iconoPelotaJug1.setVisibility(View.VISIBLE);
             }
         }
+        flagFalta=false;
     }
 
     public void accionBotonWinnerRevesJug2(boolean enRedJug1, boolean enRedJug2) {
+        int saq;
+        if(!flagFalta) saq=1;
+        else saq=2;
         puntActualJugador2++;
         totalPuntosJugador2++;
         winnersRevesJugador2++;
         if(enRedJug2){
             subidasRedJugador2++;
             ptosGanadosRedJugador2++;
+            pilaAcciones.push(new Accion("winner_reves_red", saq, 2));
         }
+        else pilaAcciones.push(new Accion("winner_reves_fondo", saq, 2));
         if(enRedJug1){
             subidasRedJugador1++;
         }
@@ -848,9 +905,13 @@ public class PartidoScoreActivity extends AppCompatActivity {
                 iconoPelotaJug1.setVisibility(View.VISIBLE);
             }
         }
+        flagFalta=false;
     }
 
     public void accionBotonErrorDerechaJug1(boolean enRedJug1, boolean enRedJug2) {
+        int saq;
+        if(!flagFalta) saq=1;
+        else saq=2;
         puntActualJugador2++;
         totalPuntosJugador2++;
         errorNoForzadoDerechaJugador1++;
@@ -860,7 +921,9 @@ public class PartidoScoreActivity extends AppCompatActivity {
         }
         if(enRedJug1){
             subidasRedJugador1++;
+            pilaAcciones.push(new Accion("error_derecha_red", saq, 1));
         }
+        else pilaAcciones.push(new Accion("error_derecha_fondo", saq, 1));
         tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
         chequearEsFinSetJugador2();
         if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
@@ -875,15 +938,21 @@ public class PartidoScoreActivity extends AppCompatActivity {
                 iconoPelotaJug1.setVisibility(View.VISIBLE);
             }
         }
+        flagFalta=false;
     }
 
     public void accionBotonErrorDerechaJug2(boolean enRedJug1, boolean enRedJug2) {
+        int saq;
+        if(!flagFalta) saq=1;
+        else saq=2;
         puntActualJugador1++;
         totalPuntosJugador1++;
         errorNoForzadoDerechaJugador2++;
         if(enRedJug2){
             subidasRedJugador2++;
+            pilaAcciones.push(new Accion("error_derecha_red", saq, 2));
         }
+        else pilaAcciones.push(new Accion("error_derecha_fondo", saq, 2));
         if(enRedJug1){
             subidasRedJugador1++;
             ptosGanadosRedJugador1++;
@@ -902,9 +971,13 @@ public class PartidoScoreActivity extends AppCompatActivity {
                 iconoPelotaJug1.setVisibility(View.VISIBLE);
             }
         }
+        flagFalta=false;
     }
 
     public void accionBotonErrorRevesJug1(boolean enRedJug1, boolean enRedJug2) {
+        int saq;
+        if(!flagFalta) saq=1;
+        else saq=2;
         puntActualJugador2++;
         totalPuntosJugador2++;
         errorNoForzadoRevesJugador1++;
@@ -914,7 +987,9 @@ public class PartidoScoreActivity extends AppCompatActivity {
         }
         if(enRedJug1){
             subidasRedJugador1++;
+            pilaAcciones.push(new Accion("error_reves_red", saq, 1));
         }
+        else pilaAcciones.push(new Accion("error_reves_fondo", saq, 1));
         tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
         chequearEsFinSetJugador2();
         if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
@@ -929,15 +1004,21 @@ public class PartidoScoreActivity extends AppCompatActivity {
                 iconoPelotaJug1.setVisibility(View.VISIBLE);
             }
         }
+        flagFalta=false;
     }
 
     public void accionBotonErrorRevesJug2(boolean enRedJug1, boolean enRedJug2) {
+        int saq;
+        if(!flagFalta) saq=1;
+        else saq=2;
         puntActualJugador1++;
         totalPuntosJugador1++;
         errorNoForzadoRevesJugador2++;
         if(enRedJug2){
             subidasRedJugador2++;
+            pilaAcciones.push(new Accion("error_reves_red", saq, 2));
         }
+        else pilaAcciones.push(new Accion("error_reves_fondo", saq, 2));
         if(enRedJug1){
             subidasRedJugador1++;
             ptosGanadosRedJugador1++;
@@ -956,9 +1037,13 @@ public class PartidoScoreActivity extends AppCompatActivity {
                 iconoPelotaJug1.setVisibility(View.VISIBLE);
             }
         }
+        flagFalta=false;
     }
 
     public void accionBotonPuntoGanadoJug1(boolean enRedJug1, boolean enRedJug2) {
+        int saq;
+        if(!flagFalta) saq=1;
+        else saq=2;
         puntActualJugador1++;
         totalPuntosJugador1++;
         if(enRedJug2){
@@ -967,7 +1052,9 @@ public class PartidoScoreActivity extends AppCompatActivity {
         if(enRedJug1){
             subidasRedJugador1++;
             ptosGanadosRedJugador1++;
+            pilaAcciones.push(new Accion("pto_ganado_red", saq, 1));
         }
+        else pilaAcciones.push(new Accion("pto_ganado_fondo", saq, 1));
         tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
         chequearEsFinSetJugador1();
         if((puntActualJugador1+puntActualJugador2)>0 && (puntActualJugador1+puntActualJugador2)%4==0){
@@ -982,15 +1069,21 @@ public class PartidoScoreActivity extends AppCompatActivity {
                 iconoPelotaJug1.setVisibility(View.VISIBLE);
             }
         }
+        flagFalta=false;
     }
 
     public void accionBotonPuntoGanadoJug2(boolean enRedJug1, boolean enRedJug2) {
+        int saq;
+        if(!flagFalta) saq=1;
+        else saq=2;
         puntActualJugador2++;
         totalPuntosJugador2++;
         if(enRedJug2){
             subidasRedJugador2++;
             ptosGanadosRedJugador2++;
+            pilaAcciones.push(new Accion("pto_ganado_red", saq, 2));
         }
+        else pilaAcciones.push(new Accion("pto_ganado_fondo", saq, 2));
         if(enRedJug1){
             subidasRedJugador1++;
         }
@@ -1008,6 +1101,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
                 iconoPelotaJug1.setVisibility(View.VISIBLE);
             }
         }
+        flagFalta=false;
     }
 
     public void chequearEsFinSetJugador1(){

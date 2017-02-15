@@ -1,4 +1,4 @@
-package com.dev.nahuelsg.teniscriolloscore;
+package com.dev.nahuelsg.teniscriolloscore.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,13 +7,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dev.nahuelsg.teniscriolloscore.R;
+
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -71,8 +71,6 @@ public class NuevoPartidoActivity extends AppCompatActivity  {
                         Toast.LENGTH_LONG).show();
             }
             else{
-                if(nombreJugador1.length()>9) nombreJugador1 = nombreJugador1.substring(0,8);
-                if(nombreJugador2.length()>9) nombreJugador2 = nombreJugador2.substring(0,8);
                 empiezaSaque = (listaEmpiezaSacando).getSelectedItem().toString();
                 Intent i = new Intent(NuevoPartidoActivity.this,PartidoScoreActivity.class);
                 i.putExtra("Jugador1", nombreJugador1);

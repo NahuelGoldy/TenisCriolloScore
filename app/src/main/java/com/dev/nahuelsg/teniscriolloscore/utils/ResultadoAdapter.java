@@ -1,4 +1,4 @@
-package com.dev.nahuelsg.teniscriolloscore;
+package com.dev.nahuelsg.teniscriolloscore.utils;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.dev.nahuelsg.teniscriolloscore.R;
+import com.dev.nahuelsg.teniscriolloscore.modelo.Resultado;
 
 import java.util.ArrayList;
 import java.util.List;

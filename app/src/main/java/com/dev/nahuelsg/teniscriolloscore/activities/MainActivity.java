@@ -1,12 +1,10 @@
-package com.dev.nahuelsg.teniscriolloscore;
+package com.dev.nahuelsg.teniscriolloscore.activities;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.test.espresso.core.deps.guava.reflect.TypeToken;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,6 +15,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.dev.nahuelsg.teniscriolloscore.R;
+import com.dev.nahuelsg.teniscriolloscore.modelo.PartidoStats;
+import com.dev.nahuelsg.teniscriolloscore.modelo.Resultado;
+import com.dev.nahuelsg.teniscriolloscore.utils.ResultadoAdapter;
 import com.google.gson.Gson;
 
 import java.lang.reflect.Type;

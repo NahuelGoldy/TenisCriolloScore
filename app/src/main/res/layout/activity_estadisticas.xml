@@ -15,10 +15,10 @@
             android:id="@+id/label_jugador1"
             android:layout_weight="1"
             android:textAlignment="center"
-            android:gravity="end"
             android:textSize="18sp"
             android:textColor="#000000"
-            android:textStyle="normal|bold" />
+            android:textStyle="normal|bold"
+            android:gravity="center" />
 
         <TextView
             android:text="13"
@@ -61,7 +61,8 @@
             android:textStyle="normal|bold"
             android:textSize="18sp"
             android:textColor="#000000"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:gravity="center" />
     </LinearLayout>
 
     <LinearLayout
@@ -146,7 +147,9 @@
                 android:layout_weight="1"
                 android:clickable="false"
                 android:focusable="false"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:backgroundTint="#FF0027FF"
+                android:textColor="#FFFFFF" />
 
             <Button
                 android:text="16"
@@ -207,7 +210,9 @@
                 android:clickable="false"
                 android:id="@+id/label_jugador2_sets_estadisticas"
                 android:focusable="false"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#FF0027FF" />
 
             <Button
                 android:text="12"
