@@ -43,14 +43,15 @@ public class EstadisticasActivity extends AppCompatActivity {
     private int winnersRevesJugador1,winnersRevesJugador2;
     private int errorNoForzadoDerechaJugador1, errorNoForzadoDerechaJugador2;
     private int errorNoForzadoRevesJugador1, errorNoForzadoRevesJugador2;
-    private boolean terminado=false;
+    private boolean terminado=false, ver=false;
+    private String duracionPartido;
 
     private Button btnAlign, btnSet1, btnSet2, btnSet3, btnSet4, btnSet5;
     private Button btnLabelJug1, btnSet1Jug1, btnSet2Jug1, btnSet3Jug1, btnSet4Jug1, btnSet5Jug1;
     private Button btnLabelJug2, btnSet1Jug2, btnSet2Jug2, btnSet3Jug2, btnSet4Jug2, btnSet5Jug2;
 
     private TextView labelJug1, labelJug2, scoreJug1, scoreJug2, labelGuionScore;
-    private TextView labelEstadisticasServicio, labelEstadisticasGolpes;
+    private TextView labelEstadisticasServicio, labelEstadisticasGolpes, labelDuracionPartido, tiempoDeJuego;
 
     private TextView labelAces, acesJug1, acesJug2;
     private TextView labelDobleFaltas, dobleFaltasJug1, dobleFaltasJug2;
@@ -95,6 +96,12 @@ public class EstadisticasActivity extends AppCompatActivity {
         labelGuionScore = (TextView) findViewById(R.id.textView5);
         totalPuntosJugador1 = intent.getIntExtra("TotalPtosJug1", 0);
         totalPuntosJugador2 = intent.getIntExtra("TotalPtosJug2", 0);
+
+        labelDuracionPartido = (TextView) findViewById(R.id.tv_label_duracion_partido);
+        labelDuracionPartido.setText("Duración del partido: ");
+        tiempoDeJuego = (TextView) findViewById(R.id.tv_duracion_partido);
+        duracionPartido = generarDuracionPartido();
+        tiempoDeJuego.setText(duracionPartido);
 
         btnAlign = (Button) findViewById(R.id.button_align_estadisticas);
         btnSet1 = (Button) findViewById(R.id.label_set1_estadisticas);
@@ -278,15 +285,17 @@ public class EstadisticasActivity extends AppCompatActivity {
         enLaRedJug2.setText(String.valueOf(ptosGanadosRedJugador2)+" / "+String.valueOf(subidasRedJugador2));
 
         terminado = intent.getBooleanExtra("Terminado", false);
+        ver = intent.getBooleanExtra("Ver", false);
 
         //Si el partido terminó, persistirlo en el json de Resultados (SharedPreferences)
-        if(terminado){
-            String duracionPartido = generarDuracionPartido();
+        if(terminado && !ver){
             Gson gson = new Gson();
             List<Resultado> resultadosViejosList;
             List<PartidoStats> statsPartidosViejosList;
-            Resultado resultado = this.crearResultado(intent.getStringExtra("Ganador"), intent.getIntExtra("CantSets", 1), duracionPartido);
-            PartidoStats partidoStats = generarStats();
+            String vencedor = intent.getStringExtra("Ganador");
+            int cantSetsJugados = intent.getIntExtra("CantSets", 1);
+            Resultado resultado = this.crearResultado(vencedor, cantSetsJugados, duracionPartido);
+            PartidoStats partidoStats = generarStats(vencedor, cantSetsJugados);
 
             //leer desde SharedPreferences -> el string guardado es un json
             String listaPartidosViejosJson = PreferenceManager.getDefaultSharedPreferences(this).getString("listaPartidosTerminados", "");
@@ -303,7 +312,7 @@ public class EstadisticasActivity extends AppCompatActivity {
             //volver a persistir en SharedPreferences la lista actualizada
             PreferenceManager.getDefaultSharedPreferences(this).edit().putString("listaPartidosTerminados", listaPartidosViejosJson).apply();
 
-            //mismo tratamiento para la lista de Stats
+//------------------------------------mismo tratamiento para la lista de Stats
             //TODO en un futuro refactorizar y borrar la lista de Resultados?
             //leer desde SharedPreferences -> el string guardado es un json
             String listaPartidosViejosStatsJson = PreferenceManager.getDefaultSharedPreferences(this).getString("listaPartidosStatsTerminados", "");
@@ -312,7 +321,7 @@ public class EstadisticasActivity extends AppCompatActivity {
             }
             else{
                 //obtener la lista de Resultados desde el Json
-                Type type = new TypeToken<List<Resultado>>() {}.getType();
+                Type type = new TypeToken<List<PartidoStats>>() {}.getType();
                 statsPartidosViejosList = gson.fromJson(listaPartidosViejosStatsJson, type);
             }
             statsPartidosViejosList.add(partidoStats);
@@ -426,40 +435,34 @@ public class EstadisticasActivity extends AppCompatActivity {
         return duracion;
     }
 
-    private PartidoStats generarStats(){
+    private PartidoStats generarStats(String ganador, int cantSets){
         PartidoStats stats = new PartidoStats();
         stats.setJugador1(jugador1); stats.setJugador2(jugador2);
         stats.setTiempoDeJuego(generarDuracionPartido());
         stats.setFecha(generarFechaHoraPartido());
+        stats.setTotalPuntosJug1(totalPuntosJugador1); stats.setTotalPuntosJug2(totalPuntosJugador2);
         stats.setAcesJug1(acesJugador1); stats.setAcesJug2(acesJugador2);
         stats.setDoblFaltasJug1(dobleFaltasJugador1); stats.setDoblFaltasJug2(dobleFaltasJugador1);
-
-        if(puntosSacandoJugador1==0) stats.setEfectPrimeroJug1(0);
-        else stats.setEfectPrimeroJug1(((int)(((float)primerSaqueMetidoJugador1/puntosSacandoJugador1)*100)));
-        if(puntosSacandoJugador2==0) stats.setEfectPrimeroJug2(0);
-        else stats.setEfectPrimeroJug2(((int)(((float)primerSaqueMetidoJugador2/puntosSacandoJugador2)*100)));
-
-        if(primerSaqueMetidoJugador1==0) stats.setGanadosPrimeroJug1(0);
-        else stats.setGanadosPrimeroJug1(((int)(((float)puntosGanadosPrimerSaqueJugador1/primerSaqueMetidoJugador1)*100)));
-        if(primerSaqueMetidoJugador2==0) stats.setGanadosPrimeroJug2(0);
-        else stats.setGanadosPrimeroJug2(((int)(((float)puntosGanadosPrimerSaqueJugador2/primerSaqueMetidoJugador2)*100)));
-
-        if((puntosSacandoJugador1-primerSaqueMetidoJugador1-dobleFaltasJugador1)==0)stats.setGanadosSegundoJug1(0);
-        else stats.setGanadosPrimeroJug1((int)(((float)puntosGanadosSegundoSaqueJugador1/(puntosSacandoJugador1-primerSaqueMetidoJugador1-dobleFaltasJugador1)*100)));
-        if((puntosSacandoJugador2-primerSaqueMetidoJugador2-dobleFaltasJugador2)==0)stats.setGanadosSegundoJug2(0);
-        else stats.setGanadosPrimeroJug2((int)(((float)puntosGanadosSegundoSaqueJugador2/(puntosSacandoJugador2-primerSaqueMetidoJugador2-dobleFaltasJugador2)*100)));
-
-        if(puntosSacandoJugador2==0) stats.setGanadosDevolJug1(0);
-        else stats.setGanadosDevolJug1((int)(((float)puntosGanadosDevolucionJugador1/puntosSacandoJugador2)*100));
-        if(puntosSacandoJugador1==0) stats.setGanadosDevolJug2(0);
-        else stats.setGanadosDevolJug2((int)(((float)puntosGanadosDevolucionJugador2/puntosSacandoJugador1)*100));
-
+        stats.setPuntosSacandoJug1(puntosSacandoJugador1); stats.setPuntosSacandoJug2(puntosSacandoJugador2);
+        stats.setPrimerosAdentroJug1(primerSaqueMetidoJugador1); stats.setPrimerosAdentroJug2(primerSaqueMetidoJugador2);
+        stats.setGanadosPrimeroJug1(puntosGanadosPrimerSaqueJugador1); stats.setGanadosPrimeroJug2(puntosGanadosPrimerSaqueJugador2);
+        stats.setGanadosSegundoJug1(puntosGanadosSegundoSaqueJugador1); stats.setGanadosSegundoJug2(puntosGanadosSegundoSaqueJugador2);
+        stats.setGanadosDevolJug1(puntosGanadosDevolucionJugador1); stats.setGanadosDevolJug2(puntosGanadosDevolucionJugador2);
         stats.setWinnersDerechaJug1(winnersDerechaJugador1); stats.setWinnersDerechaJug2(winnersDerechaJugador2);
         stats.setWinnersRevesJug1(winnersRevesJugador1); stats.setWinnersRevesJug2(winnersRevesJugador2);
         stats.setErroresDerechaJug1(errorNoForzadoDerechaJugador1); stats.setErroresDerechaJug2(errorNoForzadoDerechaJugador2);
         stats.setErroresRevesJug1(errorNoForzadoRevesJugador1); stats.setErroresRevesJug2(errorNoForzadoRevesJugador2);
         stats.setSubidasJug1(subidasRedJugador1); stats.setSubidasJug2(subidasRedJugador2);
         stats.setGanadosRedJug1(ptosGanadosRedJugador1); stats.setGanadosRedJug2(ptosGanadosRedJugador2);
+        stats.setCantSets(cantSets);
+        stats.setSet1Jug1(Integer.parseInt(btnSet1Jug1.getText().toString())); stats.setSet1Jug2(Integer.parseInt(btnSet1Jug2.getText().toString()));
+        stats.setSet2Jug1(Integer.parseInt(btnSet2Jug1.getText().toString())); stats.setSet2Jug2(Integer.parseInt(btnSet2Jug2.getText().toString()));
+        stats.setSet3Jug1(Integer.parseInt(btnSet3Jug1.getText().toString())); stats.setSet3Jug2(Integer.parseInt(btnSet3Jug2.getText().toString()));
+        stats.setSet4Jug1(Integer.parseInt(btnSet4Jug1.getText().toString())); stats.setSet4Jug2(Integer.parseInt(btnSet4Jug2.getText().toString()));
+        stats.setSet5Jug1(Integer.parseInt(btnSet5Jug1.getText().toString())); stats.setSet5Jug2(Integer.parseInt(btnSet5Jug2.getText().toString()));
+        stats.setGanador(ganador);
+        stats.setTiempoInicio(getIntent().getLongExtra("TiempoInicio", System.currentTimeMillis()));
+        stats.setTiempoFinal(getIntent().getLongExtra("TiempoFinal", System.currentTimeMillis()));
 
         return stats;
     }

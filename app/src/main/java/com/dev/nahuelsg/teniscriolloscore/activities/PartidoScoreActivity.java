@@ -554,7 +554,7 @@ public class PartidoScoreActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_estadisticas) {
-            if(tabhost.getCurrentTab()==0){
+            if(tabhost.getCurrentTab()==0 && !flagFalta){
                 Intent i = new Intent(PartidoScoreActivity.this,EstadisticasActivity.class);
                 i = putExtrasParaEstadisticas(i);
                 //TODO startactivityforresult?

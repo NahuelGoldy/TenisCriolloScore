@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         poblarListaResultados(this);
         if(listView != null) listView.setFocusable(false); //"parche" para la incompatibilidad visual entre listview con nestedscrollview
 
+        //PreferenceManager.getDefaultSharedPreferences(this).edit().putString("listaPartidosTerminados", "").commit();
+        //PreferenceManager.getDefaultSharedPreferences(this).edit().putString("listaPartidosStatsTerminados", "").commit();
     }
 
     @Override
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View view) {
             PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit().putString("listaPartidosTerminados", "").apply();
             listView = (ListView) findViewById(R.id.listView_resultados_anteriores);
-            resAdapter = new ResultadoAdapter(MainActivity.this, new ArrayList<Resultado>());
+            resAdapter = new ResultadoAdapter(MainActivity.this, new ArrayList<Resultado>(), new ArrayList<PartidoStats>());
             resAdapter.notifyDataSetChanged();
             listView.setAdapter(resAdapter);
         }
@@ -141,9 +143,30 @@ public class MainActivity extends AppCompatActivity {
             }
 
             listView = (ListView) findViewById(R.id.listView_resultados_anteriores);
-            resAdapter = new ResultadoAdapter(this, listaResultadosViejos);
+            resAdapter = new ResultadoAdapter(this, listaResultadosViejos, obtenerListaPartidosStatsDesdeJson(MainActivity.this));
             listView.setAdapter(resAdapter);
         }
+    }
+
+    private ArrayList<PartidoStats> obtenerListaPartidosStatsDesdeJson(Context context){
+        gson = new Gson();
+        String jsonPartidosStatsViejos = PreferenceManager.getDefaultSharedPreferences(context).getString("listaPartidosStatsTerminados", "");
+        ArrayList<PartidoStats> listaPartidosStatsViejos = new ArrayList<>();
+        Type type = new TypeToken<List<PartidoStats>>() {}.getType();
+        listaPartidosStatsViejos = gson.fromJson(jsonPartidosStatsViejos, type);
+
+        if(listaPartidosStatsViejos!=null && listaPartidosStatsViejos.size()>0){
+            //ordeno la lista por fecha
+            Collections.sort(listaPartidosStatsViejos, new Comparator<PartidoStats>() {
+                public int compare(PartidoStats p1, PartidoStats p2) {
+                    return p2.getFecha().compareTo(p1.getFecha());
+                }
+            });
+        }
+
+        System.out.println("--------->>>>>>>>"+jsonPartidosStatsViejos);
+
+        return listaPartidosStatsViejos;
     }
 
 }

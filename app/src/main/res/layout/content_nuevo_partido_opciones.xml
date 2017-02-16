@@ -26,7 +26,8 @@
         android:ems="10"
         android:id="@+id/editText_jugador1"
         android:textSize="14sp"
-        android:hint="nombre jugador 1" />
+        android:hint="nombre jugador 1"
+        android:capitalize="words" />
 
     <TextView
         android:text="Jugador 2"
@@ -45,7 +46,8 @@
         android:ems="10"
         android:id="@+id/editText_jugador2"
         android:textSize="14sp"
-        android:hint="nombre jugador 2" />
+        android:hint="nombre jugador 2"
+        android:capitalize="words" />
 
     <TextView
         android:text="Reglas de puntaje"

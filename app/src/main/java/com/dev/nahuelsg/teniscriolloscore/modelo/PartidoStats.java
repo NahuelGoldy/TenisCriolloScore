@@ -5,23 +5,27 @@ package com.dev.nahuelsg.teniscriolloscore.modelo;
  */
 
 public class PartidoStats {
-    private String jugador1, jugador2;
+    private String jugador1, jugador2, ganador;
     private String tiempoDeJuego;
     private String fecha;
     private int set1Jug1, set2Jug1, set3Jug1, set4Jug1, set5Jug1;
-    private int set1Ju21, set2Jug2, set3Jug2, set4Jug2, set5Jug2;
+    private int set1Jug2, set2Jug2, set3Jug2, set4Jug2, set5Jug2;
     private int acesJug1, acesJug2;
     private int doblFaltasJug1, doblFaltasJug2;
-    private int efectPrimeroJug1, efectPrimeroJug2; //entero que mide porcentaje
-    private int ganadosPrimeroJug1, ganadosPrimeroJug2; //entero que mide porcentaje
-    private int ganadosSegundoJug1, ganadosSegundoJug2; //entero que mide porcentaje
-    private int ganadosDevolJug1, ganadosDevolJug2; //entero que mide porcentaje
+    private int puntosSacandoJug1, puntosSacandoJug2;
+    private int primerosAdentroJug1, primerosAdentroJug2;
+    private int ganadosPrimeroJug1, ganadosPrimeroJug2;
+    private int ganadosSegundoJug1, ganadosSegundoJug2;
+    private int ganadosDevolJug1, ganadosDevolJug2;
     private int winnersDerechaJug1, winnersDerechaJug2;
     private int winnersRevesJug1, winnersRevesJug2;
     private int erroresDerechaJug1, erroresDerechaJug2;
     private int erroresRevesJug1, erroresRevesJug2;
     private int subidasJug1, subidasJug2;
     private int ganadosRedJug1, ganadosRedJug2;
+    private int totalPuntosJug1, totalPuntosJug2;
+    private int cantSets;
+    private long tiempoInicio, tiempoFinal;
 
     public PartidoStats(){}
 
@@ -39,6 +43,14 @@ public class PartidoStats {
 
     public void setJugador2(String jugador2) {
         this.jugador2 = jugador2;
+    }
+
+    public String getGanador() {
+        return ganador;
+    }
+
+    public void setGanador(String ganador) {
+        this.ganador = ganador;
     }
 
     public String getTiempoDeJuego() {
@@ -97,12 +109,12 @@ public class PartidoStats {
         this.set5Jug1 = set5Jug1;
     }
 
-    public int getSet1Ju21() {
-        return set1Ju21;
+    public int getSet1Jug2() {
+        return set1Jug2;
     }
 
-    public void setSet1Ju21(int set1Ju21) {
-        this.set1Ju21 = set1Ju21;
+    public void setSet1Jug2(int set1Ju21) {
+        this.set1Jug2 = set1Ju21;
     }
 
     public int getSet2Jug2() {
@@ -169,20 +181,36 @@ public class PartidoStats {
         this.doblFaltasJug2 = doblFaltasJug2;
     }
 
-    public int getEfectPrimeroJug1() {
-        return efectPrimeroJug1;
+    public int getPuntosSacandoJug1() {
+        return puntosSacandoJug1;
     }
 
-    public void setEfectPrimeroJug1(int efectPrimeroJug1) {
-        this.efectPrimeroJug1 = efectPrimeroJug1;
+    public void setPuntosSacandoJug1(int puntosSacandoJug1) {
+        this.puntosSacandoJug1 = puntosSacandoJug1;
     }
 
-    public int getEfectPrimeroJug2() {
-        return efectPrimeroJug2;
+    public int getPuntosSacandoJug2() {
+        return puntosSacandoJug2;
     }
 
-    public void setEfectPrimeroJug2(int efectPrimeroJug2) {
-        this.efectPrimeroJug2 = efectPrimeroJug2;
+    public void setPuntosSacandoJug2(int puntosSacandoJug2) {
+        this.puntosSacandoJug2 = puntosSacandoJug2;
+    }
+
+    public int getPrimerosAdentroJug1() {
+        return primerosAdentroJug1;
+    }
+
+    public void setPrimerosAdentroJug1(int primerosAdentroJug1) {
+        this.primerosAdentroJug1 = primerosAdentroJug1;
+    }
+
+    public int getPrimerosAdentroJug2() {
+        return primerosAdentroJug2;
+    }
+
+    public void setPrimerosAdentroJug2(int primerosAdentroJug2) {
+        this.primerosAdentroJug2 = primerosAdentroJug2;
     }
 
     public int getGanadosPrimeroJug1() {
@@ -327,5 +355,45 @@ public class PartidoStats {
 
     public void setGanadosRedJug2(int ganadosRedJug2) {
         this.ganadosRedJug2 = ganadosRedJug2;
+    }
+
+    public int getTotalPuntosJug1() {
+        return totalPuntosJug1;
+    }
+
+    public void setTotalPuntosJug1(int totalPuntosJug1) {
+        this.totalPuntosJug1 = totalPuntosJug1;
+    }
+
+    public int getTotalPuntosJug2() {
+        return totalPuntosJug2;
+    }
+
+    public void setTotalPuntosJug2(int totalPuntosJug2) {
+        this.totalPuntosJug2 = totalPuntosJug2;
+    }
+
+    public int getCantSets() {
+        return cantSets;
+    }
+
+    public void setCantSets(int cantSets) {
+        this.cantSets = cantSets;
+    }
+
+    public long getTiempoInicio() {
+        return tiempoInicio;
+    }
+
+    public void setTiempoInicio(long tiempoInicio) {
+        this.tiempoInicio = tiempoInicio;
+    }
+
+    public long getTiempoFinal() {
+        return tiempoFinal;
+    }
+
+    public void setTiempoFinal(long tiempoFinal) {
+        this.tiempoFinal = tiempoFinal;
     }
 }
