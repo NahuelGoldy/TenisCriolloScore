@@ -328,7 +328,6 @@ public class EstadisticasActivity extends AppCompatActivity {
             listaPartidosViejosStatsJson = gson.toJson(statsPartidosViejosList);
             //volver a persistir en SharedPreferences la lista actualizada
             PreferenceManager.getDefaultSharedPreferences(this).edit().putString("listaPartidosStatsTerminados", listaPartidosViejosStatsJson).apply();
-
         }
     }
 

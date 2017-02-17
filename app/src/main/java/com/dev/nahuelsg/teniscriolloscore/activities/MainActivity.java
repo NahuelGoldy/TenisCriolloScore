@@ -41,14 +41,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button nuevoPartido, limpiarLista;
+        Button nuevoPartido, otroBoton;
         nuevoPartido = (Button) findViewById(R.id.button_nuevo_partido);
         nuevoPartido.setOnClickListener(btnNuevoPartidoListener);
-        limpiarLista = (Button) findViewById(R.id.button_otracosa);
-        limpiarLista.setOnClickListener(btnLimpiarListaListener);
+        otroBoton = (Button) findViewById(R.id.button_otracosa);
+        otroBoton.setOnClickListener(btnOtroListener);
 
         poblarListaResultados(this);
-        if(listView != null) listView.setFocusable(false); //"parche" para la incompatibilidad visual entre listview con nestedscrollview
+        //if(listView != null) listView.setFocusable(false); //"parche" para la incompatibilidad visual entre listview con nestedscrollview
 
         //PreferenceManager.getDefaultSharedPreferences(this).edit().putString("listaPartidosTerminados", "").commit();
         //PreferenceManager.getDefaultSharedPreferences(this).edit().putString("listaPartidosStatsTerminados", "").commit();
@@ -90,14 +90,16 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private View.OnClickListener btnLimpiarListaListener = new View.OnClickListener() {
+    private View.OnClickListener btnOtroListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit().putString("listaPartidosTerminados", "").apply();
+
+/*            PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit().putString("listaPartidosTerminados", "").apply();
             listView = (ListView) findViewById(R.id.listView_resultados_anteriores);
             resAdapter = new ResultadoAdapter(MainActivity.this, new ArrayList<Resultado>(), new ArrayList<PartidoStats>());
             resAdapter.notifyDataSetChanged();
             listView.setAdapter(resAdapter);
+*/
         }
     };
 
@@ -137,10 +139,10 @@ public class MainActivity extends AppCompatActivity {
                     return resultado2.getFecha().compareTo(resultado1.getFecha());
                 }
             });
-            //si la lista es muy larga, sólo muestro los 9 partidos más recientes
+            /*si la lista es muy larga, sólo muestro los 9 partidos más recientes
             while(listaResultadosViejos.size()>9){
                 listaResultadosViejos.remove(listaResultadosViejos.size()-1);
-            }
+            }*/
 
             listView = (ListView) findViewById(R.id.listView_resultados_anteriores);
             resAdapter = new ResultadoAdapter(this, listaResultadosViejos, obtenerListaPartidosStatsDesdeJson(MainActivity.this));
@@ -163,8 +165,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-
-        System.out.println("--------->>>>>>>>"+jsonPartidosStatsViejos);
 
         return listaPartidosStatsViejos;
     }

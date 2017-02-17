@@ -22,12 +22,12 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="textPersonName|textCapWords"
         android:ems="10"
         android:id="@+id/editText_jugador1"
         android:textSize="14sp"
-        android:hint="nombre jugador 1"
-        android:capitalize="words" />
+        android:hint="Nombre jugador 1"
+        android:capitalize="words"/>
 
     <TextView
         android:text="Jugador 2"
@@ -42,11 +42,11 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="textPersonName|textCapWords"
         android:ems="10"
         android:id="@+id/editText_jugador2"
         android:textSize="14sp"
-        android:hint="nombre jugador 2"
+        android:hint="Nombre jugador 2"
         android:capitalize="words" />
 
     <TextView
