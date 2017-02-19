@@ -105,12 +105,5 @@
         android:textSize="18sp"
         android:textStyle="normal|bold" />
 
-    <Button
-        android:text="Empezar partido"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_empezar"
-        android:background="@android:color/holo_orange_light"
-        android:layout_gravity="bottom|end" />
 
 </LinearLayout>

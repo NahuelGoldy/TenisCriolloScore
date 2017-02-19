@@ -103,10 +103,12 @@ public class ResultadoAdapter extends BaseAdapter {
                 int idView = v.getId();
                 if(idView == R.id.btnCompartir){
                     //TODO ver como compartir esta instancia en aplicaciones externas
-                    String shareBody = jugadores.getText().toString()+ "\n"
+                    String shareBody = "NUEVO PARTIDO REGISTRADO" + "\n"
+                            + jugadores.getText().toString()+ "\n"
                             + "Marcador: "+marcador.getText().toString()+ "\n"
                             + "Duracion del partido: "+tiempoDeJuego.getText().toString()+ "\n"
-                            + "Jugado el: "+fecha.getText().toString();
+                            + "Jugado el: "+fecha.getText().toString()+ "\n" + "\n"
+                            + "Compartido desde mi aplicación TENIS CRIOLLO SCORE"+ "\n";
                     Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                     sharingIntent.setType("text/plain");
                     sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Partido registrado en Tenis Criollo Score");

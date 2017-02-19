@@ -11,8 +11,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include layout="@layout/content_nuevo_partido_main"/>
+        <include layout="@layout/content_nuevo_partido_main"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
 
     </ScrollView>
+
+
+    <Button
+        android:text="Empezar partido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_empezar"
+        android:background="@android:color/holo_orange_light"
+        android:layout_gravity="bottom|end"
+        android:padding="30dp"
+        android:textStyle="normal|bold"
+        android:textSize="18sp" />
 
 </android.support.design.widget.CoordinatorLayout>

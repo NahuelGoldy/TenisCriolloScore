@@ -22,7 +22,8 @@
         </activity>
         <activity
             android:name=".activities.NuevoPartidoActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".activities.PartidoScoreActivity"
             android:screenOrientation="portrait"

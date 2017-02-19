@@ -19,10 +19,12 @@
             android:id="@+id/jugador1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Jugador 1 "
+            android:text="asd"
+            android:layout_weight="1"
             android:textSize="24sp"
             android:textStyle="normal|bold"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical|center_horizontal"
+            android:textAlignment="center" />
 
         <ImageView
             android:layout_width="20dp"
@@ -38,14 +40,16 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="13"
+            android:layout_weight="1"
             android:textSize="30sp"
             android:textStyle="normal|bold"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|end"
             android:background="@android:color/holo_orange_light"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textAlignment="gravity" />
 
         <TextView
-            android:text="-"
+            android:text=" - "
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/textView"
@@ -62,11 +66,13 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="16"
+            android:layout_weight="1"
             android:textSize="30sp"
             android:textStyle="normal|bold"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|start"
             android:background="@android:color/holo_orange_light"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textAlignment="gravity" />
 
         <ImageView
             android:layout_width="20dp"
@@ -82,10 +88,12 @@
             android:id="@+id/jugador2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Jugador 2 "
+            android:text="dsa"
+            android:layout_weight="1"
             android:textSize="24sp"
             android:textStyle="normal|bold"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical|center_horizontal"
+            android:textAlignment="center" />
 
     </LinearLayout>
 
@@ -172,8 +180,10 @@
                 android:clickable="false"
                 android:focusable="false"
                 android:textSize="12sp"
-                android:backgroundTint="#FF0027FF"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:background="#FF0027FF"
+                android:layout_margin="1dp"
+                android:textStyle="normal|bold" />
 
             <Button
                 android:text="16"
@@ -235,8 +245,10 @@
                 android:id="@+id/label_jugador2_sets"
                 android:focusable="false"
                 android:textSize="12sp"
-                android:backgroundTint="#FF0027FF"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:background="#FF0027FF"
+                android:layout_margin="1dp"
+                android:textStyle="normal|bold" />
 
             <Button
                 android:text="12"

@@ -20,8 +20,9 @@
                 android:id="@+id/button_ace"
                 android:layout_weight="1"
                 android:textSize="20sp"
-                android:backgroundTint="@android:color/holo_green_light"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:background="#ff99cc00"
+                android:layout_margin="5dp" />
 
             <Button
                 android:text="Falta"
@@ -30,7 +31,8 @@
                 android:id="@+id/button_falta"
                 android:layout_weight="1"
                 android:textSize="20sp"
-                android:backgroundTint="@android:color/holo_red_light" />
+                android:background="#ffff4444"
+                android:layout_margin="5dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -44,8 +46,9 @@
                 android:layout_height="match_parent"
                 android:id="@+id/button_saque_ganador"
                 android:layout_weight="1"
-                android:backgroundTint="@android:color/holo_green_light"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:background="#ff99cc00"
+                android:layout_margin="5dp" />
 
             <Button
                 android:text="Bola en juego"
@@ -54,7 +57,8 @@
                 android:id="@+id/button_bola_en_juego"
                 android:textSize="20sp"
                 android:layout_weight="1"
-                android:backgroundTint="@android:color/holo_blue_light" />
+                android:background="#ff33b5e5"
+                android:layout_margin="5dp" />
 
         </LinearLayout>
 

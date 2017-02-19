@@ -1,5 +1,6 @@
 package com.dev.nahuelsg.teniscriolloscore.activities;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -552,17 +553,27 @@ public class PartidoScoreActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
-        if (id == R.id.action_estadisticas) {
-            if(tabhost.getCurrentTab()==0 && !flagFalta){
-                Intent i = new Intent(PartidoScoreActivity.this,EstadisticasActivity.class);
-                i = putExtrasParaEstadisticas(i);
-                //TODO startactivityforresult?
-                startActivity(i);
+        switch(id){
+            case R.id.action_estadisticas: {
+                if(tabhost.getCurrentTab()==0 && !flagFalta){
+                    Intent i = new Intent(PartidoScoreActivity.this,EstadisticasActivity.class);
+                    i = putExtrasParaEstadisticas(i);
+                    //TODO startactivityforresult?
+                    startActivity(i);
+                }
+                else{
+                    Toast.makeText(PartidoScoreActivity.this, "No puede ver las estadisticas durante un punto",
+                            Toast.LENGTH_LONG).show();
+                }
+                break;
             }
-            else{
-                Toast.makeText(PartidoScoreActivity.this, "No puede ver las estadisticas durante un punto",
-                        Toast.LENGTH_LONG).show();
+            case R.id.action_deshacer: {
+                if(pilaAcciones!=null && pilaAcciones.size()>0) deshacerAccion(pilaAcciones.pop());
+                break;
+            }
+            case R.id.action_abandonar: {
+                generarDialogAbandonar();
+                break;
             }
         }
 
@@ -1257,6 +1268,226 @@ public class PartidoScoreActivity extends AppCompatActivity {
         return i;
     }
 
+    private void deshacerAccion(Accion action) {
+        int jugador = action.getJugador(), saque = action.getSaque();
+        switch(action.getAccion()){
+            case "ace": {
+                deshacerAce(jugador, saque);
+                break;
+            }
+            case "falta": {
+                deshacerFalta(jugador, saque);
+                break;
+            }
+            case "doble_falta": {
+                deshacerDobleFalta(jugador, saque);
+                break;
+            }
+            case "saque_ganador": {
+                deshacerSaqueGanador(jugador, saque);
+                break;
+            }
+            case "en_juego": {
+                deshacerEnJuego(jugador, saque);
+                break;
+            }
+            case "winner_derecha_red": {
+
+                break;
+            }
+            case "winner_derecha_fondo": {
+
+                break;
+            }
+            case "winner_reves_red": {
+
+                break;
+            }
+            case "winner_reves_fondo": {
+
+                break;
+            }
+            case "error_derecha_red": {
+
+                break;
+            }
+            case "error_derecha_fondo": {
+
+                break;
+            }
+            case "error_reves_red": {
+
+                break;
+            }
+            case "error_reves_fondo": {
+
+                break;
+            }
+            case "pto_ganado_red": {
+
+                break;
+            }
+            case "pto_ganado_fondo": {
+
+                break;
+            }
+            default: {
+                //TODO hacer un Toast "no se pudo deshacer la accion..."
+                break;
+            }
+        }
+    }
+
+    private void deshacerAce(int jugador, int saque) {
+        if(jugador==1){
+            puntActualJugador1--;
+            totalPuntosJugador1--;
+            acesJugador1--;
+            tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
+            if(saque==1){
+                puntosSacandoJugador1--;
+                primerSaqueMetidoJugador1--;
+                puntosGanadosPrimerSaqueJugador1--;
+            }
+            else{
+                puntosGanadosSegundoSaqueJugador1--;
+                flagFalta=true;
+                btnFalta.setText("Doble Falta");
+                ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("2do saque");
+            }
+            iconoPelotaJug1.setVisibility(View.VISIBLE);
+            iconoPelotaJug2.setVisibility(View.INVISIBLE);
+            sacaJugador1=true; sacaJugador2=false;
+        }
+        else{
+            puntActualJugador2--;
+            totalPuntosJugador2--;
+            acesJugador2--;
+            tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
+            if(saque==1){
+                puntosSacandoJugador2--;
+                primerSaqueMetidoJugador2--;
+                puntosGanadosPrimerSaqueJugador2--;
+            }
+            else{
+                puntosGanadosSegundoSaqueJugador2--;
+                flagFalta=true;
+                btnFalta.setText("Doble Falta");
+                ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("2do saque");
+            }
+            iconoPelotaJug2.setVisibility(View.VISIBLE);
+            iconoPelotaJug1.setVisibility(View.INVISIBLE);
+            sacaJugador1=false; sacaJugador2=true;
+        }
+    }
+
+    private void deshacerFalta(int jugador, int saque) {
+        if(jugador==1){
+            puntosSacandoJugador1--;
+        }
+        else{
+            puntosSacandoJugador2--;
+        }
+        flagFalta=false;
+        btnFalta.setText("Falta");
+        ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("1er saque");
+    }
+
+    private void deshacerDobleFalta(int jugador, int saque) {
+        flagFalta=true;
+        if(jugador==1){
+            dobleFaltasJugador1--;
+            puntosGanadosDevolucionJugador2--;
+            puntActualJugador2--;
+            totalPuntosJugador2--;
+            tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
+            sacaJugador1=true; sacaJugador2=false;
+            iconoPelotaJug1.setVisibility(View.VISIBLE);
+            iconoPelotaJug2.setVisibility(View.INVISIBLE);
+        }
+        else{
+            dobleFaltasJugador2--;
+            puntosGanadosDevolucionJugador1--;
+            puntActualJugador1--;
+            totalPuntosJugador1--;
+            tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
+            sacaJugador2=true; sacaJugador1=false;
+            iconoPelotaJug2.setVisibility(View.VISIBLE);
+            iconoPelotaJug1.setVisibility(View.INVISIBLE);
+        }
+        btnFalta.setText("Doble Falta");
+        ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("2do saque");
+    }
+
+    private void deshacerSaqueGanador(int jugador, int saque){
+        if(jugador==1){
+            puntActualJugador1--;
+            totalPuntosJugador1--;
+            puntosSacandoJugador1--;
+            tvScoreJugador1.setText(String.valueOf(puntActualJugador1));
+            if(saque==1){
+                puntosGanadosPrimerSaqueJugador1--;
+                primerSaqueMetidoJugador1--;
+            }
+            else{
+                puntosGanadosSegundoSaqueJugador1--;
+                flagFalta=true;
+                btnFalta.setText("Doble Falta");
+                ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("2do saque");
+            }
+            sacaJugador1=true; sacaJugador2=false;
+            iconoPelotaJug1.setVisibility(View.VISIBLE);
+            iconoPelotaJug2.setVisibility(View.INVISIBLE);
+        }
+        else{
+            puntActualJugador2--;
+            totalPuntosJugador2--;
+            puntosSacandoJugador2--;
+            tvScoreJugador2.setText(String.valueOf(puntActualJugador2));
+            if(saque==1){
+                puntosGanadosPrimerSaqueJugador2--;
+                primerSaqueMetidoJugador2--;
+            }
+            else{
+                puntosGanadosSegundoSaqueJugador2--;
+                flagFalta=true;
+                btnFalta.setText("Doble Falta");
+                ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("2do saque");
+            }
+            sacaJugador2=true; sacaJugador1=false;
+            iconoPelotaJug2.setVisibility(View.VISIBLE);
+            iconoPelotaJug1.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void deshacerEnJuego(int jugador, int saque){
+        cambiarTab(0,1);
+        if(jugador==1){
+            if(saque == 1){
+                puntosSacandoJugador1--;
+                primerSaqueMetidoJugador1--;
+                btnFalta.setText("Falta");
+            }
+            else{
+                flagFalta=true;
+                btnFalta.setText("Doble Falta");
+                ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("2do saque");
+            }
+        }
+        else {
+            if(saque == 1){
+                puntosSacandoJugador2--;
+                primerSaqueMetidoJugador2--;
+                btnFalta.setText("Falta");
+            }
+            else{
+                flagFalta=true;
+                btnFalta.setText("Doble Falta");
+                ((TextView)tabhost.getTabWidget().getChildAt(0).findViewById(android.R.id.title)).setText("2do saque");
+            }
+        }
+    }
+
     @Override
     public void onBackPressed() {
         //TODO en el futuro hacer esta validacion con un Dialog ("En verdad desea salir del partido?")
@@ -1275,7 +1506,8 @@ public class PartidoScoreActivity extends AppCompatActivity {
                 }
             }, 3000);
         } else {
-            super.onBackPressed();
+            //super.onBackPressed();
+            generarDialogAbandonar();
             return;
         }
     }
@@ -1314,6 +1546,34 @@ public class PartidoScoreActivity extends AppCompatActivity {
                 break;
             }
         }
+    }
+
+    private void generarDialogAbandonar(){
+        final Dialog dialogAbandonar = new Dialog(this);
+        dialogAbandonar.setContentView(R.layout.custom_dialog);
+        dialogAbandonar.setTitle("Abandonar partido?");
+        dialogAbandonar.setCancelable(true);
+        dialogAbandonar.show();
+        Button btnAceptar = (Button) dialogAbandonar.findViewById(R.id.btn_si); btnAceptar.setText("Aceptar");
+        Button btnCancelar = (Button) dialogAbandonar.findViewById(R.id.btn_no); btnCancelar.setText("Cancelar");
+        ((TextView) dialogAbandonar.findViewById(R.id.tw_texto)).setText("Está seguro que desea abandonar el partido?"+"\n"+"Si lo hace, ningún dato sobre este partido será registrado.");
+
+        btnAceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(PartidoScoreActivity.this,MainActivity.class);
+                in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(in);
+                dialogAbandonar.dismiss();
+            }
+        });
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogAbandonar.dismiss();
+            }
+        });
     }
 
 }

@@ -15,7 +15,8 @@
             android:id="@+id/red_jugador1"
             android:layout_weight="1"
             android:textOff="En la red"
-            android:textOn="En la red" />
+            android:textOn="En la red"
+            android:layout_margin="3dp" />
 
         <ToggleButton
             android:text="En la red"
@@ -24,7 +25,8 @@
             android:id="@+id/red_jugador2"
             android:layout_weight="1"
             android:textOff="En la red"
-            android:textOn="En la red" />
+            android:textOn="En la red"
+            android:layout_margin="3dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -38,10 +40,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/winner_derecha_jugador1"
             android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_green_light"
             android:textOff="Winner derecha"
             android:textOn="Winner derecha"
-            android:checked="false" />
+            android:checked="false"
+            android:background="#ff99cc00"
+            android:layout_margin="3dp" />
 
         <Button
             android:text="Winner derecha"
@@ -49,8 +52,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/winner_derecha_jugador2"
             android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_green_light"
-            android:textOff="Winner derecha" />
+            android:textOff="Winner derecha"
+            android:background="#ff99cc00"
+            android:layout_margin="3dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -64,9 +68,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/winner_reves_jugador1"
             android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_green_light"
             android:textOff="Winner reves"
-            android:textOn="Winner reves" />
+            android:textOn="Winner reves"
+            android:background="#ff99cc00"
+            android:layout_margin="3dp" />
 
         <Button
             android:text="Winner reves"
@@ -74,9 +79,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/winner_reves_jugador2"
             android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_green_light"
             android:textOff="Winner reves"
-            android:textOn="Winner reves" />
+            android:textOn="Winner reves"
+            android:background="#ff99cc00"
+            android:layout_margin="3dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -90,9 +96,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/error_derecha_jugador1"
             android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_red_light"
             android:textOff="Error no forzado derecha"
-            android:textOn="Error no forzado derecha" />
+            android:textOn="Error no forzado derecha"
+            android:background="#ffff4444"
+            android:layout_margin="3dp" />
 
         <Button
             android:text="Error no forzado derecha"
@@ -100,9 +107,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/error_derecha_jugador2"
             android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_red_light"
             android:textOff="Error no forzado derecha"
-            android:textOn="Error no forzado derecha" />
+            android:textOn="Error no forzado derecha"
+            android:background="#ffff4444"
+            android:layout_margin="3dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -116,9 +124,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/error_reves_jugador1"
             android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_red_light"
             android:textOff="Error no forzado reves"
-            android:textOn="Error no forzado reves" />
+            android:textOn="Error no forzado reves"
+            android:background="#ffff4444"
+            android:layout_margin="3dp"
+            android:padding="5dp" />
 
         <Button
             android:text="Error no forzado reves"
@@ -126,9 +136,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/error_reves_jugador2"
             android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_red_light"
             android:textOff="Error no forzado reves"
-            android:textOn="Error no forzado reves" />
+            android:textOn="Error no forzado reves"
+            android:background="#ffff4444"
+            android:layout_margin="3dp"
+            android:padding="5dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -142,7 +154,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/button_ptoganado_jugador1"
             android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_blue_light" />
+            android:background="#ff33b5e5"
+            android:layout_margin="3dp" />
 
         <Button
             android:text="Punto ganado"
@@ -150,7 +163,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/button_ptoganado_jugador2"
             android:layout_weight="1"
-            android:backgroundTint="@android:color/holo_blue_light" />
+            android:background="#ff33b5e5"
+            android:layout_margin="3dp" />
     </LinearLayout>
 
 </LinearLayout>

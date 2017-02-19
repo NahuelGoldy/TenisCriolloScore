@@ -7,4 +7,14 @@
         android:orderInCategory="100"
         android:title="Estadísticas"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_deshacer"
+        android:orderInCategory="100"
+        android:title="Deshacer"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_abandonar"
+        android:orderInCategory="100"
+        android:title="Abandonar partido"
+        app:showAsAction="never" />
 </menu>

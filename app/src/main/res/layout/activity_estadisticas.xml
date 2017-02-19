@@ -148,8 +148,10 @@
                 android:clickable="false"
                 android:focusable="false"
                 android:textSize="12sp"
-                android:backgroundTint="#FF0027FF"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:background="#FF0027FF"
+                android:layout_margin="1dp"
+                android:textStyle="normal|bold" />
 
             <Button
                 android:text="16"
@@ -212,7 +214,9 @@
                 android:focusable="false"
                 android:textSize="12sp"
                 android:textColor="#FFFFFF"
-                android:backgroundTint="#FF0027FF" />
+                android:background="#FF0027FF"
+                android:layout_margin="1dp"
+                android:textStyle="normal|bold" />
 
             <Button
                 android:text="12"
@@ -275,7 +279,8 @@
             android:textSize="16sp"
             android:fontFamily="sans-serif"
             android:gravity="center_vertical|end"
-            android:paddingEnd="5dp" />
+            android:paddingEnd="5dp"
+            android:paddingRight="5dp" />
 
         <TextView
             android:text="00hs:17min:24seg"
