@@ -139,10 +139,10 @@ public class MainActivity extends AppCompatActivity {
                     return resultado2.getFecha().compareTo(resultado1.getFecha());
                 }
             });
-            /*si la lista es muy larga, sólo muestro los 9 partidos más recientes
-            while(listaResultadosViejos.size()>9){
+            //si la lista es muy larga, sólo muestro los 10 partidos más recientes
+            while(listaResultadosViejos.size()>10){
                 listaResultadosViejos.remove(listaResultadosViejos.size()-1);
-            }*/
+            }
 
             listView = (ListView) findViewById(R.id.listView_resultados_anteriores);
             resAdapter = new ResultadoAdapter(this, listaResultadosViejos, obtenerListaPartidosStatsDesdeJson(MainActivity.this));

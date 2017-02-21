@@ -33,6 +33,9 @@
         <activity
             android:name=".activities.EstadisticasActivity"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.ListarPartidosTerminadosActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
