@@ -124,10 +124,10 @@ public class PartidoScoreActivity extends AppCompatActivity {
             iconoPelotaJug1.setVisibility(View.INVISIBLE);
         }
 
-        if(jugador1.length()<9) tvJugador1.setText(jugador1);
-        else tvJugador1.setText(jugador1.substring(0,9));
-        if(jugador2.length()<9) tvJugador2.setText(jugador2);
-        else tvJugador2.setText(jugador2.substring(0,9));
+        if(jugador1.length()<11) tvJugador1.setText(jugador1);
+        else tvJugador1.setText(jugador1.substring(0,11));
+        if(jugador2.length()<11) tvJugador2.setText(jugador2);
+        else tvJugador2.setText(jugador2.substring(0,11));
         tvScoreJugador1.setText("0"); tvScoreJugador2.setText("0");
         if(jugador1.length()>3) btnJug1.setText(jugador1.substring(0,4)); else btnJug1.setText(jugador1);
         if(jugador2.length()>3) btnJug2.setText(jugador2.substring(0,4)); else btnJug2.setText(jugador2);

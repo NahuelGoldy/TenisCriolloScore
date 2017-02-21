@@ -334,9 +334,16 @@ public class EstadisticasActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (terminado) {
-            Intent in = new Intent(EstadisticasActivity.this,MainActivity.class);
-            in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(in);
+            boolean flagIntentListaPartidos = intent.getBooleanExtra("volver_lista_partidos", false);
+            Intent in;
+            if(!flagIntentListaPartidos){
+                in = new Intent(EstadisticasActivity.this,MainActivity.class);
+                in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(in);
+            }
+            else {
+                super.onBackPressed();
+            }
         }
         else {
             super.onBackPressed();

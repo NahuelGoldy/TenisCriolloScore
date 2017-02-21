@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.dev.nahuelsg.teniscriolloscore.R;
 import com.dev.nahuelsg.teniscriolloscore.activities.EstadisticasActivity;
+import com.dev.nahuelsg.teniscriolloscore.activities.ListarPartidosTerminadosActivity;
 import com.dev.nahuelsg.teniscriolloscore.modelo.PartidoStats;
 import com.dev.nahuelsg.teniscriolloscore.modelo.Resultado;
 
@@ -92,6 +93,7 @@ public class ResultadoAdapter extends BaseAdapter {
                     //TODO encontrar PartidoStats en la lista generada desde el json
                     Intent i = new Intent(mCont,EstadisticasActivity.class);
                     i = putExtrasParaEstadisticas(i, listaPartidoStats.get(position));
+                    if(mCont instanceof ListarPartidosTerminadosActivity) i.putExtra("volver_lista_partidos", true);
                     mCont.startActivity(i);
                 }
             }

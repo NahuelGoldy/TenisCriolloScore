@@ -21,10 +21,11 @@
             android:layout_height="match_parent"
             android:text="asd"
             android:layout_weight="1"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="normal|bold"
             android:gravity="center_vertical|center_horizontal"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="#000000" />
 
         <ImageView
             android:layout_width="20dp"
@@ -90,10 +91,11 @@
             android:layout_height="match_parent"
             android:text="dsa"
             android:layout_weight="1"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="normal|bold"
             android:gravity="center_vertical|center_horizontal"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="#000000" />
 
     </LinearLayout>
 

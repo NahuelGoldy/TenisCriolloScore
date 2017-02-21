@@ -41,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button nuevoPartido, otroBoton;
+        Button nuevoPartido, resultadosAnteriores;
         nuevoPartido = (Button) findViewById(R.id.button_nuevo_partido);
         nuevoPartido.setOnClickListener(btnNuevoPartidoListener);
-        otroBoton = (Button) findViewById(R.id.button_otracosa);
-        otroBoton.setOnClickListener(btnOtroListener);
+        resultadosAnteriores = (Button) findViewById(R.id.button_partidos_terminados);
+        resultadosAnteriores.setOnClickListener(btnResultadosAnterioresListener);
 
         poblarListaResultados(this);
         //if(listView != null) listView.setFocusable(false); //"parche" para la incompatibilidad visual entre listview con nestedscrollview
@@ -90,11 +90,13 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private View.OnClickListener btnOtroListener = new View.OnClickListener() {
+    private View.OnClickListener btnResultadosAnterioresListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
-/*            PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit().putString("listaPartidosTerminados", "").apply();
+            Intent i = new Intent(MainActivity.this,ListarPartidosTerminadosActivity.class);
+            startActivity(i);
+/*
+            PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit().putString("listaPartidosTerminados", "").apply();
             listView = (ListView) findViewById(R.id.listView_resultados_anteriores);
             resAdapter = new ResultadoAdapter(MainActivity.this, new ArrayList<Resultado>(), new ArrayList<PartidoStats>());
             resAdapter.notifyDataSetChanged();
@@ -139,8 +141,8 @@ public class MainActivity extends AppCompatActivity {
                     return resultado2.getFecha().compareTo(resultado1.getFecha());
                 }
             });
-            //si la lista es muy larga, sólo muestro los 10 partidos más recientes
-            while(listaResultadosViejos.size()>10){
+            //si la lista es muy larga, sólo muestro los 5 partidos más recientes
+            while(listaResultadosViejos.size()>5){
                 listaResultadosViejos.remove(listaResultadosViejos.size()-1);
             }
 

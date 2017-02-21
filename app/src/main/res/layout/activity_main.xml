@@ -51,21 +51,23 @@
             android:textStyle="normal|bold"
             android:elevation="0dp"
             android:background="#FF0027FF"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp"
+            android:textSize="18sp" />
 
         <Button
-            android:text="limpiar lista"
+            android:text="partidos terminados"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/button_otracosa"
+            android:id="@+id/button_partidos_terminados"
             android:layout_weight="0.49"
             android:background="#ffd6d7d7"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
     <TextView
-        android:text="ULTIMOS 10 PARTIDOS REGISTRADOS"
+        android:text="ULTIMOS 5 PARTIDOS REGISTRADOS"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textViewTituloUltimosPartidos"
