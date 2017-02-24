@@ -396,4 +396,65 @@ public class PartidoStats {
     public void setTiempoFinal(long tiempoFinal) {
         this.tiempoFinal = tiempoFinal;
     }
+
+    public String getGanadorYPerdedor(){
+        String res = "";
+        if(ganador.compareTo("jugador1")==0){
+            res = jugador1 + " a " + jugador2;
+        }
+        else if(ganador.compareTo("jugador2")==0) res = jugador2 + " a " + jugador1;
+        return res;
+    }
+
+    public String getScore(){
+        String marcador = "";
+        switch(cantSets){
+            case 1: {
+                if(ganador.equals("jugador1")){
+                    marcador = String.valueOf(set1Jug1) + "-" + String.valueOf(set1Jug2);
+                }
+                else{
+                    marcador = String.valueOf(set1Jug2) + "-" + String.valueOf(set1Jug1);
+                }
+                break;
+            }
+            case 2: {
+                if(ganador.equals("jugador1")){
+                    marcador = String.valueOf(set1Jug1) + "-" + String.valueOf(set1Jug2) + " " + String.valueOf(set2Jug1) + "-" + String.valueOf(set2Jug2);
+                }
+                else{
+                    marcador = String.valueOf(set1Jug2) + "-" + String.valueOf(set1Jug1) + " " + String.valueOf(set2Jug2) + "-" + String.valueOf(set2Jug1);
+                }
+                break;
+            }
+            case 3: {
+                if(ganador.equals("jugador1")){
+                    marcador = String.valueOf(set1Jug1) + "-" + String.valueOf(set1Jug2) + " " + String.valueOf(set2Jug1) + "-" + String.valueOf(set2Jug2) + " " + String.valueOf(set3Jug1) + "-" + String.valueOf(set3Jug2);
+                }
+                else{
+                    marcador = String.valueOf(set1Jug2) + "-" + String.valueOf(set1Jug1) + " " + String.valueOf(set2Jug2) + "-" + String.valueOf(set2Jug1) + " " + String.valueOf(set3Jug2) + "-" + String.valueOf(set3Jug1);
+                }
+                break;
+            }
+            case 4: {
+                if(ganador.equals("jugador1")){
+                    marcador = String.valueOf(set1Jug1) + "-" + String.valueOf(set1Jug2) + " " + String.valueOf(set2Jug1) + "-" + String.valueOf(set2Jug2) + " " + String.valueOf(set3Jug1) + "-" + String.valueOf(set3Jug2) + " " + String.valueOf(set4Jug1) + "-" + String.valueOf(set4Jug2);
+                }
+                else{
+                    marcador = String.valueOf(set1Jug2) + "-" + String.valueOf(set1Jug1) + " " + String.valueOf(set2Jug2) + "-" + String.valueOf(set2Jug1) + " " + String.valueOf(set3Jug2) + "-" + String.valueOf(set3Jug1) + " " + String.valueOf(set4Jug2) + "-" + String.valueOf(set4Jug1);
+                }
+                break;
+            }
+            case 5: {
+                if(ganador.equals("jugador1")){
+                    marcador = String.valueOf(set1Jug1) + "-" + String.valueOf(set1Jug2) + " " + String.valueOf(set2Jug1) + "-" + String.valueOf(set2Jug2) + " " + String.valueOf(set3Jug1) + "-" + String.valueOf(set3Jug2) + " " + String.valueOf(set4Jug1) + "-" + String.valueOf(set4Jug2) + " " + String.valueOf(set5Jug1) + "-" + String.valueOf(set5Jug2);
+                }
+                else{
+                    marcador = String.valueOf(set1Jug2) + "-" + String.valueOf(set1Jug1) + " " + String.valueOf(set2Jug2) + "-" + String.valueOf(set2Jug1) + " " + String.valueOf(set3Jug2) + "-" + String.valueOf(set3Jug1) + " " + String.valueOf(set4Jug2) + "-" + String.valueOf(set4Jug1) + " " + String.valueOf(set5Jug2) + "-" + String.valueOf(set5Jug1);
+                }
+                break;
+            }
+        }
+        return marcador;
+    }
 }

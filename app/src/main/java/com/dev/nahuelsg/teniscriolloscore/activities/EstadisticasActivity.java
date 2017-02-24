@@ -5,13 +5,14 @@ import android.icu.text.MessagePattern;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.test.espresso.core.deps.guava.reflect.TypeToken;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.dev.nahuelsg.teniscriolloscore.R;
 import com.dev.nahuelsg.teniscriolloscore.modelo.PartidoStats;
-import com.dev.nahuelsg.teniscriolloscore.modelo.Resultado;
 import com.google.gson.Gson;
 
 import java.lang.reflect.Type;
@@ -72,6 +73,9 @@ public class EstadisticasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_estadisticas);
+
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
 
         intent = getIntent();
 
@@ -290,30 +294,12 @@ public class EstadisticasActivity extends AppCompatActivity {
         //Si el partido terminó, persistirlo en el json de Resultados (SharedPreferences)
         if(terminado && !ver){
             Gson gson = new Gson();
-            List<Resultado> resultadosViejosList;
             List<PartidoStats> statsPartidosViejosList;
             String vencedor = intent.getStringExtra("Ganador");
             int cantSetsJugados = intent.getIntExtra("CantSets", 1);
-            Resultado resultado = this.crearResultado(vencedor, cantSetsJugados, duracionPartido);
             PartidoStats partidoStats = generarStats(vencedor, cantSetsJugados);
 
-            //leer desde SharedPreferences -> el string guardado es un json
-            String listaPartidosViejosJson = PreferenceManager.getDefaultSharedPreferences(this).getString("listaPartidosTerminados", "");
-            if(listaPartidosViejosJson.equals("")){
-                resultadosViejosList = new ArrayList<Resultado>();
-            }
-            else{
-                //obtener la lista de Resultados desde el Json
-                Type type = new TypeToken<List<Resultado>>() {}.getType();
-                resultadosViejosList = gson.fromJson(listaPartidosViejosJson, type);
-            }
-            resultadosViejosList.add(resultado);
-            listaPartidosViejosJson = gson.toJson(resultadosViejosList);
-            //volver a persistir en SharedPreferences la lista actualizada
-            PreferenceManager.getDefaultSharedPreferences(this).edit().putString("listaPartidosTerminados", listaPartidosViejosJson).apply();
-
-//------------------------------------mismo tratamiento para la lista de Stats
-            //TODO en un futuro refactorizar y borrar la lista de Resultados?
+            //tratamiento para la lista de Stats
             //leer desde SharedPreferences -> el string guardado es un json
             String listaPartidosViejosStatsJson = PreferenceManager.getDefaultSharedPreferences(this).getString("listaPartidosStatsTerminados", "");
             if(listaPartidosViejosStatsJson.equals("")){
@@ -348,72 +334,6 @@ public class EstadisticasActivity extends AppCompatActivity {
         else {
             super.onBackPressed();
         }
-    }
-
-    private Resultado crearResultado(String ganador, int cantSets, String duracion){
-        String ganadorPerdedor="", marcador="", fechaHoraPartido="";
-        switch(cantSets){
-            case 1: {
-                if(ganador.equals("jugador1")){
-                    ganadorPerdedor = jugador1 + " a " + jugador2;
-                    marcador = btnSet1Jug1.getText() + "-" + btnSet1Jug2.getText();
-                }
-                else{
-                    ganadorPerdedor = jugador2 + " a " + jugador1;
-                    marcador = btnSet1Jug2.getText() + "-" + btnSet1Jug1.getText();
-                }
-                break;
-            }
-            case 2: {
-                if(ganador.equals("jugador1")){
-                    ganadorPerdedor = jugador1 + " a " + jugador2;
-                    marcador = btnSet1Jug1.getText() + "-" + btnSet1Jug2.getText() + " " + btnSet2Jug1.getText() + "-" + btnSet2Jug2.getText();
-                }
-                else{
-                    ganadorPerdedor = jugador2 + " a " + jugador1;
-                    marcador = btnSet1Jug2.getText() + "-" + btnSet1Jug1.getText() + " " + btnSet2Jug2.getText() + "-" + btnSet2Jug1.getText();
-                }
-                break;
-            }
-            case 3: {
-                if(ganador.equals("jugador1")){
-                    ganadorPerdedor = jugador1 + " a " + jugador2;
-                    marcador = btnSet1Jug1.getText() + "-" + btnSet1Jug2.getText() + " " + btnSet2Jug1.getText() + "-" + btnSet2Jug2.getText() + " " + btnSet3Jug1.getText() + "-" + btnSet3Jug2.getText();
-                }
-                else{
-                    ganadorPerdedor = jugador2 + " a " + jugador1;
-                    marcador = btnSet1Jug2.getText() + "-" + btnSet1Jug1.getText() + " " + btnSet2Jug2.getText() + "-" + btnSet2Jug1.getText() + " " + btnSet3Jug2.getText() + "-" + btnSet3Jug1.getText();
-                }
-                break;
-            }
-            case 4: {
-                if(ganador.equals("jugador1")){
-                    ganadorPerdedor = jugador1 + " a " + jugador2;
-                    marcador = btnSet1Jug1.getText() + "-" + btnSet1Jug2.getText() + " " + btnSet2Jug1.getText() + "-" + btnSet2Jug2.getText() + " " + btnSet3Jug1.getText() + "-" + btnSet3Jug2.getText() + " " + btnSet4Jug1.getText() + "-" + btnSet4Jug2.getText();
-                }
-                else{
-                    ganadorPerdedor = jugador2 + " a " + jugador1;
-                    marcador = btnSet1Jug2.getText() + "-" + btnSet1Jug1.getText() + " " + btnSet2Jug2.getText() + "-" + btnSet2Jug1.getText() + " " + btnSet3Jug2.getText() + "-" + btnSet3Jug1.getText() + " " + btnSet4Jug2.getText() + "-" + btnSet4Jug1.getText();
-                }
-                break;
-            }
-            case 5: {
-                if(ganador.equals("jugador1")){
-                    ganadorPerdedor = jugador1 + " a " + jugador2;
-                    marcador = btnSet1Jug1.getText() + "-" + btnSet1Jug2.getText() + " " + btnSet2Jug1.getText() + "-" + btnSet2Jug2.getText() + " " + btnSet3Jug1.getText() + "-" + btnSet3Jug2.getText() + " " + btnSet4Jug1.getText() + "-" + btnSet4Jug2.getText() + " " + btnSet5Jug1.getText() + "-" + btnSet5Jug2.getText();
-                }
-                else{
-                    ganadorPerdedor = jugador2 + " a " + jugador1;
-                    marcador = btnSet1Jug2.getText() + "-" + btnSet1Jug1.getText() + " " + btnSet2Jug2.getText() + "-" + btnSet2Jug1.getText() + " " + btnSet3Jug2.getText() + "-" + btnSet3Jug1.getText() + " " + btnSet4Jug2.getText() + "-" + btnSet4Jug1.getText() + " " + btnSet5Jug2.getText() + "-" + btnSet5Jug1.getText();
-                }
-                break;
-            }
-        }
-
-        fechaHoraPartido = generarFechaHoraPartido();
-
-        Resultado resultado = new Resultado(ganadorPerdedor, marcador, fechaHoraPartido, duracion);
-        return resultado;
     }
 
     private String generarFechaHoraPartido(){
@@ -471,5 +391,16 @@ public class EstadisticasActivity extends AppCompatActivity {
         stats.setTiempoFinal(getIntent().getLongExtra("TiempoFinal", System.currentTimeMillis()));
 
         return stats;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                this.onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

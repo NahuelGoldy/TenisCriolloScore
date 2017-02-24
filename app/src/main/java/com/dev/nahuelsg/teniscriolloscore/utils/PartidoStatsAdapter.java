@@ -2,7 +2,6 @@ package com.dev.nahuelsg.teniscriolloscore.utils;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,17 +13,15 @@ import com.dev.nahuelsg.teniscriolloscore.R;
 import com.dev.nahuelsg.teniscriolloscore.activities.EstadisticasActivity;
 import com.dev.nahuelsg.teniscriolloscore.activities.ListarPartidosTerminadosActivity;
 import com.dev.nahuelsg.teniscriolloscore.modelo.PartidoStats;
-import com.dev.nahuelsg.teniscriolloscore.modelo.Resultado;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Nahuel SG on 10/02/2017.
+ * Created by Nahuel SG on 23/02/2017.
  */
 
-public class ResultadoAdapter extends BaseAdapter {
-    private List<Resultado> listaResultado;
+public class PartidoStatsAdapter extends BaseAdapter {
     private List<PartidoStats> listaPartidoStats;
     private LayoutInflater inflater;
     private View row;
@@ -32,10 +29,8 @@ public class ResultadoAdapter extends BaseAdapter {
     private Button btnVer, btnCompartir;
     private Context mCont;
 
-    public ResultadoAdapter(Context context, List<Resultado> listaResult, List<PartidoStats> listaPartStats) {
+    public PartidoStatsAdapter(Context context,List<PartidoStats> listaPartStats){
         super();
-        this.listaResultado = new ArrayList<>();
-        this.listaResultado.addAll(listaResult);
         if(listaPartStats!=null && listaPartStats.size()>0){
             this.listaPartidoStats = new ArrayList<>();
             listaPartidoStats.addAll(listaPartStats);
@@ -46,12 +41,12 @@ public class ResultadoAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return listaResultado.size();
+        return listaPartidoStats.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return listaResultado.get(position);
+        return listaPartidoStats.get(position);
     }
 
     @Override
@@ -80,10 +75,10 @@ public class ResultadoAdapter extends BaseAdapter {
     }
 
     private void llenarAdapter(final int position) {
-        jugadores.setText(((Resultado)this.getItem(position)).getGanadorYPerdedor());
-        marcador.setText(((Resultado)this.getItem(position)).getScore());
-        fecha.setText(((Resultado)this.getItem(position)).getFecha());
-        tiempoDeJuego.setText(((Resultado)this.getItem(position)).getTiempoDeJuego());
+        jugadores.setText(((PartidoStats)this.getItem(position)).getGanadorYPerdedor());
+        marcador.setText(((PartidoStats)this.getItem(position)).getScore());
+        fecha.setText(((PartidoStats)this.getItem(position)).getFecha());
+        tiempoDeJuego.setText(((PartidoStats)this.getItem(position)).getTiempoDeJuego());
 
         btnVer.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -43,7 +43,7 @@
             android:textOff="Winner derecha"
             android:textOn="Winner derecha"
             android:checked="false"
-            android:background="#ff99cc00"
+            android:background="@drawable/boton_verde"
             android:layout_margin="3dp" />
 
         <Button
@@ -53,7 +53,7 @@
             android:id="@+id/winner_derecha_jugador2"
             android:layout_weight="1"
             android:textOff="Winner derecha"
-            android:background="#ff99cc00"
+            android:background="@drawable/boton_verde"
             android:layout_margin="3dp" />
     </LinearLayout>
 
@@ -70,7 +70,7 @@
             android:layout_weight="1"
             android:textOff="Winner reves"
             android:textOn="Winner reves"
-            android:background="#ff99cc00"
+            android:background="@drawable/boton_verde"
             android:layout_margin="3dp" />
 
         <Button
@@ -81,7 +81,7 @@
             android:layout_weight="1"
             android:textOff="Winner reves"
             android:textOn="Winner reves"
-            android:background="#ff99cc00"
+            android:background="@drawable/boton_verde"
             android:layout_margin="3dp" />
     </LinearLayout>
 
@@ -98,7 +98,7 @@
             android:layout_weight="1"
             android:textOff="Error no forzado derecha"
             android:textOn="Error no forzado derecha"
-            android:background="#ffff4444"
+            android:background="@drawable/boton_rojo"
             android:layout_margin="3dp" />
 
         <Button
@@ -109,7 +109,7 @@
             android:layout_weight="1"
             android:textOff="Error no forzado derecha"
             android:textOn="Error no forzado derecha"
-            android:background="#ffff4444"
+            android:background="@drawable/boton_rojo"
             android:layout_margin="3dp" />
     </LinearLayout>
 
@@ -126,7 +126,7 @@
             android:layout_weight="1"
             android:textOff="Error no forzado reves"
             android:textOn="Error no forzado reves"
-            android:background="#ffff4444"
+            android:background="@drawable/boton_rojo"
             android:layout_margin="3dp"
             android:padding="5dp" />
 
@@ -138,7 +138,7 @@
             android:layout_weight="1"
             android:textOff="Error no forzado reves"
             android:textOn="Error no forzado reves"
-            android:background="#ffff4444"
+            android:background="@drawable/boton_rojo"
             android:layout_margin="3dp"
             android:padding="5dp" />
     </LinearLayout>
@@ -154,7 +154,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/button_ptoganado_jugador1"
             android:layout_weight="1"
-            android:background="#ff33b5e5"
+            android:background="@drawable/boton_celeste"
             android:layout_margin="3dp" />
 
         <Button
@@ -163,7 +163,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/button_ptoganado_jugador2"
             android:layout_weight="1"
-            android:background="#ff33b5e5"
+            android:background="@drawable/boton_celeste"
             android:layout_margin="3dp" />
     </LinearLayout>
 

@@ -2,7 +2,9 @@ package com.dev.nahuelsg.teniscriolloscore.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -36,6 +38,9 @@ public class NuevoPartidoActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_partido);
+
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
 
         labelJug1 = (TextView) findViewById(R.id.textView_jugador1);
         labelJug2 = (TextView) findViewById(R.id.textView_jugador2);
@@ -140,4 +145,15 @@ public class NuevoPartidoActivity extends AppCompatActivity  {
             labelDescripcion.setText(textoDescripcion);
         }
     };
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                this.onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
